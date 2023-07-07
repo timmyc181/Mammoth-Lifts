@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A1BF3D42A58C3C00051A3DD /* Mammoth_LiftsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3D32A58C3C00051A3DD /* Mammoth_LiftsApp.swift */; };
+		3A1BF3D62A58C3C00051A3DD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3D52A58C3C00051A3DD /* Persistence.swift */; };
+		3A1BF3D92A58C3C00051A3DD /* Mammoth_Lifts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3D72A58C3C00051A3DD /* Mammoth_Lifts.xcdatamodeld */; };
+		3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3DA2A58C3C00051A3DD /* ContentView.swift */; };
+		3A1BF3DD2A58C3C10051A3DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1BF3DC2A58C3C10051A3DD /* Assets.xcassets */; };
+		3A1BF3E12A58C3C10051A3DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1BF3E02A58C3C10051A3DD /* Preview Assets.xcassets */; };
+		3A1BF3EB2A58C3C10051A3DD /* Mammoth_LiftsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3EA2A58C3C10051A3DD /* Mammoth_LiftsTests.swift */; };
+		3A1BF3F52A58C3C10051A3DD /* Mammoth_LiftsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3F42A58C3C10051A3DD /* Mammoth_LiftsUITests.swift */; };
+		3A1BF3F72A58C3C10051A3DD /* Mammoth_LiftsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3F62A58C3C10051A3DD /* Mammoth_LiftsUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A1BF3E72A58C3C10051A3DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A1BF3C82A58C3C00051A3DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A1BF3CF2A58C3C00051A3DD;
+			remoteInfo = "Mammoth Lifts";
+		};
+		3A1BF3F12A58C3C10051A3DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A1BF3C82A58C3C00051A3DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A1BF3CF2A58C3C00051A3DD;
+			remoteInfo = "Mammoth Lifts";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A1BF3D02A58C3C00051A3DD /* Mammoth Lifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mammoth Lifts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A1BF3D32A58C3C00051A3DD /* Mammoth_LiftsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mammoth_LiftsApp.swift; sourceTree = "<group>"; };
+		3A1BF3D52A58C3C00051A3DD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		3A1BF3D82A58C3C00051A3DD /* Mammoth_Lifts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mammoth_Lifts.xcdatamodel; sourceTree = "<group>"; };
+		3A1BF3DA2A58C3C00051A3DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3A1BF3DC2A58C3C10051A3DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A1BF3DE2A58C3C10051A3DD /* Mammoth_Lifts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mammoth_Lifts.entitlements; sourceTree = "<group>"; };
+		3A1BF3E02A58C3C10051A3DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3A1BF3E62A58C3C10051A3DD /* Mammoth LiftsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mammoth LiftsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A1BF3EA2A58C3C10051A3DD /* Mammoth_LiftsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mammoth_LiftsTests.swift; sourceTree = "<group>"; };
+		3A1BF3F02A58C3C10051A3DD /* Mammoth LiftsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mammoth LiftsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A1BF3F42A58C3C10051A3DD /* Mammoth_LiftsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mammoth_LiftsUITests.swift; sourceTree = "<group>"; };
+		3A1BF3F62A58C3C10051A3DD /* Mammoth_LiftsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mammoth_LiftsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A1BF3CD2A58C3C00051A3DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A1BF3E32A58C3C10051A3DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A1BF3ED2A58C3C10051A3DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A1BF3C72A58C3C00051A3DD = {
+			isa = PBXGroup;
+			children = (
+				3A1BF3D22A58C3C00051A3DD /* Mammoth Lifts */,
+				3A1BF3E92A58C3C10051A3DD /* Mammoth LiftsTests */,
+				3A1BF3F32A58C3C10051A3DD /* Mammoth LiftsUITests */,
+				3A1BF3D12A58C3C00051A3DD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3A1BF3D12A58C3C00051A3DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A1BF3D02A58C3C00051A3DD /* Mammoth Lifts.app */,
+				3A1BF3E62A58C3C10051A3DD /* Mammoth LiftsTests.xctest */,
+				3A1BF3F02A58C3C10051A3DD /* Mammoth LiftsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A1BF3D22A58C3C00051A3DD /* Mammoth Lifts */ = {
+			isa = PBXGroup;
+			children = (
+				3A1BF3D32A58C3C00051A3DD /* Mammoth_LiftsApp.swift */,
+				3A1BF3D52A58C3C00051A3DD /* Persistence.swift */,
+				3A1BF3DA2A58C3C00051A3DD /* ContentView.swift */,
+				3A1BF3DC2A58C3C10051A3DD /* Assets.xcassets */,
+				3A1BF3DE2A58C3C10051A3DD /* Mammoth_Lifts.entitlements */,
+				3A1BF3D72A58C3C00051A3DD /* Mammoth_Lifts.xcdatamodeld */,
+				3A1BF3DF2A58C3C10051A3DD /* Preview Content */,
+			);
+			path = "Mammoth Lifts";
+			sourceTree = "<group>";
+		};
+		3A1BF3DF2A58C3C10051A3DD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3A1BF3E02A58C3C10051A3DD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3A1BF3E92A58C3C10051A3DD /* Mammoth LiftsTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A1BF3EA2A58C3C10051A3DD /* Mammoth_LiftsTests.swift */,
+			);
+			path = "Mammoth LiftsTests";
+			sourceTree = "<group>";
+		};
+		3A1BF3F32A58C3C10051A3DD /* Mammoth LiftsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3A1BF3F42A58C3C10051A3DD /* Mammoth_LiftsUITests.swift */,
+				3A1BF3F62A58C3C10051A3DD /* Mammoth_LiftsUITestsLaunchTests.swift */,
+			);
+			path = "Mammoth LiftsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A1BF3CF2A58C3C00051A3DD /* Mammoth Lifts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A1BF3FA2A58C3C10051A3DD /* Build configuration list for PBXNativeTarget "Mammoth Lifts" */;
+			buildPhases = (
+				3A1BF3CC2A58C3C00051A3DD /* Sources */,
+				3A1BF3CD2A58C3C00051A3DD /* Frameworks */,
+				3A1BF3CE2A58C3C00051A3DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mammoth Lifts";
+			productName = "Mammoth Lifts";
+			productReference = 3A1BF3D02A58C3C00051A3DD /* Mammoth Lifts.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3A1BF3E52A58C3C10051A3DD /* Mammoth LiftsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A1BF3FD2A58C3C10051A3DD /* Build configuration list for PBXNativeTarget "Mammoth LiftsTests" */;
+			buildPhases = (
+				3A1BF3E22A58C3C10051A3DD /* Sources */,
+				3A1BF3E32A58C3C10051A3DD /* Frameworks */,
+				3A1BF3E42A58C3C10051A3DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A1BF3E82A58C3C10051A3DD /* PBXTargetDependency */,
+			);
+			name = "Mammoth LiftsTests";
+			productName = "Mammoth LiftsTests";
+			productReference = 3A1BF3E62A58C3C10051A3DD /* Mammoth LiftsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3A1BF3EF2A58C3C10051A3DD /* Mammoth LiftsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A1BF4002A58C3C10051A3DD /* Build configuration list for PBXNativeTarget "Mammoth LiftsUITests" */;
+			buildPhases = (
+				3A1BF3EC2A58C3C10051A3DD /* Sources */,
+				3A1BF3ED2A58C3C10051A3DD /* Frameworks */,
+				3A1BF3EE2A58C3C10051A3DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A1BF3F22A58C3C10051A3DD /* PBXTargetDependency */,
+			);
+			name = "Mammoth LiftsUITests";
+			productName = "Mammoth LiftsUITests";
+			productReference = 3A1BF3F02A58C3C10051A3DD /* Mammoth LiftsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A1BF3C82A58C3C00051A3DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					3A1BF3CF2A58C3C00051A3DD = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					3A1BF3E52A58C3C10051A3DD = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 3A1BF3CF2A58C3C00051A3DD;
+					};
+					3A1BF3EF2A58C3C10051A3DD = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 3A1BF3CF2A58C3C00051A3DD;
+					};
+				};
+			};
+			buildConfigurationList = 3A1BF3CB2A58C3C00051A3DD /* Build configuration list for PBXProject "Mammoth Lifts" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A1BF3C72A58C3C00051A3DD;
+			productRefGroup = 3A1BF3D12A58C3C00051A3DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A1BF3CF2A58C3C00051A3DD /* Mammoth Lifts */,
+				3A1BF3E52A58C3C10051A3DD /* Mammoth LiftsTests */,
+				3A1BF3EF2A58C3C10051A3DD /* Mammoth LiftsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A1BF3CE2A58C3C00051A3DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A1BF3E12A58C3C10051A3DD /* Preview Assets.xcassets in Resources */,
+				3A1BF3DD2A58C3C10051A3DD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A1BF3E42A58C3C10051A3DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A1BF3EE2A58C3C10051A3DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A1BF3CC2A58C3C00051A3DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A1BF3D92A58C3C00051A3DD /* Mammoth_Lifts.xcdatamodeld in Sources */,
+				3A1BF3D42A58C3C00051A3DD /* Mammoth_LiftsApp.swift in Sources */,
+				3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */,
+				3A1BF3D62A58C3C00051A3DD /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A1BF3E22A58C3C10051A3DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A1BF3EB2A58C3C10051A3DD /* Mammoth_LiftsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A1BF3EC2A58C3C10051A3DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A1BF3F52A58C3C10051A3DD /* Mammoth_LiftsUITests.swift in Sources */,
+				3A1BF3F72A58C3C10051A3DD /* Mammoth_LiftsUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A1BF3E82A58C3C10051A3DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A1BF3CF2A58C3C00051A3DD /* Mammoth Lifts */;
+			targetProxy = 3A1BF3E72A58C3C10051A3DD /* PBXContainerItemProxy */;
+		};
+		3A1BF3F22A58C3C10051A3DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A1BF3CF2A58C3C00051A3DD /* Mammoth Lifts */;
+			targetProxy = 3A1BF3F12A58C3C10051A3DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3A1BF3F82A58C3C10051A3DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3A1BF3F92A58C3C10051A3DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		3A1BF3FB2A58C3C10051A3DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Mammoth Lifts/Mammoth_Lifts.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Mammoth Lifts/Preview Content\"";
+				DEVELOPMENT_TEAM = 46NZTQ38P9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.timothycleveland.Mammoth-Lifts";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3A1BF3FC2A58C3C10051A3DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Mammoth Lifts/Mammoth_Lifts.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Mammoth Lifts/Preview Content\"";
+				DEVELOPMENT_TEAM = 46NZTQ38P9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.timothycleveland.Mammoth-Lifts";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3A1BF3FE2A58C3C10051A3DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 46NZTQ38P9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.timothycleveland.Mammoth-LiftsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mammoth Lifts.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mammoth Lifts";
+			};
+			name = Debug;
+		};
+		3A1BF3FF2A58C3C10051A3DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 46NZTQ38P9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.timothycleveland.Mammoth-LiftsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mammoth Lifts.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mammoth Lifts";
+			};
+			name = Release;
+		};
+		3A1BF4012A58C3C10051A3DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 46NZTQ38P9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.timothycleveland.Mammoth-LiftsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Mammoth Lifts";
+			};
+			name = Debug;
+		};
+		3A1BF4022A58C3C10051A3DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 46NZTQ38P9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.timothycleveland.Mammoth-LiftsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Mammoth Lifts";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A1BF3CB2A58C3C00051A3DD /* Build configuration list for PBXProject "Mammoth Lifts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A1BF3F82A58C3C10051A3DD /* Debug */,
+				3A1BF3F92A58C3C10051A3DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A1BF3FA2A58C3C10051A3DD /* Build configuration list for PBXNativeTarget "Mammoth Lifts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A1BF3FB2A58C3C10051A3DD /* Debug */,
+				3A1BF3FC2A58C3C10051A3DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A1BF3FD2A58C3C10051A3DD /* Build configuration list for PBXNativeTarget "Mammoth LiftsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A1BF3FE2A58C3C10051A3DD /* Debug */,
+				3A1BF3FF2A58C3C10051A3DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A1BF4002A58C3C10051A3DD /* Build configuration list for PBXNativeTarget "Mammoth LiftsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A1BF4012A58C3C10051A3DD /* Debug */,
+				3A1BF4022A58C3C10051A3DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3A1BF3D72A58C3C00051A3DD /* Mammoth_Lifts.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3A1BF3D82A58C3C00051A3DD /* Mammoth_Lifts.xcdatamodel */,
+			);
+			currentVersion = 3A1BF3D82A58C3C00051A3DD /* Mammoth_Lifts.xcdatamodel */;
+			path = Mammoth_Lifts.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3A1BF3C82A58C3C00051A3DD /* Project object */;
+}
