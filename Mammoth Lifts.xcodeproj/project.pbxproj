@@ -28,8 +28,14 @@
 		3AC2FFF32A5DDA690079FA62 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FFF22A5DDA690079FA62 /* TabBarView.swift */; };
 		3AC2FFF62A5DDE2B0079FA62 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FFF52A5DDE2B0079FA62 /* TabBarItemView.swift */; };
 		3AC2FFF82A5DDE440079FA62 /* SelectedTabBarIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FFF72A5DDE440079FA62 /* SelectedTabBarIndicatorView.swift */; };
+		3ACF06582A6431E700AA4E4A /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF06572A6431E700AA4E4A /* ProgressBarView.swift */; };
+		3ACF065A2A6439AE00AA4E4A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF06592A6439AE00AA4E4A /* Button.swift */; };
+		3ACF065C2A6445EB00AA4E4A /* AddLiftHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF065B2A6445EB00AA4E4A /* AddLiftHeaderView.swift */; };
 		3AD1E6E62A5F044000C0E4B0 /* LiftItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD1E6E52A5F044000C0E4B0 /* LiftItemView.swift */; };
 		3AD1E6E82A5F055300C0E4B0 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD1E6E72A5F053600C0E4B0 /* Fonts.swift */; };
+		3AF321C22A62F59E008E4E14 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF321C12A62F59E008E4E14 /* SheetView.swift */; };
+		3AF321C52A62FB0D008E4E14 /* AddLiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF321C42A62FB0D008E4E14 /* AddLiftView.swift */; };
+		3AF321C72A630673008E4E14 /* ScreenCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF321C62A630673008E4E14 /* ScreenCornerRadius.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,9 +81,15 @@
 		3AC2FFF22A5DDA690079FA62 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		3AC2FFF52A5DDE2B0079FA62 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		3AC2FFF72A5DDE440079FA62 /* SelectedTabBarIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTabBarIndicatorView.swift; sourceTree = "<group>"; };
+		3ACF06572A6431E700AA4E4A /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		3ACF06592A6439AE00AA4E4A /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		3ACF065B2A6445EB00AA4E4A /* AddLiftHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLiftHeaderView.swift; sourceTree = "<group>"; };
 		3AD1E6E52A5F044000C0E4B0 /* LiftItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftItemView.swift; sourceTree = "<group>"; };
 		3AD1E6E72A5F053600C0E4B0 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		3AD1E6E92A5F062200C0E4B0 /* Mammoth-Lifts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Mammoth-Lifts-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3AF321C12A62F59E008E4E14 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		3AF321C42A62FB0D008E4E14 /* AddLiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLiftView.swift; sourceTree = "<group>"; };
+		3AF321C62A630673008E4E14 /* ScreenCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCornerRadius.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +204,7 @@
 		3AC2FFEB2A5DD98E0079FA62 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3AF321C02A62F590008E4E14 /* Misc */,
 				3AC2FFF42A5DDAF00079FA62 /* Tab bar */,
 				3AC2FFEF2A5DDA310079FA62 /* Log */,
 				3AC2FFEC2A5DD9930079FA62 /* Lifts */,
@@ -202,6 +215,7 @@
 		3AC2FFEC2A5DD9930079FA62 /* Lifts */ = {
 			isa = PBXGroup;
 			children = (
+				3AF321C32A62FAFD008E4E14 /* Add lift */,
 				3AC2FFED2A5DD9B20079FA62 /* LiftsView.swift */,
 				3AD1E6E52A5F044000C0E4B0 /* LiftItemView.swift */,
 				3AB032272A608FE30098C076 /* LiftsHeaderView.swift */,
@@ -225,6 +239,26 @@
 				3AC2FFF72A5DDE440079FA62 /* SelectedTabBarIndicatorView.swift */,
 			);
 			path = "Tab bar";
+			sourceTree = "<group>";
+		};
+		3AF321C02A62F590008E4E14 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				3AF321C12A62F59E008E4E14 /* SheetView.swift */,
+				3AF321C62A630673008E4E14 /* ScreenCornerRadius.swift */,
+				3ACF06572A6431E700AA4E4A /* ProgressBarView.swift */,
+				3ACF06592A6439AE00AA4E4A /* Button.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		3AF321C32A62FAFD008E4E14 /* Add lift */ = {
+			isa = PBXGroup;
+			children = (
+				3AF321C42A62FB0D008E4E14 /* AddLiftView.swift */,
+				3ACF065B2A6445EB00AA4E4A /* AddLiftHeaderView.swift */,
+			);
+			path = "Add lift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,22 +393,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF321C72A630673008E4E14 /* ScreenCornerRadius.swift in Sources */,
 				3ABEA5BE2A5F085F000D695F /* Common.swift in Sources */,
 				3AD1E6E82A5F055300C0E4B0 /* Fonts.swift in Sources */,
 				3AB032282A608FE30098C076 /* LiftsHeaderView.swift in Sources */,
 				3AC2FFF82A5DDE440079FA62 /* SelectedTabBarIndicatorView.swift in Sources */,
 				3AC2FFF32A5DDA690079FA62 /* TabBarView.swift in Sources */,
+				3AF321C52A62FB0D008E4E14 /* AddLiftView.swift in Sources */,
+				3ACF065A2A6439AE00AA4E4A /* Button.swift in Sources */,
 				3A1BF3D42A58C3C00051A3DD /* MammothLiftsApp.swift in Sources */,
 				3AC2FFF12A5DDA390079FA62 /* LogView.swift in Sources */,
+				3ACF06582A6431E700AA4E4A /* ProgressBarView.swift in Sources */,
 				3AB0322A2A6095920098C076 /* Constants.swift in Sources */,
 				3AC2FFF62A5DDE2B0079FA62 /* TabBarItemView.swift in Sources */,
 				3AC2FFEA2A5DCAC00079FA62 /* Navigation.swift in Sources */,
 				3AD1E6E62A5F044000C0E4B0 /* LiftItemView.swift in Sources */,
 				3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */,
+				3ACF065C2A6445EB00AA4E4A /* AddLiftHeaderView.swift in Sources */,
 				3AB032242A6084680098C076 /* Set.swift in Sources */,
 				3AB032222A6084680098C076 /* Workout.swift in Sources */,
 				3AC2FFEE2A5DD9B20079FA62 /* LiftsView.swift in Sources */,
 				3AB032232A6084680098C076 /* Exercise.swift in Sources */,
+				3AF321C22A62F59E008E4E14 /* SheetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,8 +584,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -587,8 +627,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";

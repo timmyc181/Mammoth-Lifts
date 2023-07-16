@@ -10,11 +10,38 @@ import SwiftUI
 
 
 
-@Observable class CurrentNavigation {
-    var current: Navigation = .lifts
+@Observable class Navigation {
+    var tab: Tab = .lifts
+    var addLiftPresented: Bool = false
+    var editLiftPresented: Bool = false
+    var workoutPresented: Bool = false
+    
+    
+    var sheetPresentationAmount: CGFloat = 1
+    
+    var sheetPresented: Bool {
+        return addLiftPresented || editLiftPresented || workoutPresented
+    }
 }
 
-enum Navigation {
+
+enum Tab {
     case lifts
     case log
 }
+
+
+extension Navigation {
+    public func sheetBackgroundEffect(presentedVal: CGFloat, hiddenVal: CGFloat) -> CGFloat {
+        if sheetPresented {
+            var final: CGFloat = 0
+            final += sheetPresentationAmount * presentedVal
+            final += (1 - sheetPresentationAmount) * hiddenVal
+            
+            return final
+        } else {
+            return hiddenVal
+        }
+    }
+}
+

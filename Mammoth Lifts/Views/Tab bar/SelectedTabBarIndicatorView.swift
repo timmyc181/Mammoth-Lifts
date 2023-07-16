@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SelectedTabBarIndicatorView: View {
-    @Environment(CurrentNavigation.self) var navigation
+    @Environment(Navigation.self) var navigation
     
     var body: some View {
         HStack(spacing: 0) {
             Group {
-                if navigation.current == .log {
+                if navigation.tab == .log {
                     Spacer()
                 }
                 
@@ -28,7 +28,7 @@ struct SelectedTabBarIndicatorView: View {
                 
                 Color.clear.frame(width: 0)
                 
-                if navigation.current == .lifts {
+                if navigation.tab == .lifts {
                     Spacer()
                 }
             }

@@ -10,5 +10,6 @@ import Foundation
 
 class Constants {
     static let sidePadding: CGFloat = 25
+    static let pagePadding: CGFloat = 30
 
 }

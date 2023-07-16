@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct TabBarItemView: View {
-    @Environment(CurrentNavigation.self) var navigation
+    @Environment(Navigation.self) var navigation
 
-    var navigateTo: Navigation
+    var navigateTo: Tab
     var iconName: String
     
     var body: some View {
 
         Button {
             withAnimation(.spring(response: 0.15)) {
-                navigation.current = navigateTo
+                navigation.tab = navigateTo
             }
         } label: {
             Image(iconName)
                 .resizable()
                 .frame(width: 28, height: 28)
-                .foregroundColor(Color.white.opacity(navigation.current == navigateTo ? 1 : 0.3))
+                .foregroundColor(Color.white.opacity(navigation.tab == navigateTo ? 1 : 0.15))
                 .id(iconName)
 
         }

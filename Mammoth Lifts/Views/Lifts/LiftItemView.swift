@@ -36,7 +36,7 @@ struct LiftItemView: View {
 
             }
             Spacer()
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(LinearGradient.accent)
                 .frame(width: height)
                 .overlay {

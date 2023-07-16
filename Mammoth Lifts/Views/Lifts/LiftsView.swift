@@ -15,7 +15,7 @@ struct LiftsView: View {
     var body: some View {
         VStack {
             LiftsHeaderView()
-                .padding(.top, 24)
+                .padding(.top, 10)
             
             VStack(spacing: 16) {
                 ForEach(exercises) { exercise in

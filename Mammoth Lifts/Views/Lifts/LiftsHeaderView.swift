@@ -8,37 +8,29 @@
 import SwiftUI
 
 struct LiftsHeaderView: View {
-    @Environment(\.modelContext) private var modelContext
-    @State private var name: String = ""
-    @State private var showingAlert: Bool = false
+    @Environment(Navigation.self) private var navigation
     
     var body: some View {
-        HStack {
-            Text("Lifts")
-                .customFont(.heading)
-                .accentGradientForeground()
-            Spacer()
-            Button {
-                showingAlert = true
-
-            } label: {
-                Image("PlusIcon")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.white.opacity(1))
-                    .offset(y: 2)
-            }
-
-            .alert("Name", isPresented: $showingAlert) {
-                TextField("Name", text: $name)
-                Button("OK") {
-                    let newLift = Exercise(name: name)
-                    modelContext.insert(newLift)
+        VStack(spacing: 0) {
+            HStack {
+                Spacer()
+                Button {
+                    navigation.addLiftPresented = true
+                } label: {
+                    Image("PlusIcon")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .accentGradientForeground()
                 }
-            } message: {
-                Text("Xcode will print whatever you type.")
+            }
+            HStack {
+                Text("Lifts")
+                    .customFont(.heading)
+                Spacer()
+
             }
         }
+        
 
     }
 }

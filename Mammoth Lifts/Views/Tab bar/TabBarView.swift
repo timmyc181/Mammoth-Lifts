@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-    @Environment(CurrentNavigation.self) var navigation
+    @Environment(Navigation.self) var navigation
     
     var body: some View {
         VStack {
@@ -38,12 +38,14 @@ struct TabBarView: View {
                     .opacity(0.9)
 
             )
+
         }
+        .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
     }
 }
 
 
 #Preview {
     TabBarView()
-        .environment(CurrentNavigation())
+        .environment(Navigation())
 }
