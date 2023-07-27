@@ -10,7 +10,8 @@ import Foundation
 import SwiftData
 
  
-@Model public class Set {
+//@Model
+public class Set {
     var repsCompleted: Int16? = 0
     var targetReps: Int16? = 0
     var weight: Float? = 0.0

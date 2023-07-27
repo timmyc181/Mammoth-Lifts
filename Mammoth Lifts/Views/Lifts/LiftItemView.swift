@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LiftItemView: View {
-    let exercise: Exercise
+    let exercise: Lift
     
     private let height: CGFloat = 46
     
@@ -61,7 +61,7 @@ struct LiftItemView: View {
 }
 
 #Preview {
-    LiftItemView(exercise: Exercise(name: "Deadlift"))
+    LiftItemView(exercise: Lift(name: "Deadlift"))
 }
 
 

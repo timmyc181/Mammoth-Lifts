@@ -18,8 +18,9 @@ struct ProgressBarView: View {
             .frame(height: height)
             .overlay {
                 GeometryReader { geo in
-                    RoundedRectangle(cornerRadius: height / 2)
-                        .accentGradientForeground()
+                    Rectangle()
+                        .fill(LinearGradient.accentGradient)
+//                        .accentGradientForeground()
                         .mask(alignment: .leading) {
                             
                             RoundedRectangle(cornerRadius: height / 2)

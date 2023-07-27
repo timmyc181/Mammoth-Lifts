@@ -10,7 +10,9 @@ import Foundation
 import SwiftData
 
 
-@Model public class Exercise {
+//@Model
+@Observable
+public class Lift {
     @Attribute(.unique) var name: String
     var currentWeight: Float = 0
     var increment: Float = 0
@@ -28,6 +30,50 @@ import SwiftData
         self.targetReps = targetReps
         self.targetSets = targetSets
         self.workouts = workouts
+    }
+    
+    enum Option: String, CaseIterable {
+        case deadlift = "Deadlift"
+        case squat = "Squat"
+        case bench = "Bench"
+        case overheadPress = "Overhead press"
+    }
+    
+    static func templateFor(_ lift: Option) -> Lift {
+        switch lift {
+        case .deadlift:
+            return Lift(
+                name: "Deadlift",
+                currentWeight: 300,
+                increment: 5,
+                targetReps: 3,
+                targetSets: 5
+            )
+        case .squat:
+            return Lift(
+                name: "Squat",
+                currentWeight: 250,
+                increment: 5,
+                targetReps: 3,
+                targetSets: 5
+            )
+        case .bench:
+            return Lift(
+                name: "Bench",
+                currentWeight: 200,
+                increment: 2.5,
+                targetReps: 5,
+                targetSets: 5
+            )
+        case .overheadPress:
+            return Lift(
+                name: "Press",
+                currentWeight: 150,
+                increment: 2.5,
+                targetReps: 5,
+                targetSets: 5
+            )
+        }
     }
     
 }

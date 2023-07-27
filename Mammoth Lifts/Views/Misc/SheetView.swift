@@ -18,7 +18,7 @@ struct SheetView<Content: View>: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                ScreenRectangle(fill: .background)
+                ScreenRectangle(fill: .sheetBackground)
                     .offset(y: offset)
                     .ignoresSafeArea(.all)
                 VStack {
@@ -29,7 +29,7 @@ struct SheetView<Content: View>: View {
 //                        .padding(.bottom)
                     Spacer(minLength: 0)
                     content
-                        .padding(.horizontal, Constants.pagePadding)
+//                        .padding(.horizontal, Constants.sheetPadding)
                     Spacer(minLength: 0)
                 }
                 .offset(y: offset)
@@ -38,6 +38,7 @@ struct SheetView<Content: View>: View {
             }
             .gesture(
                 DragGesture()
+                    
                     .onChanged { gesture in
                         let newOffset = rubberBandClamp(gesture.translation.height, coeff: 0.2, dim: geo.size.height)
                         offset = newOffset
@@ -54,7 +55,8 @@ struct SheetView<Content: View>: View {
                                 navigation.sheetPresentationAmount = 1
                             }
                         }
-                    }
+                    },
+                including: navigation.sheetGestureEnabled ? .all : .subviews
             )
             .onChange(of: navigation.sheetPresented) { oldValue, newValue in
                 if newValue {

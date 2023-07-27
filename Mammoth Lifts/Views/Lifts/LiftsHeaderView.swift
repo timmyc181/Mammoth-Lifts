@@ -19,7 +19,7 @@ struct LiftsHeaderView: View {
                 } label: {
                     Image("PlusIcon")
                         .resizable()
-                        .frame(width: 20, height: 20)
+                        .frame(width: 19, height: 19)
                         .accentGradientForeground()
                 }
             }
@@ -54,5 +54,15 @@ extension View {
     
     public func accentGradientForeground() -> some View {
         self.gradientForeground(colors: [Color("AccentGradientStart"), Color("AccentGradientEnd")])
+//        self.gradientForeground(colors: [Color.blue, Color("AccentGradientEnd")])
     }
+    
+}
+
+
+extension LinearGradient {
+    public static var accentGradient = LinearGradient(
+        colors: [Color("AccentGradientStart"), Color("AccentGradientEnd")],
+        startPoint: .leading,
+        endPoint: .trailing)
 }

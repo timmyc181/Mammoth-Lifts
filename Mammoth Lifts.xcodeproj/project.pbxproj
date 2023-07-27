@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A01F67F2A6CC6C2009C79FE /* DurationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01F67E2A6CC6C2009C79FE /* DurationPickerView.swift */; };
+		3A01F6812A6CDA40009C79FE /* RestTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01F6802A6CDA40009C79FE /* RestTimeView.swift */; };
 		3A1BF3D42A58C3C00051A3DD /* MammothLiftsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3D32A58C3C00051A3DD /* MammothLiftsApp.swift */; };
 		3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3DA2A58C3C00051A3DD /* ContentView.swift */; };
 		3A1BF3DD2A58C3C10051A3DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1BF3DC2A58C3C10051A3DD /* Assets.xcassets */; };
@@ -14,9 +16,17 @@
 		3A1BF3EB2A58C3C10051A3DD /* Mammoth_LiftsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3EA2A58C3C10051A3DD /* Mammoth_LiftsTests.swift */; };
 		3A1BF3F52A58C3C10051A3DD /* Mammoth_LiftsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3F42A58C3C10051A3DD /* Mammoth_LiftsUITests.swift */; };
 		3A1BF3F72A58C3C10051A3DD /* Mammoth_LiftsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3F62A58C3C10051A3DD /* Mammoth_LiftsUITestsLaunchTests.swift */; };
+		3A4408432A718CB100A5CC5A /* ChooseLiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4408422A718CB100A5CC5A /* ChooseLiftView.swift */; };
+		3A4408452A718CCF00A5CC5A /* ChooseLiftItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4408442A718CCF00A5CC5A /* ChooseLiftItemView.swift */; };
+		3A4408472A731A4D00A5CC5A /* AddLiftFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4408462A731A4D00A5CC5A /* AddLiftFooterView.swift */; };
+		3A4E59C42A662771005C89B8 /* ChooseWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E59C32A662771005C89B8 /* ChooseWeightView.swift */; };
+		3A4E59C62A6730C4005C89B8 /* AddLiftTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E59C52A6730C4005C89B8 /* AddLiftTitle.swift */; };
+		3A4E59C92A674617005C89B8 /* ChooseWeightMarkersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E59C82A674617005C89B8 /* ChooseWeightMarkersView.swift */; };
+		3A4E59CD2A6747AD005C89B8 /* ChooseWeightTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E59CC2A6747AD005C89B8 /* ChooseWeightTextView.swift */; };
+		3A4E59CF2A674942005C89B8 /* ChooseWeightScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E59CE2A674942005C89B8 /* ChooseWeightScrollView.swift */; };
 		3AA900B82A5C447C005FBDED /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA900B72A5C447C005FBDED /* Launch Screen.storyboard */; };
 		3AB032222A6084680098C076 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0321F2A6084680098C076 /* Workout.swift */; };
-		3AB032232A6084680098C076 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB032202A6084680098C076 /* Exercise.swift */; };
+		3AB032232A6084680098C076 /* Lift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB032202A6084680098C076 /* Lift.swift */; };
 		3AB032242A6084680098C076 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB032212A6084680098C076 /* Set.swift */; };
 		3AB032282A608FE30098C076 /* LiftsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB032272A608FE30098C076 /* LiftsHeaderView.swift */; };
 		3AB0322A2A6095920098C076 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB032292A6095920098C076 /* Constants.swift */; };
@@ -56,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A01F67E2A6CC6C2009C79FE /* DurationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerView.swift; sourceTree = "<group>"; };
+		3A01F6802A6CDA40009C79FE /* RestTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimeView.swift; sourceTree = "<group>"; };
 		3A1BF3D02A58C3C00051A3DD /* Mammoth Lifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mammoth Lifts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1BF3D32A58C3C00051A3DD /* MammothLiftsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MammothLiftsApp.swift; sourceTree = "<group>"; };
 		3A1BF3DA2A58C3C00051A3DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,10 +79,18 @@
 		3A1BF3F02A58C3C10051A3DD /* Mammoth LiftsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mammoth LiftsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1BF3F42A58C3C10051A3DD /* Mammoth_LiftsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mammoth_LiftsUITests.swift; sourceTree = "<group>"; };
 		3A1BF3F62A58C3C10051A3DD /* Mammoth_LiftsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mammoth_LiftsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3A4408422A718CB100A5CC5A /* ChooseLiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLiftView.swift; sourceTree = "<group>"; };
+		3A4408442A718CCF00A5CC5A /* ChooseLiftItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLiftItemView.swift; sourceTree = "<group>"; };
+		3A4408462A731A4D00A5CC5A /* AddLiftFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLiftFooterView.swift; sourceTree = "<group>"; };
+		3A4E59C32A662771005C89B8 /* ChooseWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWeightView.swift; sourceTree = "<group>"; };
+		3A4E59C52A6730C4005C89B8 /* AddLiftTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLiftTitle.swift; sourceTree = "<group>"; };
+		3A4E59C82A674617005C89B8 /* ChooseWeightMarkersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWeightMarkersView.swift; sourceTree = "<group>"; };
+		3A4E59CC2A6747AD005C89B8 /* ChooseWeightTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWeightTextView.swift; sourceTree = "<group>"; };
+		3A4E59CE2A674942005C89B8 /* ChooseWeightScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWeightScrollView.swift; sourceTree = "<group>"; };
 		3AA900B72A5C447C005FBDED /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3AA900BB2A5C44C5005FBDED /* CaustenRound-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CaustenRound-ExtraBold.otf"; path = "Mammoth Lifts/Fonts/CaustenRound-ExtraBold.otf"; sourceTree = SOURCE_ROOT; };
 		3AB0321F2A6084680098C076 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Workout.swift; path = ../../Workout.swift; sourceTree = "<group>"; };
-		3AB032202A6084680098C076 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Exercise.swift; path = ../../Exercise.swift; sourceTree = "<group>"; };
+		3AB032202A6084680098C076 /* Lift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Lift.swift; path = ../../Lift.swift; sourceTree = "<group>"; };
 		3AB032212A6084680098C076 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Set.swift; path = ../../Set.swift; sourceTree = "<group>"; };
 		3AB032272A608FE30098C076 /* LiftsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftsHeaderView.swift; sourceTree = "<group>"; };
 		3AB032292A6095920098C076 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -186,10 +206,30 @@
 			isa = PBXGroup;
 			children = (
 				3AB0321F2A6084680098C076 /* Workout.swift */,
-				3AB032202A6084680098C076 /* Exercise.swift */,
+				3AB032202A6084680098C076 /* Lift.swift */,
 				3AB032212A6084680098C076 /* Set.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3A4408412A718C1B00A5CC5A /* Lift */ = {
+			isa = PBXGroup;
+			children = (
+				3A4408422A718CB100A5CC5A /* ChooseLiftView.swift */,
+				3A4408442A718CCF00A5CC5A /* ChooseLiftItemView.swift */,
+			);
+			path = Lift;
+			sourceTree = "<group>";
+		};
+		3A4E59C72A6745C5005C89B8 /* Weight */ = {
+			isa = PBXGroup;
+			children = (
+				3A4E59C32A662771005C89B8 /* ChooseWeightView.swift */,
+				3A4E59C82A674617005C89B8 /* ChooseWeightMarkersView.swift */,
+				3A4E59CC2A6747AD005C89B8 /* ChooseWeightTextView.swift */,
+				3A4E59CE2A674942005C89B8 /* ChooseWeightScrollView.swift */,
+			);
+			path = Weight;
 			sourceTree = "<group>";
 		};
 		3AA900BC2A5C44C9005FBDED /* Fonts */ = {
@@ -248,6 +288,7 @@
 				3AF321C62A630673008E4E14 /* ScreenCornerRadius.swift */,
 				3ACF06572A6431E700AA4E4A /* ProgressBarView.swift */,
 				3ACF06592A6439AE00AA4E4A /* Button.swift */,
+				3A01F67E2A6CC6C2009C79FE /* DurationPickerView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -255,8 +296,13 @@
 		3AF321C32A62FAFD008E4E14 /* Add lift */ = {
 			isa = PBXGroup;
 			children = (
+				3A4408412A718C1B00A5CC5A /* Lift */,
+				3A4E59C72A6745C5005C89B8 /* Weight */,
 				3AF321C42A62FB0D008E4E14 /* AddLiftView.swift */,
 				3ACF065B2A6445EB00AA4E4A /* AddLiftHeaderView.swift */,
+				3A4E59C52A6730C4005C89B8 /* AddLiftTitle.swift */,
+				3A01F6802A6CDA40009C79FE /* RestTimeView.swift */,
+				3A4408462A731A4D00A5CC5A /* AddLiftFooterView.swift */,
 			);
 			path = "Add lift";
 			sourceTree = "<group>";
@@ -394,7 +440,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF321C72A630673008E4E14 /* ScreenCornerRadius.swift in Sources */,
+				3A01F6812A6CDA40009C79FE /* RestTimeView.swift in Sources */,
+				3A4408452A718CCF00A5CC5A /* ChooseLiftItemView.swift in Sources */,
 				3ABEA5BE2A5F085F000D695F /* Common.swift in Sources */,
+				3A4408472A731A4D00A5CC5A /* AddLiftFooterView.swift in Sources */,
+				3A4E59CD2A6747AD005C89B8 /* ChooseWeightTextView.swift in Sources */,
+				3A4408432A718CB100A5CC5A /* ChooseLiftView.swift in Sources */,
+				3A4E59C42A662771005C89B8 /* ChooseWeightView.swift in Sources */,
 				3AD1E6E82A5F055300C0E4B0 /* Fonts.swift in Sources */,
 				3AB032282A608FE30098C076 /* LiftsHeaderView.swift in Sources */,
 				3AC2FFF82A5DDE440079FA62 /* SelectedTabBarIndicatorView.swift in Sources */,
@@ -405,7 +457,10 @@
 				3AC2FFF12A5DDA390079FA62 /* LogView.swift in Sources */,
 				3ACF06582A6431E700AA4E4A /* ProgressBarView.swift in Sources */,
 				3AB0322A2A6095920098C076 /* Constants.swift in Sources */,
+				3A01F67F2A6CC6C2009C79FE /* DurationPickerView.swift in Sources */,
 				3AC2FFF62A5DDE2B0079FA62 /* TabBarItemView.swift in Sources */,
+				3A4E59CF2A674942005C89B8 /* ChooseWeightScrollView.swift in Sources */,
+				3A4E59C62A6730C4005C89B8 /* AddLiftTitle.swift in Sources */,
 				3AC2FFEA2A5DCAC00079FA62 /* Navigation.swift in Sources */,
 				3AD1E6E62A5F044000C0E4B0 /* LiftItemView.swift in Sources */,
 				3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */,
@@ -413,7 +468,8 @@
 				3AB032242A6084680098C076 /* Set.swift in Sources */,
 				3AB032222A6084680098C076 /* Workout.swift in Sources */,
 				3AC2FFEE2A5DD9B20079FA62 /* LiftsView.swift in Sources */,
-				3AB032232A6084680098C076 /* Exercise.swift in Sources */,
+				3AB032232A6084680098C076 /* Lift.swift in Sources */,
+				3A4E59C92A674617005C89B8 /* ChooseWeightMarkersView.swift in Sources */,
 				3AF321C22A62F59E008E4E14 /* SheetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,10 +6,13 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 class Constants {
     static let sidePadding: CGFloat = 25
-    static let pagePadding: CGFloat = 30
+    static let sheetPadding: CGFloat = 30
+    
+    
+    static let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
 
 }

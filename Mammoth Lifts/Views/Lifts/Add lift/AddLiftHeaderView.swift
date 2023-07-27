@@ -16,25 +16,54 @@ struct AddLiftHeaderView: View {
     
     var body: some View {
         HStack {
-            Color.clear
-                .frame(width: iconWidth, height: 0)
-            Spacer()
+            AddLiftHeaderTitleView()
+                .opacity(0)
+            
+            Spacer(minLength: 20)
+            
             ProgressBarView(progress: progress)
-                .frame(width: 125)
+                .frame(maxWidth: 100)
+                .offset(y: 2)
             
-            Spacer()
+            Spacer(minLength: 20)
             
-            Button {
-                navigation.addLiftPresented = false
-            } label: {
-                Image("CloseIcon")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.white.opacity(0.6))
-                    
-            }
-            .frame(width: iconWidth)
-
+            AddLiftHeaderTitleView()
+                .opacity(0)
+                .overlay(alignment: .trailing) {
+                    Button {
+                        navigation.addLiftPresented = false
+                    } label: {
+                        Circle()
+                            .fill(.white.opacity(0.1))
+                            .frame(width: 28, height: 28)
+                            .overlay {
+                                Image("CloseIcon")
+                                    .resizable()
+                                    .frame(width: 14, height: 14)
+                                    .foregroundColor(.white.opacity(0.8))
+                            }
+                        
+                            
+                    }
+                }
         }
     }
+}
+
+
+fileprivate struct AddLiftHeaderTitleView: View {
+    var body: some View {
+        Text("New lift")
+            .customFont()
+    }
+}
+
+#Preview {
+    AddLiftView()
+        .environment(Navigation())
+//        .padding(.horizontal, Constants.sheetPadding)
+        .background {
+            Color.sheetBackground
+                .ignoresSafeArea()
+        }
 }

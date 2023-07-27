@@ -12,12 +12,17 @@ import SwiftUI
 
 @Observable class Navigation {
     var tab: Tab = .lifts
-    var addLiftPresented: Bool = false
+    var addLiftPresented: Bool = false {
+        didSet {
+            sheetGestureEnabled = true
+        }
+    }
     var editLiftPresented: Bool = false
     var workoutPresented: Bool = false
     
     
     var sheetPresentationAmount: CGFloat = 1
+    var sheetGestureEnabled: Bool = true
     
     var sheetPresented: Bool {
         return addLiftPresented || editLiftPresented || workoutPresented

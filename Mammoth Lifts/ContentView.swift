@@ -23,12 +23,12 @@ struct ContentView: View {
                     LogView()
                 }
             }
-            .opacity(navigation.sheetBackgroundEffect(presentedVal: 0.5, hiddenVal: 1))
+            .opacity(navigation.sheetBackgroundEffect(presentedVal: 0.8, hiddenVal: 1))
             .scaleEffect(navigation.sheetBackgroundEffect(presentedVal: 0.9, hiddenVal: 1))
             .overlay {
                 Color
                     .black
-                    .opacity(navigation.sheetBackgroundEffect(presentedVal: 0.5, hiddenVal: 0))
+                    .opacity(navigation.sheetBackgroundEffect(presentedVal: 0.7, hiddenVal: 0))
                     .ignoresSafeArea()
                     .allowsHitTesting(false)
             }
@@ -63,5 +63,6 @@ struct ContentView: View {
 
 extension Color {
     static var background = Color("Background")
+    static var sheetBackground = Color("SheetBackground")
     static var buttonSecondary = Color.white.opacity(0.1)
 }

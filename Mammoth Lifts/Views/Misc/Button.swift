@@ -40,7 +40,7 @@ struct RegularButtonStyle: ButtonStyle {
             configuration.label
                 .customFont(
                     .button,
-                    color: type == .accent ? .background : .white.opacity(0.6)
+                    color: type == .accent ? .background : .white.opacity(0.8)
                 )
                 .padding(.horizontal, 10)
             if stretch {
