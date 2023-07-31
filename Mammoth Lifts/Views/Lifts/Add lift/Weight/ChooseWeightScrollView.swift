@@ -29,7 +29,7 @@ struct ChooseWeightScrollView: View {
                             .contentShape(Rectangle())
                             .frame(maxHeight: .infinity)
                             .onAppear {
-                                if let initialWeight = addLiftState.exercise?.currentWeight {
+                                if let initialWeight = addLiftState.lift?.currentWeight {
                                     
                                     proxy.scrollTo(Int(initialWeight), anchor: .center)
                                     isSetup = true
@@ -40,13 +40,14 @@ struct ChooseWeightScrollView: View {
                     }
 
                 }
+//                .coordinateSpace(.named("container"))
                 .padding(.top, 10)
                 
                 .onPreferenceChange(ScrollPreferenceKey.self) { value in
                     if isSetup {
                         let tick = (value + padding - (ChooseWeightMarkersView.spacing / 2)) / (ChooseWeightMarkersView.totalTickWidth)
                         
-                        addLiftState.exercise?.currentWeight = max(
+                        addLiftState.lift?.currentWeight = max(
                             Float((tick * 4).rounded() / 4),
                             0
                         )

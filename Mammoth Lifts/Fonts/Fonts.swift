@@ -37,24 +37,24 @@ fileprivate struct CommonFontFuncs {
 
 }
 
-extension Text {
-    public func customFont(_ fontStyle: FontStyle? = nil, size: CGFloat? = nil, color: Color? = .white) -> Text {
-        var finalSize: CGFloat
-        if let unwrappedFontStyle = fontStyle {
-            finalSize = CommonFontFuncs.getFontSize(unwrappedFontStyle)
-        } else {
-            finalSize = CommonFontFuncs.getFontSize(.subtitle2)
-        }
-        if let unwrappedSize = size {
-            finalSize = unwrappedSize
-        }
-        
-        return self
-            .font(Font.custom("CaustenRound-ExtraBold", size: finalSize))
-            .foregroundColor(color)
-    }
-    
-}
+//extension Text {
+//    public func customFont(_ fontStyle: FontStyle? = nil, size: CGFloat? = nil, color: Color? = .white) -> Text {
+//        var finalSize: CGFloat
+//        if let unwrappedFontStyle = fontStyle {
+//            finalSize = CommonFontFuncs.getFontSize(unwrappedFontStyle)
+//        } else {
+//            finalSize = CommonFontFuncs.getFontSize(.subtitle2)
+//        }
+//        if let unwrappedSize = size {
+//            finalSize = unwrappedSize
+//        }
+//        
+//        return self
+//            .font(Font.custom("CaustenRound-ExtraBold", size: finalSize))
+//            .foregroundColor(color)
+//    }
+//    
+//}
 
 extension View {
     
@@ -72,11 +72,6 @@ extension View {
         return self
             .font(Font.custom("CaustenRound-ExtraBold", size: finalSize))
             .foregroundColor(color)
+            .offset(y: -finalSize/25.0)
     }
-    
-    public func fontSize(_ size: CGFloat) -> some View {
-        return self
-            .font(Font.custom("CaustenRound-ExtraBold", size: size))
-    }
-    
 }

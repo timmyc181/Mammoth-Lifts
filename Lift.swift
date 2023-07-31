@@ -19,16 +19,18 @@ public class Lift {
     var restTimeSeconds: Int = 0
     var targetReps: Int = 0
     var targetSets: Int = 0
+    var warmupSets: Int = 0
     @Relationship(inverse: \Workout.exercise) var workouts: [Workout]
     
     
-    init(name: String, currentWeight: Float = 100, increment: Float = 5, restTimeSeconds: Int = 180, targetReps: Int = 5, targetSets: Int = 5, workouts: [Workout] = []) {
+    init(name: String, currentWeight: Float = 100, increment: Float = 5, restTimeSeconds: Int = 180, targetReps: Int = 5, targetSets: Int = 5, warmupSets: Int = 3, workouts: [Workout] = []) {
         self.name = name
         self.currentWeight = currentWeight
         self.increment = increment
         self.restTimeSeconds = restTimeSeconds
         self.targetReps = targetReps
         self.targetSets = targetSets
+        self.warmupSets = warmupSets
         self.workouts = workouts
     }
     
@@ -67,7 +69,7 @@ public class Lift {
             )
         case .overheadPress:
             return Lift(
-                name: "Press",
+                name: "Overhead press",
                 currentWeight: 150,
                 increment: 2.5,
                 targetReps: 5,

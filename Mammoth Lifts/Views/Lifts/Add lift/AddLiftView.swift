@@ -13,13 +13,13 @@ struct AddLiftView: View {
                 .padding(.horizontal, Constants.sheetPadding)
 
             AddLiftTitle(state: addLiftState.state)
-                .padding(.top, 20)
+                .padding(.top, 30)
                 .transition(
                     .asymmetric(
                         insertion: .move(edge: addLiftState.movingForwards ? .trailing : .leading),
                         removal: .move(edge: addLiftState.movingForwards ? .leading : .trailing))
                 )
-                .zIndex(3)
+                .zIndex(1)
 
             Spacer()
             Group {
@@ -29,9 +29,8 @@ struct AddLiftView: View {
                 case .weight:
                     ChooseWeightView()
                 case .setsReps:
-                    Text("Sets reps")
-                        .customFont()
-                        .frame(maxWidth: .infinity)
+                    SetsRepsView(lift: addLiftState.lift!)
+//                    Spacer()
                 case .rest:
                     RestTimeView()
                         .customFont()
@@ -48,8 +47,8 @@ struct AddLiftView: View {
                     removal: .move(edge: addLiftState.movingForwards ? .leading : .trailing))
             )
             
-            Spacer()
             if addLiftState.state != .lift {
+                Spacer(minLength: 0)
                 AddLiftFooterView()
                     .transition(
                         .asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top))
@@ -73,6 +72,9 @@ struct AddLiftView: View {
                 navigation.sheetGestureEnabled = true
             }
         }
+        .onAppear {
+            navigation.sheetGestureEnabled = false
+        }
     }
 }
 
@@ -82,7 +84,7 @@ struct AddLiftView: View {
 
 @Observable class AddLiftState {
     var state: State = .lift
-    var exercise: Lift? = nil
+    var lift: Lift? = nil
     
     var movingForwards: Bool = true
     
@@ -108,13 +110,13 @@ struct AddLiftView: View {
     }
     
     func selectLift(lift: Lift.Option) {
-        exercise = Lift.templateFor(lift)
+        self.lift = Lift.templateFor(lift)
         next()
     }
     
     func next() {
         if movingForwards {
-            state = State(rawValue: state.rawValue + 1) ?? .lift
+            state = State(rawValue: state.rawValue + 1) ?? .rest
 
         } else {
             movingForwards = true
@@ -123,7 +125,7 @@ struct AddLiftView: View {
     
     func previous() {
         if !movingForwards {
-            state = State(rawValue: state.rawValue - 1) ?? .lift
+            state = State(rawValue: state.rawValue - 1) ?? .rest
 
         } else {
             movingForwards = false

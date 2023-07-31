@@ -22,11 +22,26 @@ struct ChooseWeightMarkersView: View {
                     
                     let isWhole = increment % 5 == 0
                     
+                    let isKeyMarker = increment % 10 == 0
+                    
                     Rectangle()
                         .fill(.white.opacity(isWhole ? 0.8 : 0.2))
                         .frame(width: Self.tickWidth, height: isWhole ? 60 : 40)
                         .id(increment)
                         .padding(.horizontal, Self.spacing / 2)
+                        .overlay(alignment: .bottom) {
+                            if isKeyMarker {
+                                Text("\(increment)")
+                                    .customFont()
+                                    .frame(maxWidth: .infinity)
+                                    .fixedSize(horizontal: true, vertical: false)
+                                    .opacity(0.2)
+
+                                    .offset(y: 30)
+
+
+                            }
+                        }
 
                 }
 
@@ -41,6 +56,7 @@ struct ChooseWeightMarkersView: View {
                         )
                 }
             }
+
     }
 }
 
@@ -60,5 +76,6 @@ struct ScrollPreferenceKey: PreferenceKey {
         AddLiftView()
             .environment(Navigation())
             .environment(AddLiftState())
+//            .coordinateSpace(.named("container"))
     }
 }

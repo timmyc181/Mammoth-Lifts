@@ -21,7 +21,6 @@ struct AddLiftTitle: View {
                 Text("Sets and reps")
             case .rest:
                 Text("Rest between sets")
-
             case .increment:
                 Text("Increment")
 
@@ -31,15 +30,14 @@ struct AddLiftTitle: View {
         .customFont(size: 30)
         .frame(maxWidth: .infinity)
         .padding(.horizontal, Constants.sheetPadding)
-
     }
 }
 
 #Preview {
-    ZStack {
-        Color.sheetBackground.ignoresSafeArea()
-        AddLiftTitle(state: AddLiftState().state)
-        
-    }
-    
+    AddLiftView()
+        .environment(Navigation())
+        .background {
+            Color.sheetBackground
+                .ignoresSafeArea()
+        }
 }

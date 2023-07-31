@@ -21,25 +21,23 @@ struct ChooseLiftView: View {
                     } label: {
                         ChooseLiftItemView(lift: lift)
                     }
+                    .scrollTransition { content, phase in
+                        content.opacity(1 - phase.value)
+                    }
                 }
             }
+            
         }
-//        .padding(.top, 20)
-//        .safeAreaPadding(.top)
-//        .scrollClipDisabled()
-        
-        .safeAreaInset(edge: .top) {
-            ZStack {
-                LinearGradient(colors: [.sheetBackground, .clear], startPoint: .top, endPoint: .bottom)
-//                LinearGradient(colors: [.sheetBackground, .clear], startPoint: .top, endPoint: .bottom)
-            }
-            .frame(height: 70)
+        .overlay(alignment: .top) {
+            LinearGradient(colors: [.sheetBackground.opacity(0.9), .clear], startPoint: .top, endPoint: .bottom)
+                                    .frame(height: 100)
+                                    .padding(.top, -100)
+                                    .allowsHitTesting(false)
         }
-        .padding(.top, -60)
-
+        .padding(.top, 30)
+        .scrollClipDisabled()
         .scrollIndicators(.hidden)
         .padding(.horizontal, Constants.sheetPadding)
-
     }
 }
 

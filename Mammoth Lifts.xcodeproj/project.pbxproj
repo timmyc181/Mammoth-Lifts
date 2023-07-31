@@ -32,6 +32,9 @@
 		3AB0322A2A6095920098C076 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB032292A6095920098C076 /* Constants.swift */; };
 		3ABEA5BC2A5F0790000D695F /* CaustenRound-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AA900BB2A5C44C5005FBDED /* CaustenRound-ExtraBold.otf */; };
 		3ABEA5BE2A5F085F000D695F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEA5BD2A5F085F000D695F /* Common.swift */; };
+		3ABEC95C2A755BC700CB84BF /* SetsRepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEC95B2A755BC700CB84BF /* SetsRepsView.swift */; };
+		3ABEC95E2A7567F300CB84BF /* NumberStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEC95D2A7567F300CB84BF /* NumberStepper.swift */; };
+		3AC2B7492A776FEB00C740CB /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2B7482A776FEB00C740CB /* ListView.swift */; };
 		3AC2FFEA2A5DCAC00079FA62 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FFE92A5DCAC00079FA62 /* Navigation.swift */; };
 		3AC2FFEE2A5DD9B20079FA62 /* LiftsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FFED2A5DD9B20079FA62 /* LiftsView.swift */; };
 		3AC2FFF12A5DDA390079FA62 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FFF02A5DDA390079FA62 /* LogView.swift */; };
@@ -95,6 +98,9 @@
 		3AB032272A608FE30098C076 /* LiftsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftsHeaderView.swift; sourceTree = "<group>"; };
 		3AB032292A6095920098C076 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3ABEA5BD2A5F085F000D695F /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		3ABEC95B2A755BC700CB84BF /* SetsRepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsRepsView.swift; sourceTree = "<group>"; };
+		3ABEC95D2A7567F300CB84BF /* NumberStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberStepper.swift; sourceTree = "<group>"; };
+		3AC2B7482A776FEB00C740CB /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		3AC2FFE92A5DCAC00079FA62 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		3AC2FFED2A5DD9B20079FA62 /* LiftsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftsView.swift; sourceTree = "<group>"; };
 		3AC2FFF02A5DDA390079FA62 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
@@ -241,6 +247,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		3ABEC95A2A755BB700CB84BF /* Sets reps */ = {
+			isa = PBXGroup;
+			children = (
+				3ABEC95B2A755BC700CB84BF /* SetsRepsView.swift */,
+			);
+			path = "Sets reps";
+			sourceTree = "<group>";
+		};
 		3AC2FFEB2A5DD98E0079FA62 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +303,8 @@
 				3ACF06572A6431E700AA4E4A /* ProgressBarView.swift */,
 				3ACF06592A6439AE00AA4E4A /* Button.swift */,
 				3A01F67E2A6CC6C2009C79FE /* DurationPickerView.swift */,
+				3ABEC95D2A7567F300CB84BF /* NumberStepper.swift */,
+				3AC2B7482A776FEB00C740CB /* ListView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -296,6 +312,7 @@
 		3AF321C32A62FAFD008E4E14 /* Add lift */ = {
 			isa = PBXGroup;
 			children = (
+				3ABEC95A2A755BB700CB84BF /* Sets reps */,
 				3A4408412A718C1B00A5CC5A /* Lift */,
 				3A4E59C72A6745C5005C89B8 /* Weight */,
 				3AF321C42A62FB0D008E4E14 /* AddLiftView.swift */,
@@ -450,11 +467,13 @@
 				3AD1E6E82A5F055300C0E4B0 /* Fonts.swift in Sources */,
 				3AB032282A608FE30098C076 /* LiftsHeaderView.swift in Sources */,
 				3AC2FFF82A5DDE440079FA62 /* SelectedTabBarIndicatorView.swift in Sources */,
+				3ABEC95C2A755BC700CB84BF /* SetsRepsView.swift in Sources */,
 				3AC2FFF32A5DDA690079FA62 /* TabBarView.swift in Sources */,
 				3AF321C52A62FB0D008E4E14 /* AddLiftView.swift in Sources */,
 				3ACF065A2A6439AE00AA4E4A /* Button.swift in Sources */,
 				3A1BF3D42A58C3C00051A3DD /* MammothLiftsApp.swift in Sources */,
 				3AC2FFF12A5DDA390079FA62 /* LogView.swift in Sources */,
+				3AC2B7492A776FEB00C740CB /* ListView.swift in Sources */,
 				3ACF06582A6431E700AA4E4A /* ProgressBarView.swift in Sources */,
 				3AB0322A2A6095920098C076 /* Constants.swift in Sources */,
 				3A01F67F2A6CC6C2009C79FE /* DurationPickerView.swift in Sources */,
@@ -464,6 +483,7 @@
 				3AC2FFEA2A5DCAC00079FA62 /* Navigation.swift in Sources */,
 				3AD1E6E62A5F044000C0E4B0 /* LiftItemView.swift in Sources */,
 				3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */,
+				3ABEC95E2A7567F300CB84BF /* NumberStepper.swift in Sources */,
 				3ACF065C2A6445EB00AA4E4A /* AddLiftHeaderView.swift in Sources */,
 				3AB032242A6084680098C076 /* Set.swift in Sources */,
 				3AB032222A6084680098C076 /* Workout.swift in Sources */,

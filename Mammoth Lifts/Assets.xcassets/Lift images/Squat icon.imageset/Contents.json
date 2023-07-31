@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "squat-icon.svg",
+      "filename" : "squat-icon_1.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "squat-icon 1.svg",
+      "filename" : "squat-icon_1 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "squat-icon 2.svg",
+      "filename" : "squat-icon_1 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

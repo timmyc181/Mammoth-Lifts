@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "deadlift-icon-colored-opacity_1.svg",
+      "filename" : "deadlift-icon.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "deadlift-icon-colored-opacity_1 1.svg",
+      "filename" : "deadlift-icon 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "deadlift-icon-colored-opacity_1 2.svg",
+      "filename" : "deadlift-icon 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

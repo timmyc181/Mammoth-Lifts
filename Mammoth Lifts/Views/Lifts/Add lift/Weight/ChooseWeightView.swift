@@ -26,6 +26,12 @@ struct ChooseWeightView: View {
                     Rectangle()
                         .fill(Color.accentColor)
                         .frame(width: 4, height: 100)
+                        .background(alignment: .bottom) {
+                            LinearGradient(colors: [.clear, .sheetBackground, .sheetBackground, .clear], startPoint: .leading, endPoint: .trailing)
+                                .frame(width: 100, height: 30)
+                                .offset(y: 15)
+                                
+                        }
                     
                     Spacer()
                     
@@ -39,7 +45,7 @@ struct ChooseWeightView: View {
                 Constants.selectionFeedbackGenerator.prepare()
             }
             
-            .onChange(of: addLiftState.exercise?.currentWeight) { oldValue, newValue in
+            .onChange(of: addLiftState.lift?.currentWeight) { oldValue, newValue in
                 Constants.selectionFeedbackGenerator.selectionChanged()
             }
         }

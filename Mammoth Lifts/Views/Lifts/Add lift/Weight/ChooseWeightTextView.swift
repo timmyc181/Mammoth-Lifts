@@ -14,7 +14,7 @@ struct ChooseWeightTextView: View {
 
     var weightDigits: [String] {
         
-        let weight = (addLiftState.exercise?.currentWeight ?? 1010).clean
+        let weight = (addLiftState.lift?.currentWeight ?? 1010).clean
         return weight.components(separatedBy: ".")
     }
     
@@ -85,8 +85,8 @@ struct ChooseWeightTextView: View {
                 .padding(.top, -5)
                 .padding(.bottom, 20)
         }
-        .animation(.easeInOut.speed(5), value: addLiftState.exercise?.currentWeight)
-        .onChange(of: addLiftState.exercise?.currentWeight) { oldValue, newValue in
+        .animation(.easeInOut.speed(5), value: addLiftState.lift?.currentWeight)
+        .onChange(of: addLiftState.lift?.currentWeight) { oldValue, newValue in
             if let oldValue = oldValue,
                let newValue = newValue {
                 if newValue > oldValue {
