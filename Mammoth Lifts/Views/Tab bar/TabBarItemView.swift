@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarItemView: View {
-    @Environment(Navigation.self) var navigation
+    @Environment(\.navigation) private var navigation
 
     var navigateTo: Tab
     var iconName: String

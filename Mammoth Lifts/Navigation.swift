@@ -50,3 +50,16 @@ extension Navigation {
     }
 }
 
+
+extension EnvironmentValues {
+    var navigation: Navigation {
+        get { self[NavigationKey.self] }
+        set { self[NavigationKey.self] = newValue }
+    }
+}
+
+
+private struct NavigationKey: EnvironmentKey {
+    static var defaultValue: Navigation = Navigation()
+}
+

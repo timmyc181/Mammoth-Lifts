@@ -28,7 +28,7 @@ struct ContentView: View {
             .overlay {
                 Color
                     .black
-                    .opacity(navigation.sheetBackgroundEffect(presentedVal: 0.7, hiddenVal: 0))
+                    .opacity(navigation.sheetBackgroundEffect(presentedVal: 0.8, hiddenVal: 0))
                     .ignoresSafeArea()
                     .allowsHitTesting(false)
             }
@@ -52,12 +52,30 @@ struct ContentView: View {
                     .zIndex(3)
             }
         }
-        .environment(navigation)
-        .animation(.snappy(duration: 0.3, extraBounce: 0.02), value: navigation.addLiftPresented)
+        .environment(\.navigation, navigation)
+        .animation(Constants.sheetPresentationAnimation, value: navigation.addLiftPresented)
+        
+        .onAppear {
+            if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
+                do {
+                    try modelContext.delete(model: Lift.self)
+                } catch {
+                    fatalError("couldn't remove items...")
+                }
+            }
+        }
     }
     
 
     
+}
+
+#Preview {
+    ContentView()
+        .populatedPreviewContainer()
+        .background {
+            Color.background.ignoresSafeArea()
+        }
 }
 
 

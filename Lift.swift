@@ -10,12 +10,13 @@ import Foundation
 import SwiftData
 
 
-//@Model
-@Observable
+@Model
+//@Observable
 public class Lift {
     @Attribute(.unique) var name: String
-    var currentWeight: Float = 0
-    var increment: Float = 0
+    var currentWeight: Double = 0
+    var increment: Double = 0
+    var restTimeMinutes: Int = 0
     var restTimeSeconds: Int = 0
     var targetReps: Int = 0
     var targetSets: Int = 0
@@ -23,10 +24,11 @@ public class Lift {
     @Relationship(inverse: \Workout.exercise) var workouts: [Workout]
     
     
-    init(name: String, currentWeight: Float = 100, increment: Float = 5, restTimeSeconds: Int = 180, targetReps: Int = 5, targetSets: Int = 5, warmupSets: Int = 3, workouts: [Workout] = []) {
+    init(name: String, currentWeight: Double = 100, increment: Double = 5, restTimeMinutes: Int = 3, restTimeSeconds: Int = 0, targetReps: Int = 5, targetSets: Int = 5, warmupSets: Int = 3, workouts: [Workout] = []) {
         self.name = name
         self.currentWeight = currentWeight
         self.increment = increment
+        self.restTimeMinutes = restTimeMinutes
         self.restTimeSeconds = restTimeSeconds
         self.targetReps = targetReps
         self.targetSets = targetSets
@@ -41,7 +43,7 @@ public class Lift {
         case overheadPress = "Overhead press"
     }
     
-    static func templateFor(_ lift: Option) -> Lift {
+    static func template(for lift: Option) -> Lift {
         switch lift {
         case .deadlift:
             return Lift(

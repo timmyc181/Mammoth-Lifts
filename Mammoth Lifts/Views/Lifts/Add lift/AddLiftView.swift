@@ -2,15 +2,19 @@ import SwiftUI
 import Observation
 
 struct AddLiftView: View {
-    @Environment(Navigation.self) var navigation
+    @Environment(\.navigation) private var navigation
     
-    @State var addLiftState = AddLiftState()
+    @State var addLiftState: AddLiftState
+
+    init(addLiftState: AddLiftState = AddLiftState()) {
+        self.addLiftState = addLiftState
+    }
     
     var body: some View {
         VStack {
             AddLiftHeaderView(progress: addLiftState.progress)
                 .padding(.top, 20)
-                .padding(.horizontal, Constants.sheetPadding)
+                .safeAreaPadding(.horizontal, Constants.sheetPadding)
 
             AddLiftTitle(state: addLiftState.state)
                 .padding(.top, 30)
@@ -20,43 +24,56 @@ struct AddLiftView: View {
                         removal: .move(edge: addLiftState.movingForwards ? .leading : .trailing))
                 )
                 .zIndex(1)
+                .safeAreaPadding(.horizontal, Constants.sheetPadding)
+            
+            VStack(spacing: 0) {
 
-            Spacer()
-            Group {
-                switch addLiftState.state {
-                case .lift:
-                    ChooseLiftView()
-                case .weight:
-                    ChooseWeightView()
-                case .setsReps:
-                    SetsRepsView(lift: addLiftState.lift!)
-//                    Spacer()
-                case .rest:
-                    RestTimeView()
-                        .customFont()
-                        .frame(maxWidth: .infinity)
-                case .increment:
-                    Text("Increment")
-                        .customFont()
-                        .frame(maxWidth: .infinity)
+                Spacer(minLength: 0)
+
+                Group {
+                    switch addLiftState.state {
+                    case .lift:
+                        ChooseLiftView(selectedLift: $addLiftState.lift)
+                    case .weight:
+                        ChooseWeightView(lift: addLiftState.lift!)
+                    case .setsReps:
+                        SetsRepsView(lift: addLiftState.lift!)
+                    case .rest:
+                        @Bindable var lift = addLiftState.lift!
+                        RestTimeView(minutes: $lift.restTimeMinutes, seconds: $lift.restTimeSeconds)
+                    case .increment:
+                        Text("Increment")
+                            .customFont()
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+                .safeAreaPadding(.horizontal, Constants.sheetPadding)
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: addLiftState.movingForwards ? .trailing : .leading),
+                        removal: .move(edge: addLiftState.movingForwards ? .leading : .trailing))
+                )
+
+                
+                if addLiftState.state != .lift {
+                    Spacer(minLength: 0)
                 }
             }
-            .transition(
-                .asymmetric(
-                    insertion: .move(edge: addLiftState.movingForwards ? .trailing : .leading),
-                    removal: .move(edge: addLiftState.movingForwards ? .leading : .trailing))
-            )
+            
+            // To disable the sheet gesture when interacting with the content
+            .contentShape(Rectangle())
+
             
             if addLiftState.state != .lift {
-                Spacer(minLength: 0)
                 AddLiftFooterView()
                     .transition(
                         .asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top))
                     )
+                    .safeAreaPadding(.horizontal, Constants.sheetPadding)
             }
             
         }
-        .animation(.snappy(duration: 0.3), value: addLiftState.state)
+        .animation(.smooth(duration: 0.3), value: addLiftState.state)
         .onChange(of: addLiftState.movingForwards) { _, newValue in
             if newValue {
                 addLiftState.state += 1
@@ -64,81 +81,40 @@ struct AddLiftView: View {
                 addLiftState.state -= 1
             }
         }
-        .environment(addLiftState)
-        .onChange(of: addLiftState.state) { oldValue, newValue in
-            if newValue == .weight || newValue == .rest || newValue == .lift {
-                navigation.sheetGestureEnabled = false
-            } else {
-                navigation.sheetGestureEnabled = true
+        .environment(\.addLiftState, addLiftState)
+    }
+}
+
+struct AddLiftPreviewView: View {
+    var state: AddLiftState.State
+    var lift: Lift.Option
+    
+    init(state: AddLiftState.State = .lift, lift: Lift.Option = .bench) {
+        self.state = state
+        self.lift = lift
+    }
+    
+    private var addLiftState = AddLiftState()
+    
+    
+    var body: some View {
+        AddLiftView(addLiftState: addLiftState)
+            .onAppear {
+                addLiftState.lift = .template(for: lift)
+                addLiftState.state = state
             }
-        }
-        .onAppear {
-            navigation.sheetGestureEnabled = false
-        }
+            .emptyPreviewContainer()
+            .background {
+                Color.sheetBackground
+                    .ignoresSafeArea()
+            }
     }
 }
 
-
-
-
-
-@Observable class AddLiftState {
-    var state: State = .lift
-    var lift: Lift? = nil
-    
-    var movingForwards: Bool = true
-    
-    var progress: Double {
-        Double(state.rawValue) / 6
-    }
-    
-    enum State: Int {
-        case lift = 1
-        case weight = 2
-        case setsReps = 3
-        case rest = 4
-        case increment = 5
-        
-        
-        static func -=(_ x: inout State, _ y: Int){
-            x = State(rawValue: x.rawValue - y) ?? .lift
-        }
-        
-        static func +=(_ x: inout State, _ y: Int) {
-            x = State(rawValue: x.rawValue + y) ?? .lift
-        }
-    }
-    
-    func selectLift(lift: Lift.Option) {
-        self.lift = Lift.templateFor(lift)
-        next()
-    }
-    
-    func next() {
-        if movingForwards {
-            state = State(rawValue: state.rawValue + 1) ?? .rest
-
-        } else {
-            movingForwards = true
-        }
-    }
-    
-    func previous() {
-        if !movingForwards {
-            state = State(rawValue: state.rawValue - 1) ?? .rest
-
-        } else {
-            movingForwards = false
-        }
-    }
-    
-}
 
 #Preview {
-    AddLiftView()
-        .environment(Navigation())
-        .background {
-            Color.sheetBackground
-                .ignoresSafeArea()
-        }
+    AddLiftPreviewView(state: .rest)
+//
+//    ContentView()
+//        .populatedPreviewContainer()
 }

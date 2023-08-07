@@ -12,7 +12,6 @@ class Constants {
     static let sidePadding: CGFloat = 25
     static let sheetPadding: CGFloat = 30
     
-    
-    static let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+    static let sheetPresentationAnimation: Animation = .snappy(duration: 0.35, extraBounce: 0.01)
 
 }

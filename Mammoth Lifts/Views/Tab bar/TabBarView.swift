@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-    @Environment(Navigation.self) var navigation
+    @Environment(\.navigation) private var navigation
     
     var body: some View {
         VStack {
@@ -47,5 +47,4 @@ struct TabBarView: View {
 
 #Preview {
     TabBarView()
-        .environment(Navigation())
 }

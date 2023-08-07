@@ -10,7 +10,7 @@ import Foundation
 import SwiftData
 
 
-//@Model
+@Model
 public class Workout {
     var competionTimeSeconds: Int16? = 0
     var date: Date?

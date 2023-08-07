@@ -70,12 +70,5 @@ struct ScrollPreferenceKey: PreferenceKey {
 
 
 #Preview {
-    ZStack {
-        Color.sheetBackground
-            .ignoresSafeArea()
-        AddLiftView()
-            .environment(Navigation())
-            .environment(AddLiftState())
-//            .coordinateSpace(.named("container"))
-    }
+    AddLiftPreviewView()
 }

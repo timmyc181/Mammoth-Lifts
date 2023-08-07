@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LiftsHeaderView: View {
-    @Environment(Navigation.self) private var navigation
+    @Environment(\.navigation) private var navigation
     
     var body: some View {
         VStack(spacing: 0) {
@@ -17,11 +17,18 @@ struct LiftsHeaderView: View {
                 Button {
                     navigation.addLiftPresented = true
                 } label: {
-                    Image("PlusIcon")
-                        .resizable()
-                        .frame(width: 19, height: 19)
-                        .accentGradientForeground()
+//                        Color.background
+//                            .frame(width: 60, height: 60)
+//                            .padding(50)
+
+                        Image("PlusIcon")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundStyle(Color.accentColor)
+                            .padding(10)
+                            .contentShape(Rectangle())
                 }
+                .padding(-10)
             }
             HStack {
                 Text("Lifts")
@@ -36,7 +43,7 @@ struct LiftsHeaderView: View {
 }
 
 #Preview {
-    LiftsHeaderView()
+    ContentView()
 }
 
 
@@ -54,7 +61,6 @@ extension View {
     
     public func accentGradientForeground() -> some View {
         self.gradientForeground(colors: [Color("AccentGradientStart"), Color("AccentGradientEnd")])
-//        self.gradientForeground(colors: [Color.blue, Color("AccentGradientEnd")])
     }
     
 }

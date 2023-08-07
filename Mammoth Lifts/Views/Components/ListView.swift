@@ -10,7 +10,7 @@ struct ListView<Content: View>: View {
             content
         }
         .background {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 16)
                 .fill(.white.opacity(0.05))
         }
     }
@@ -43,7 +43,7 @@ struct ListItemView<Content: View>: View {
 #Preview {
     ZStack {
         Color.sheetBackground.ignoresSafeArea()
-        SetsRepsView(lift: .templateFor(.bench))
+        SetsRepsView(lift: .template(for: .bench))
 
     }
 }

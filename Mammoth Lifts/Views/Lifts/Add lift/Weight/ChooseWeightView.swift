@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct ChooseWeightView: View {
-    @Environment(AddLiftState.self) var addLiftState: AddLiftState
-    
+    @Bindable var lift: Lift
+
     @State var pickerPosition: CGFloat = 0
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 
-                ChooseWeightScrollView()
+                ChooseWeightScrollView(weight: $lift.currentWeight)
 
                 VStack {
                     Spacer()
                     
-                    ChooseWeightTextView()
-                    
+                    ChooseWeightTextView(weight: lift.currentWeight)
+
                     Rectangle()
                         .fill(Color.accentColor)
                         .frame(width: 4, height: 100)
@@ -34,33 +34,26 @@ struct ChooseWeightView: View {
                         }
                     
                     Spacer()
-                    
                 }
                 .allowsHitTesting(false)
 
             }
+            .ignoresSafeArea(edges: .horizontal)
+
             .coordinateSpace(.named("chooseWeight"))
-            
-            .onAppear {
-                Constants.selectionFeedbackGenerator.prepare()
-            }
-            
-            .onChange(of: addLiftState.lift?.currentWeight) { oldValue, newValue in
-                Constants.selectionFeedbackGenerator.selectionChanged()
-            }
+            .ignoresSafeArea(edges: .horizontal)
+
+            .sensoryFeedback(.selection, trigger: lift.currentWeight)
         }
+        .ignoresSafeArea(edges: .horizontal)
+
         
     }
 }
 
 #Preview {
-    ZStack {
-        Color.sheetBackground
-            .ignoresSafeArea()
-        AddLiftView()
-            .environment(Navigation())
-            .environment(AddLiftState())
-    }
+    AddLiftPreviewView(state: .weight)
+
 }
 
 

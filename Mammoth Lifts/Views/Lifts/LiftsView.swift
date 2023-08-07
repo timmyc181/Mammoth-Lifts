@@ -9,19 +9,19 @@ import SwiftUI
 import SwiftData
 
 struct LiftsView: View {
-//    @Query(sort: \.name, animation: .snappy)
-//    private var exercises: [Exercise]
+    @Query(animation: .bouncy)
+    var lifts: [Lift]
 
     var body: some View {
         VStack {
             LiftsHeaderView()
-                .padding(.top, 10)
+                .padding(.top, 15)
             
             VStack(spacing: 16) {
-//                ForEach(exercises) { exercise in
-//                    LiftItemView(exercise: exercise)
-//                        .transition(.scale)
-//                }
+                ForEach(lifts) { lift in
+                    LiftItemView(exercise: lift)
+                        .transition(.scale(0.9).combined(with: .opacity))
+                }
                 Spacer()
 
             }
@@ -32,7 +32,7 @@ struct LiftsView: View {
 }
 
 #Preview {
-    LiftsView()
+    ContentView()
 }
 
 

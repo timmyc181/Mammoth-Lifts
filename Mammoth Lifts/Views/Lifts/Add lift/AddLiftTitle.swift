@@ -29,15 +29,15 @@ struct AddLiftTitle: View {
         }
         .customFont(size: 30)
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, Constants.sheetPadding)
     }
 }
 
+
+@Observable class Book {
+    var text: String = "Timothy"
+}
+
 #Preview {
-    AddLiftView()
-        .environment(Navigation())
-        .background {
-            Color.sheetBackground
-                .ignoresSafeArea()
-        }
+    AddLiftPreviewView()
+
 }

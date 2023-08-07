@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ChooseWeightTextView: View {
-    @Environment(AddLiftState.self) var addLiftState
+    var weight: Double
     
     @State var goingUp: Bool = true
 
     var weightDigits: [String] {
         
-        let weight = (addLiftState.lift?.currentWeight ?? 1010).clean
+        let weight = weight.clean
         return weight.components(separatedBy: ".")
     }
     
@@ -85,30 +85,41 @@ struct ChooseWeightTextView: View {
                 .padding(.top, -5)
                 .padding(.bottom, 20)
         }
-        .animation(.easeInOut.speed(5), value: addLiftState.lift?.currentWeight)
-        .onChange(of: addLiftState.lift?.currentWeight) { oldValue, newValue in
-            if let oldValue = oldValue,
-               let newValue = newValue {
-                if newValue > oldValue {
-                    goingUp = true
-                } else {
-                    goingUp = false
-                }
+        .animation(.easeInOut.speed(5), value: weight)
+        .onChange(of: weight) { oldValue, newValue in
+            if newValue > oldValue {
+                goingUp = true
+            } else {
+                goingUp = false
             }
         }
 
     }
-}
+    
+    @ViewBuilder static var spacingView: some View {
+        VStack(spacing: 0) {
+            Text("2")
+                .customFont(size: 60)
 
-#Preview {
-    ZStack {
-        Color.sheetBackground
-            .ignoresSafeArea()
-        ChooseWeightView()
-            .environment(Navigation())
-            .environment(AddLiftState())
+            Text("pounds")
+                .customFont(color: .white.opacity(0.2))
+                .padding(.top, -5)
+                .padding(.bottom, 20)
+        }
+        .opacity(0)
+//        Text("hi")
+
     }
 }
+
+//#Preview {
+//    ZStack {
+//        Color.sheetBackground
+//            .ignoresSafeArea()
+//        ChooseWeightView()
+
+//    }
+//}
 
 
 extension AnyTransition {

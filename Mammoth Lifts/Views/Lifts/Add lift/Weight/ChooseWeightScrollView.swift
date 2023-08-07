@@ -3,7 +3,7 @@ import SwiftUI
 
 
 struct ChooseWeightScrollView: View {
-    @Environment(AddLiftState.self) var addLiftState
+    @Binding var weight: Double
     
     @State var isSetup: Bool = false
 
@@ -12,9 +12,7 @@ struct ChooseWeightScrollView: View {
             VStack {
                 
                 // For spacing purposes
-                ChooseWeightTextView()
-                    .opacity(0)
-                
+                ChooseWeightTextView.spacingView
                 
                 let padding = geo.size.width / 2 - 2
                 
@@ -29,11 +27,11 @@ struct ChooseWeightScrollView: View {
                             .contentShape(Rectangle())
                             .frame(maxHeight: .infinity)
                             .onAppear {
-                                if let initialWeight = addLiftState.lift?.currentWeight {
+//                                if let initialWeight = weight {
                                     
-                                    proxy.scrollTo(Int(initialWeight), anchor: .center)
+                                    proxy.scrollTo(Int(weight), anchor: .center)
                                     isSetup = true
-                                }
+//                                }
                         
                             }
 
@@ -47,8 +45,8 @@ struct ChooseWeightScrollView: View {
                     if isSetup {
                         let tick = (value + padding - (ChooseWeightMarkersView.spacing / 2)) / (ChooseWeightMarkersView.totalTickWidth)
                         
-                        addLiftState.lift?.currentWeight = max(
-                            Float((tick * 4).rounded() / 4),
+                        weight = max(
+                            Double((tick * 4).rounded() / 4),
                             0
                         )
                     }
@@ -70,10 +68,6 @@ struct ChooseWeightScrollView: View {
 }
 
 #Preview {
-    AddLiftView()
-        .environment(Navigation())
-        .background {
-            Color.sheetBackground
-                .ignoresSafeArea()
-        }
+    AddLiftPreviewView(state: .weight)
+
 }

@@ -10,7 +10,7 @@ import Foundation
 import SwiftData
 
  
-//@Model
+@Model
 public class Set {
     var repsCompleted: Int16? = 0
     var targetReps: Int16? = 0

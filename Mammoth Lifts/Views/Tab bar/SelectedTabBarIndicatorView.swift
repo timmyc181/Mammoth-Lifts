@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectedTabBarIndicatorView: View {
-    @Environment(Navigation.self) var navigation
+    @Environment(\.navigation) private var navigation
     
     var body: some View {
         HStack(spacing: 0) {

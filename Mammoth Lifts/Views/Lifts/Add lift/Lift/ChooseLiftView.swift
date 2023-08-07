@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct ChooseLiftView: View {
-    @Environment(AddLiftState.self) var addLiftState
+    @Binding var selectedLift: Lift?
     
     private let columns = [
         GridItem(.flexible(), spacing: 20),
@@ -12,15 +12,14 @@ struct ChooseLiftView: View {
     
     var body: some View {
         ScrollView {
-
-            
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(Lift.Option.allCases, id: \.rawValue) { lift in
                     Button {
-                        addLiftState.selectLift(lift: lift)
+                        selectedLift = .template(for: lift)
                     } label: {
                         ChooseLiftItemView(lift: lift)
                     }
+                    .buttonStyle(CommonButtonStyle())
                     .scrollTransition { content, phase in
                         content.opacity(1 - phase.value)
                     }
@@ -37,14 +36,10 @@ struct ChooseLiftView: View {
         .padding(.top, 30)
         .scrollClipDisabled()
         .scrollIndicators(.hidden)
-        .padding(.horizontal, Constants.sheetPadding)
+//        .safeAreaPadding(.horizontal, Constants.sheetPadding)
     }
 }
 
 #Preview {
-    ZStack {
-        Color(.sheetBackground).ignoresSafeArea()
-        AddLiftView()
-            .environment(Navigation())
-    }
+    AddLiftPreviewView()
 }

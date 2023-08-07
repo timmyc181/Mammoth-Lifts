@@ -33,7 +33,7 @@ struct ScreenRectangle: View {
     var fill: Color
     
     var body: some View {
-        RoundedRectangle(cornerRadius: UIScreen.main.displayCornerRadius, style: .continuous)
+        RoundedRectangle(cornerRadius: UIScreen.main.displayCornerRadius)
             .fill(fill)
     }
 }
