@@ -13,7 +13,6 @@ struct AddLiftView: View {
     var body: some View {
         VStack {
             AddLiftHeaderView(progress: addLiftState.progress)
-                .padding(.top, 20)
                 .safeAreaPadding(.horizontal, Constants.sheetPadding)
 
             AddLiftTitle(state: addLiftState.state)

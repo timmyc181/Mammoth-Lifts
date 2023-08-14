@@ -12,24 +12,60 @@ import SwiftData
 
 @Model
 public class Workout {
-    var competionTimeSeconds: Int16? = 0
+    var completionTimeMinutes: Int?
+    var completionTimeSeconds: Int?
     var date: Date?
-    var increment: Float? = 0.0
-    var restTimeSeconds: Int16? = 0
-    var targetSets: Int16? = 0
-    var exercise: Lift?
-    @Relationship(inverse: \Set.workout) var sets: [Set]?
+//    var increment: Double?
+//    var restTimeMinutes: Int?
+//    var restTimeSeconds: Int?
+    var targetSets: Int?
+    @Relationship(deleteRule: .noAction, inverse: \Lift.workouts) var lift: Lift?
+    @Relationship(deleteRule: .cascade) var sets: [Set]
     
+    @Transient var currentLift: Lift? = nil
     
-    
-    init(competionTimeSeconds: Int16? = nil, date: Date? = nil, increment: Float? = nil, restTimeSeconds: Int16? = nil, targetSets: Int16? = nil, exercise: Lift? = nil, sets: [Set]? = nil) {
-        self.competionTimeSeconds = competionTimeSeconds
+    init(completionTimeMinutes: Int? = nil, completionTimeSeconds: Int? = nil, date: Date? = nil, targetSets: Int? = nil, lift: Lift? = nil, sets: [Set] = [], currentLift: Lift? = nil) {
+        self.completionTimeSeconds = completionTimeSeconds
+        self.completionTimeMinutes = completionTimeMinutes
         self.date = date
-        self.increment = increment
-        self.restTimeSeconds = restTimeSeconds
+//        self.increment = increment
+//        self.restTimeMinutes = restTimeMinutes
+//        self.restTimeSeconds = restTimeSeconds
         self.targetSets = targetSets
-        self.exercise = exercise
+        self.lift = lift
         self.sets = sets
+        self.currentLift = currentLift
+    }
+    
+    static func templateFrom(lift: Lift) -> Workout {
+        let restTimeSeconds = lift.restTimeSeconds + lift.restTimeMinutes * 60
+        let completionTimeEstimateSeconds =
+            (lift.targetSets - 1) * restTimeSeconds + // Rest time estimate
+            lift.targetSets * 120// Actual lift time estimate
+        
+        let workout = Workout(
+            completionTimeMinutes: completionTimeEstimateSeconds / 60,
+            completionTimeSeconds: completionTimeEstimateSeconds % 60,
+            date: Date(),
+            targetSets: lift.targetSets,
+            lift: nil,
+            sets: [],
+            currentLift: lift
+        )
+        
+        let sets = Array(
+            repeating: Set(
+                repsCompleted: lift.targetReps,
+                targetReps: lift.targetReps,
+                weight: lift.currentWeight,
+                workout: workout
+            ),
+            count: lift.targetSets
+        )
+        
+        workout.sets.append(contentsOf: sets)
+        
+        return workout
     }
     
 }

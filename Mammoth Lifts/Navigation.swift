@@ -20,13 +20,28 @@ import SwiftUI
     var editLiftPresented: Bool = false
     var workoutPresented: Bool = false
     
+    var workoutToLog: Workout? = nil
+    var logWorkoutPresented: Bool {
+        get {
+            workoutToLog != nil
+        } set {
+            if !newValue {
+                workoutToLog = nil
+            }
+        }
+    }
+    
     
     var sheetPresentationAmount: CGFloat = 1
     var sheetGestureEnabled: Bool = true
     
     var sheetPresented: Bool {
-        return addLiftPresented || editLiftPresented || workoutPresented
+        return addLiftPresented || logWorkoutPresented || editLiftPresented || workoutPresented
     }
+    
+    
+    
+    var liftToDelete: Lift? = nil
 }
 
 

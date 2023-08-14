@@ -4,6 +4,7 @@ import SwiftUI
 
 struct SmallSheetView<Content: View>: View {
     @Binding var isPresented: Bool
+    var title: String
     @ViewBuilder var content: Content
     
     @State var offset: CGFloat = 0
@@ -22,21 +23,21 @@ struct SmallSheetView<Content: View>: View {
                         ZStack {
                             HStack {
                                 Spacer()
-                                SheetCloseIcon {
+                                CloseSheetButton {
                                     isPresented = false
                                 }
                             }
-                            Text("Sets and reps")
+                            Text(title)
                                 .customFont()
                         }
                         .padding(15)
-                        .padding(.bottom, 10)
+//                        .padding(.bottom, 10)
                         content
                             .padding(.vertical)
-                            .padding(.horizontal, Constants.sheetPadding)
+                            .safeAreaPadding(.horizontal, Constants.sheetPadding)
 
                     }
-                    .padding(.bottom, 60)
+//                    .padding(.bottom, 20)
                     .padding(.bottom, geo.safeAreaInsets.bottom)
                     .padding(.bottom, offsetPadding)
                     .background {
@@ -59,12 +60,15 @@ struct SmallSheetView<Content: View>: View {
                 DragGesture()
                     
                     .onChanged { gesture in
-                        if gesture.translation.height < 0 {
-                            offset = 0
-                            offsetPadding = -Common.rubberBandClamp(gesture.translation.height, coeff: 0.2, dim: geo.size.height)
-                        } else {
-                            offset = gesture.translation.height
+                        withAnimation(.snappy(duration: 0.1)) {
+                            if gesture.translation.height < 0 {
+                                offset = 0
+                                offsetPadding = -Common.rubberBandClamp(gesture.translation.height, coeff: 0.35, dim: geo.size.height, range: 0...(.infinity))
+                            } else {
+                                offset = gesture.translation.height
+                            }
                         }
+
 
                     }
                     .onEnded { gesture in

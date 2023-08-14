@@ -30,7 +30,7 @@ struct AddLiftHeaderView: View {
             AddLiftHeaderTitleView()
                 .opacity(0)
                 .overlay(alignment: .trailing) {
-                    SheetCloseIcon {
+                    CloseSheetButton {
                         navigation.addLiftPresented = false
                     }
                 }

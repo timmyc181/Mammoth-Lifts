@@ -13,23 +13,19 @@ struct TabBarView: View {
     var body: some View {
         VStack {
             Spacer()
-            VStack(spacing: 5) {
-                HStack {
-                    TabBarItemView(navigateTo: .lifts, iconName: "LiftsIcon")
-                    TabBarItemView(navigateTo: .log, iconName: "LogIcon")
+            HStack {
+                TabBarItemView(navigateTo: .lifts, iconName: "LiftsIcon")
+                TabBarItemView(navigateTo: .log, iconName: "LogIcon")
 
-                }
-                SelectedTabBarIndicatorView()
-                
             }
             .padding(.horizontal)
-            .padding(.bottom, 5)
+            .padding(.bottom, 10)
             .padding(.top, 30)
             .background(
                 VStack(spacing: 0) {
                     Rectangle()
                         .fill(LinearGradient(colors: [Color.background.opacity(0), Color.background], startPoint: .top, endPoint: .bottom))
-                        .frame(height: 80)
+                        .frame(height: Constants.tabBarSafeArea)
                     Rectangle()
                         .fill(Color.background)
                         .ignoresSafeArea()
@@ -38,6 +34,7 @@ struct TabBarView: View {
                     .opacity(0.9)
 
             )
+            .animation(.smooth(duration: 0.3), value: navigation.tab)
 
         }
         .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))

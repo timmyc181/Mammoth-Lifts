@@ -257,12 +257,14 @@ extension ScrollTargetBehavior where Self == CustomScrollTargetBehavior {
 extension View {
     func backgroundSizingPreference() -> some View {
         self
-            .background {
+            .overlay {
                 GeometryReader { geo in
                     Color.clear
                         .preference(key: BackgroundPreferenceKey.self, value: geo.size)
                 }
+//                .border(Color.red)
             }
+        
     }
 }
 

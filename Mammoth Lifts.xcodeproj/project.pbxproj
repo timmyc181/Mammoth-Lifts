@@ -21,6 +21,12 @@
 		3A4408432A718CB100A5CC5A /* ChooseLiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4408422A718CB100A5CC5A /* ChooseLiftView.swift */; };
 		3A4408452A718CCF00A5CC5A /* ChooseLiftItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4408442A718CCF00A5CC5A /* ChooseLiftItemView.swift */; };
 		3A4408472A731A4D00A5CC5A /* AddLiftFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4408462A731A4D00A5CC5A /* AddLiftFooterView.swift */; };
+		3A49EC262A83E45900C3D381 /* DeleteListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49EC252A83E45900C3D381 /* DeleteListItemView.swift */; };
+		3A49EC282A83E50A00C3D381 /* LiftItemIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49EC272A83E50A00C3D381 /* LiftItemIconView.swift */; };
+		3A49EC2A2A83E54100C3D381 /* LiftItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49EC292A83E54100C3D381 /* LiftItemDetailsView.swift */; };
+		3A49EC2D2A83E7E000C3D381 /* LiftItemWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49EC2C2A83E7E000C3D381 /* LiftItemWeight.swift */; };
+		3A49EC2F2A83E8FE00C3D381 /* LiftItemButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49EC2E2A83E8FE00C3D381 /* LiftItemButtonView.swift */; };
+		3A49EC312A84285B00C3D381 /* DeleteLiftConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49EC302A84285B00C3D381 /* DeleteLiftConfirmationView.swift */; };
 		3A4E59C42A662771005C89B8 /* ChooseWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E59C32A662771005C89B8 /* ChooseWeightView.swift */; };
 		3A4E59C62A6730C4005C89B8 /* AddLiftTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E59C52A6730C4005C89B8 /* AddLiftTitle.swift */; };
 		3A4E59C92A674617005C89B8 /* ChooseWeightMarkersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E59C82A674617005C89B8 /* ChooseWeightMarkersView.swift */; };
@@ -53,6 +59,9 @@
 		3AD269B52A7C1DDE00C9A139 /* RestTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD269B42A7C1DDE00C9A139 /* RestTimeTextView.swift */; };
 		3AD269B72A7C1DED00C9A139 /* RestTimePresetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD269B62A7C1DED00C9A139 /* RestTimePresetsView.swift */; };
 		3AD269B92A7C456C00C9A139 /* SetsRepsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD269B82A7C456C00C9A139 /* SetsRepsPickerView.swift */; };
+		3AE99F242A89D84100B60132 /* LogWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE99F232A89D84100B60132 /* LogWorkoutView.swift */; };
+		3AE99F262A89D84C00B60132 /* LogWorkoutHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE99F252A89D84C00B60132 /* LogWorkoutHeaderView.swift */; };
+		3AE99F282A89D85600B60132 /* LogWorkoutFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE99F272A89D85600B60132 /* LogWorkoutFooterView.swift */; };
 		3AF321C22A62F59E008E4E14 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF321C12A62F59E008E4E14 /* SheetView.swift */; };
 		3AF321C52A62FB0D008E4E14 /* AddLiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF321C42A62FB0D008E4E14 /* AddLiftView.swift */; };
 		3AF321C72A630673008E4E14 /* ScreenCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF321C62A630673008E4E14 /* ScreenCornerRadius.swift */; };
@@ -94,6 +103,12 @@
 		3A4408422A718CB100A5CC5A /* ChooseLiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLiftView.swift; sourceTree = "<group>"; };
 		3A4408442A718CCF00A5CC5A /* ChooseLiftItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLiftItemView.swift; sourceTree = "<group>"; };
 		3A4408462A731A4D00A5CC5A /* AddLiftFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLiftFooterView.swift; sourceTree = "<group>"; };
+		3A49EC252A83E45900C3D381 /* DeleteListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteListItemView.swift; sourceTree = "<group>"; };
+		3A49EC272A83E50A00C3D381 /* LiftItemIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftItemIconView.swift; sourceTree = "<group>"; };
+		3A49EC292A83E54100C3D381 /* LiftItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftItemDetailsView.swift; sourceTree = "<group>"; };
+		3A49EC2C2A83E7E000C3D381 /* LiftItemWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftItemWeight.swift; sourceTree = "<group>"; };
+		3A49EC2E2A83E8FE00C3D381 /* LiftItemButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftItemButtonView.swift; sourceTree = "<group>"; };
+		3A49EC302A84285B00C3D381 /* DeleteLiftConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLiftConfirmationView.swift; sourceTree = "<group>"; };
 		3A4E59C32A662771005C89B8 /* ChooseWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWeightView.swift; sourceTree = "<group>"; };
 		3A4E59C52A6730C4005C89B8 /* AddLiftTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLiftTitle.swift; sourceTree = "<group>"; };
 		3A4E59C82A674617005C89B8 /* ChooseWeightMarkersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWeightMarkersView.swift; sourceTree = "<group>"; };
@@ -127,6 +142,9 @@
 		3AD269B42A7C1DDE00C9A139 /* RestTimeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimeTextView.swift; sourceTree = "<group>"; };
 		3AD269B62A7C1DED00C9A139 /* RestTimePresetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimePresetsView.swift; sourceTree = "<group>"; };
 		3AD269B82A7C456C00C9A139 /* SetsRepsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsRepsPickerView.swift; sourceTree = "<group>"; };
+		3AE99F232A89D84100B60132 /* LogWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutView.swift; sourceTree = "<group>"; };
+		3AE99F252A89D84C00B60132 /* LogWorkoutHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutHeaderView.swift; sourceTree = "<group>"; };
+		3AE99F272A89D85600B60132 /* LogWorkoutFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutFooterView.swift; sourceTree = "<group>"; };
 		3AF321C12A62F59E008E4E14 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		3AF321C42A62FB0D008E4E14 /* AddLiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLiftView.swift; sourceTree = "<group>"; };
 		3AF321C62A630673008E4E14 /* ScreenCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCornerRadius.swift; sourceTree = "<group>"; };
@@ -257,6 +275,20 @@
 			path = Lift;
 			sourceTree = "<group>";
 		};
+		3A49EC2B2A83E5C900C3D381 /* Lift item */ = {
+			isa = PBXGroup;
+			children = (
+				3AD1E6E52A5F044000C0E4B0 /* LiftItemView.swift */,
+				3A49EC252A83E45900C3D381 /* DeleteListItemView.swift */,
+				3A49EC292A83E54100C3D381 /* LiftItemDetailsView.swift */,
+				3A49EC272A83E50A00C3D381 /* LiftItemIconView.swift */,
+				3A49EC2C2A83E7E000C3D381 /* LiftItemWeight.swift */,
+				3A49EC2E2A83E8FE00C3D381 /* LiftItemButtonView.swift */,
+				3A49EC302A84285B00C3D381 /* DeleteLiftConfirmationView.swift */,
+			);
+			path = "Lift item";
+			sourceTree = "<group>";
+		};
 		3A4E59C72A6745C5005C89B8 /* Weight */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,9 +333,10 @@
 		3AC2FFEC2A5DD9930079FA62 /* Lifts */ = {
 			isa = PBXGroup;
 			children = (
+				3AE99F222A89D82900B60132 /* Log workout */,
+				3A49EC2B2A83E5C900C3D381 /* Lift item */,
 				3AF321C32A62FAFD008E4E14 /* Add lift */,
 				3AC2FFED2A5DD9B20079FA62 /* LiftsView.swift */,
-				3AD1E6E52A5F044000C0E4B0 /* LiftItemView.swift */,
 				3AB032272A608FE30098C076 /* LiftsHeaderView.swift */,
 			);
 			path = Lifts;
@@ -335,6 +368,16 @@
 				3AD269B62A7C1DED00C9A139 /* RestTimePresetsView.swift */,
 			);
 			path = Rest;
+			sourceTree = "<group>";
+		};
+		3AE99F222A89D82900B60132 /* Log workout */ = {
+			isa = PBXGroup;
+			children = (
+				3AE99F232A89D84100B60132 /* LogWorkoutView.swift */,
+				3AE99F252A89D84C00B60132 /* LogWorkoutHeaderView.swift */,
+				3AE99F272A89D85600B60132 /* LogWorkoutFooterView.swift */,
+			);
+			path = "Log workout";
 			sourceTree = "<group>";
 		};
 		3AF321C02A62F590008E4E14 /* Misc */ = {
@@ -494,6 +537,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF321C72A630673008E4E14 /* ScreenCornerRadius.swift in Sources */,
+				3A49EC2A2A83E54100C3D381 /* LiftItemDetailsView.swift in Sources */,
+				3AE99F262A89D84C00B60132 /* LogWorkoutHeaderView.swift in Sources */,
 				3A01F6812A6CDA40009C79FE /* RestTimeView.swift in Sources */,
 				3A4408452A718CCF00A5CC5A /* ChooseLiftItemView.swift in Sources */,
 				3ABEA5BE2A5F085F000D695F /* Common.swift in Sources */,
@@ -512,27 +557,34 @@
 				3ACF065A2A6439AE00AA4E4A /* Button.swift in Sources */,
 				3A1BF3D42A58C3C00051A3DD /* MammothLiftsApp.swift in Sources */,
 				3AC2FFF12A5DDA390079FA62 /* LogView.swift in Sources */,
+				3A49EC282A83E50A00C3D381 /* LiftItemIconView.swift in Sources */,
+				3AE99F242A89D84100B60132 /* LogWorkoutView.swift in Sources */,
 				3AC2B7492A776FEB00C740CB /* ListView.swift in Sources */,
 				3ACF06582A6431E700AA4E4A /* ProgressBarView.swift in Sources */,
 				3AD269B52A7C1DDE00C9A139 /* RestTimeTextView.swift in Sources */,
 				3AB0322A2A6095920098C076 /* Constants.swift in Sources */,
 				3A01F67F2A6CC6C2009C79FE /* DurationPickerView.swift in Sources */,
 				3AC2FFF62A5DDE2B0079FA62 /* TabBarItemView.swift in Sources */,
+				3A49EC2D2A83E7E000C3D381 /* LiftItemWeight.swift in Sources */,
 				3A4E59CF2A674942005C89B8 /* ChooseWeightScrollView.swift in Sources */,
 				3A4E59C62A6730C4005C89B8 /* AddLiftTitle.swift in Sources */,
 				3AC2FFEA2A5DCAC00079FA62 /* Navigation.swift in Sources */,
 				3AD1E6E62A5F044000C0E4B0 /* LiftItemView.swift in Sources */,
 				3A0C4CFD2A780CA4001AC7D4 /* SheetCloseIcon.swift in Sources */,
 				3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */,
+				3AE99F282A89D85600B60132 /* LogWorkoutFooterView.swift in Sources */,
+				3A49EC312A84285B00C3D381 /* DeleteLiftConfirmationView.swift in Sources */,
 				3AA04ED42A7EBC6900BA8507 /* AddLiftState.swift in Sources */,
 				3AD269B92A7C456C00C9A139 /* SetsRepsPickerView.swift in Sources */,
 				3ABEC95E2A7567F300CB84BF /* NumberStepper.swift in Sources */,
 				3ACF065C2A6445EB00AA4E4A /* AddLiftHeaderView.swift in Sources */,
 				3AD269B72A7C1DED00C9A139 /* RestTimePresetsView.swift in Sources */,
 				3AB032242A6084680098C076 /* Set.swift in Sources */,
+				3A49EC2F2A83E8FE00C3D381 /* LiftItemButtonView.swift in Sources */,
 				3AB032222A6084680098C076 /* Workout.swift in Sources */,
 				3AC2FFEE2A5DD9B20079FA62 /* LiftsView.swift in Sources */,
 				3AB032232A6084680098C076 /* Lift.swift in Sources */,
+				3A49EC262A83E45900C3D381 /* DeleteListItemView.swift in Sources */,
 				3A4E59C92A674617005C89B8 /* ChooseWeightMarkersView.swift in Sources */,
 				3AF321C22A62F59E008E4E14 /* SheetView.swift in Sources */,
 			);

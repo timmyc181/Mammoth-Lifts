@@ -17,7 +17,7 @@ struct AddLiftFooterView: View {
                     .scaleEffect(x: -1)
                     .offset(x: -2)
             }
-            .buttonStyle(SecondaryButtonStyle())
+            .buttonStyle(.secondary)
             Spacer()
             Button {
                 if addLiftState.state == .increment {
@@ -36,11 +36,10 @@ struct AddLiftFooterView: View {
                     .padding(.horizontal, 30)
                     .offset(y: -1)
             }
-            .buttonStyle(AccentButtonStyle())
+            .buttonStyle(.accent)
             
 
         }
-        .padding(.bottom, 30)
     }
 }
 

@@ -42,28 +42,59 @@ struct ContentView: View {
                         AddLiftView()
                     }
                 }
+                
+                if let workout = navigation.workoutToLog {
+                    SheetView(isPresented: $navigation.logWorkoutPresented) {
+                        LogWorkoutView(workout: workout)
+                    }
+                }
+                
+                SmallSheetView(
+                    isPresented: Binding<Bool> {
+                        navigation.liftToDelete != nil
+                    } set: { value in
+                        if !value {
+                            navigation.liftToDelete = nil
+                        }
+                    },
+                    title: "Delete lift?"
+                ) {
+                    DeleteLiftConfirmationView()
+                }
             }
-            .zIndex(2)
+            .zIndex(3)
+            .sensoryFeedback(.warning, trigger: navigation.liftToDelete == nil) { oldValue, newValue in
+                return !newValue
+            }
+//            .sensoryFeedback(.impact(weight: .medium, intensity: 1), trigger: navigation.logLiftPresented) { oldValue, newValue in
+//                return newValue
+//            }
+
 
             
 
             if !navigation.sheetPresented {
                 TabBarView()
-                    .zIndex(3)
+                    .zIndex(2)
             }
         }
         .environment(\.navigation, navigation)
-        .animation(Constants.sheetPresentationAnimation, value: navigation.addLiftPresented)
         
-        .onAppear {
-            if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
-                do {
-                    try modelContext.delete(model: Lift.self)
-                } catch {
-                    fatalError("couldn't remove items...")
-                }
-            }
-        }
+        .animation(Constants.sheetPresentationAnimation, value: navigation.addLiftPresented)
+        .animation(Constants.sheetPresentationAnimation, value: navigation.logWorkoutPresented)
+        .animation(Constants.sheetPresentationAnimation, value: navigation.liftToDelete)
+        
+//        .animation(.snappy(duration: 0.35, extraBounce: 0.01), value: navigation.addLiftPresented)
+        
+//        .onAppear {
+//            if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
+//                do {
+//                    try modelContext.delete(model: Lift.self)
+//                } catch {
+//                    fatalError("couldn't remove items...")
+//                }
+//            }
+//        }
     }
     
 

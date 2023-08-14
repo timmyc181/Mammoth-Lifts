@@ -16,9 +16,9 @@ struct MammothLiftsApp: App {
             ContentView()
                 .background(Color("Background"))
         }
-//        .modelContainer(for: Exercise.self)
         .modelContainer(
-            for: [Lift.self, Workout.self, Set.self]
+            for: [Lift.self, Workout.self, Set.self],
+            inMemory: false
         )
     }
 }

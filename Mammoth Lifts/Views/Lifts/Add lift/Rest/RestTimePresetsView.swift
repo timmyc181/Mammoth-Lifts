@@ -74,6 +74,9 @@ struct RestTimePresetsItemView<Content: View>: View {
             }
         }
         .buttonStyle(.generic)
+        .transition(
+            .scale(0.9).combined(with: .opacity)
+        )
         
             
     }

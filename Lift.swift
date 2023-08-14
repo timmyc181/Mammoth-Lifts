@@ -14,14 +14,14 @@ import SwiftData
 //@Observable
 public class Lift {
     @Attribute(.unique) var name: String
-    var currentWeight: Double = 0
-    var increment: Double = 0
-    var restTimeMinutes: Int = 0
-    var restTimeSeconds: Int = 0
-    var targetReps: Int = 0
-    var targetSets: Int = 0
-    var warmupSets: Int = 0
-    @Relationship(inverse: \Workout.exercise) var workouts: [Workout]
+    var currentWeight: Double
+    var increment: Double
+    var restTimeMinutes: Int
+    var restTimeSeconds: Int
+    var targetReps: Int
+    var targetSets: Int
+    var warmupSets: Int
+    @Relationship(deleteRule: .cascade) var workouts: [Workout]
     
     
     init(name: String, currentWeight: Double = 100, increment: Double = 5, restTimeMinutes: Int = 3, restTimeSeconds: Int = 0, targetReps: Int = 5, targetSets: Int = 5, warmupSets: Int = 3, workouts: [Workout] = []) {

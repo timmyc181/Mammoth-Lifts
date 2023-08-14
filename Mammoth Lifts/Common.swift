@@ -10,8 +10,16 @@ import Foundation
 
 
 class Common {
-    static func rubberBandClamp(_ x: CGFloat, coeff: CGFloat, dim: CGFloat) -> CGFloat {
-        let clampedX = max(x, 0)
+    static func rubberBandClamp(_ x: CGFloat, coeff: CGFloat, dim: CGFloat, range: ClosedRange<CGFloat>) -> CGFloat {
+        var clampedX = x
+        if range.lowerBound.isFinite {
+            clampedX = max(clampedX, range.lowerBound)
+        }
+        if range.upperBound.isFinite {
+            clampedX = min(clampedX, range.upperBound)
+        }
+        
+        
         let diff = abs(x - clampedX)
         let sign: CGFloat = clampedX > x ? -1 : 1
         

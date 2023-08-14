@@ -13,9 +13,8 @@ struct RestTimeView: View {
                 .allowsHitTesting(false)
             if !pickerVisible {
                 RestTimePresetsView(minutes: $minutes, seconds: $seconds, pickerVisible: $pickerVisible)
-                    .transition(
-                        .scale(0.9).combined(with: .opacity)
-                    )
+                    .transition(.scale(0.9).combined(with: .opacity))
+
             }
             
             if pickerVisible {
@@ -31,7 +30,7 @@ struct RestTimeView: View {
 
 
         }
-        .animation(.bouncy(duration: 0.3), value: pickerVisible)
+        .animation(.bouncy(duration: 0.35), value: pickerVisible)
         .background {
             Color.clear.contentShape(Rectangle())
                 .onTapGesture {

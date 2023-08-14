@@ -12,13 +12,13 @@ import SwiftData
  
 @Model
 public class Set {
-    var repsCompleted: Int16? = 0
-    var targetReps: Int16? = 0
-    var weight: Float? = 0.0
-    var workout: Workout?
+    var repsCompleted: Int?
+    var targetReps: Int?
+    var weight: Double?
+    @Relationship(deleteRule: .cascade, inverse: \Workout.sets) var workout: Workout?
     
     
-    init(repsCompleted: Int16? = nil, targetReps: Int16? = nil, weight: Float? = nil, workout: Workout? = nil) {
+    init(repsCompleted: Int? = nil, targetReps: Int? = nil, weight: Double? = nil, workout: Workout? = nil) {
         self.repsCompleted = repsCompleted
         self.targetReps = targetReps
         self.weight = weight

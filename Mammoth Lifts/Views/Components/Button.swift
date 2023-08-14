@@ -14,14 +14,27 @@ struct CommonButtonStyle: ButtonStyle {
     }
 }
 
-struct AccentButtonStyle: ButtonStyle {
+
+
+
+struct FilledButtonStyle: ButtonStyle {
     var stretch: Bool = false
+    var foregroundColor: Color
+    var backgroundColor: Color
     
     private let height: CGFloat = 55
     
     
-    static var backgroundColor: Color = .accentColor
-    static var foregroundColor: Color = .background
+    static var accentBackgroundColor: Color = .accentColor
+    static var accentForegroundColor: Color = .background
+    
+    static var secondaryBackgroundColor: Color = Color(.secondaryButtonBackground)
+    static var secondaryForegroundColor: Color = .white.opacity(0.8)
+
+    
+    
+    
+    
     
     func makeBody(configuration: Configuration) -> some View {
         HStack {
@@ -31,7 +44,7 @@ struct AccentButtonStyle: ButtonStyle {
             configuration.label
                 .customFont(
                     .button,
-                    color: Self.foregroundColor
+                    color: foregroundColor
                 )
                 .padding(.horizontal, 10)
             if stretch {
@@ -42,7 +55,7 @@ struct AccentButtonStyle: ButtonStyle {
         .frame(minWidth: height)
         .background {
             RoundedRectangle(cornerRadius: height / 2)
-                .fill(Self.backgroundColor)
+                .fill(backgroundColor)
                 .buttonPressModifier(isPressed: configuration.isPressed)
                 .id("primarybutton")
 
@@ -50,41 +63,6 @@ struct AccentButtonStyle: ButtonStyle {
     }
 }
 
-
-struct SecondaryButtonStyle: ButtonStyle {
-    var stretch: Bool = false
-    
-    private let height: CGFloat = 55
-    
-    
-    static var backgroundColor: Color = Color(.secondaryButtonBackground)
-    static var foregroundColor: Color = .white.opacity(0.8)
-    
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            if stretch {
-                Spacer()
-            }
-            configuration.label
-                .customFont(
-                    .button,
-                    color: Self.foregroundColor
-                )
-                .padding(.horizontal, 10)
-            if stretch {
-                Spacer()
-            }
-        }
-        .frame(height: height)
-        .frame(minWidth: height)
-        .background {
-            RoundedRectangle(cornerRadius: height / 2)
-                .fill(Self.backgroundColor)
-                .buttonPressModifier(isPressed: configuration.isPressed)
-                .id("secondarybutton")
-        }
-    }
-}
 
 
 struct GenericButtonStyle: ButtonStyle {
@@ -96,13 +74,28 @@ struct GenericButtonStyle: ButtonStyle {
 }
 
 
-extension ButtonStyle where Self == SecondaryButtonStyle {
-    internal static var secondary: SecondaryButtonStyle { return SecondaryButtonStyle()}
+
+extension ButtonStyle where Self == FilledButtonStyle {
+    
+    internal static var secondary: FilledButtonStyle {
+        return FilledButtonStyle(
+            foregroundColor: FilledButtonStyle.secondaryForegroundColor,
+            backgroundColor: FilledButtonStyle.secondaryBackgroundColor
+        )
+    }
 }
 
-extension ButtonStyle where Self == AccentButtonStyle {
-    internal static var accent: AccentButtonStyle { return AccentButtonStyle()}
+
+extension ButtonStyle where Self == FilledButtonStyle {
+
+    internal static var accent: FilledButtonStyle {
+        return FilledButtonStyle(
+            foregroundColor: FilledButtonStyle.accentForegroundColor,
+            backgroundColor: FilledButtonStyle.accentBackgroundColor
+        )
+    }
 }
+
 
 extension ButtonStyle where Self == GenericButtonStyle {
     internal static var generic: GenericButtonStyle { return GenericButtonStyle()}

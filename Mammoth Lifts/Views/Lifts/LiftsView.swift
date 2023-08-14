@@ -19,12 +19,13 @@ struct LiftsView: View {
             
             VStack(spacing: 16) {
                 ForEach(lifts) { lift in
-                    LiftItemView(exercise: lift)
+                    LiftItemView(lift: lift)
                         .transition(.scale(0.9).combined(with: .opacity))
                 }
                 Spacer()
 
             }
+//            .modelContainer(for: [Lift.self, Workout.self, Set.self], isAutosaveEnabled: false)
 
         }
         .padding(.horizontal, Constants.sidePadding)
@@ -33,6 +34,7 @@ struct LiftsView: View {
 
 #Preview {
     ContentView()
+        .populatedPreviewContainer()
 }
 
 

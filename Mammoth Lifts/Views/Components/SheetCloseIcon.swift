@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct SheetCloseIcon: View {
+struct CloseSheetButton: View {
     var action: () -> ()
     
     var body: some View {
@@ -20,12 +20,12 @@ struct SheetCloseIcon: View {
                 }
                 .expandTouchArea()
         }
-        .buttonStyle(SheetCloseIconButtonStyle())
+        .buttonStyle(CloseSheetButtonStyle())
     }
 }
 
 
-struct SheetCloseIconButtonStyle: ButtonStyle {
+struct CloseSheetButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .animation(Constants.sheetPresentationAnimation, value: configuration.isPressed)
