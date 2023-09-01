@@ -17,7 +17,7 @@ struct LiftItemDetailsView: View {
             Text(name)
                 .customFont(size: 20, color: .white)
             
-            Text(weight.clean + "lbs")
+            Text(weight.clean + " lb")
                 .customFont(size: 14, color: .white.opacity(0.3))
 //                Spacer(minLength: 0)
 //            HStack(spacing: 4) {

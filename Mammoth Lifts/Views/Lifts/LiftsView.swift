@@ -25,7 +25,6 @@ struct LiftsView: View {
                 Spacer()
 
             }
-//            .modelContainer(for: [Lift.self, Workout.self, Set.self], isAutosaveEnabled: false)
 
         }
         .padding(.horizontal, Constants.sidePadding)

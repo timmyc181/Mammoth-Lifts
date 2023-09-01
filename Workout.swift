@@ -1,71 +1,79 @@
-//
-//  Workout.swift
-//  Mammoth Lifts
-//
-//  Created by Timothy Cleveland on 7/13/23.
-//
-//
-
 import Foundation
 import SwiftData
 
 
 @Model
 public class Workout {
-    var completionTimeMinutes: Int?
-    var completionTimeSeconds: Int?
-    var date: Date?
-//    var increment: Double?
-//    var restTimeMinutes: Int?
-//    var restTimeSeconds: Int?
-    var targetSets: Int?
-    @Relationship(deleteRule: .noAction, inverse: \Lift.workouts) var lift: Lift?
+    var durationMinutes: Int
+    var durationSeconds: Int
+    var date: Date
+    var targetSets: Int
+    @Relationship(deleteRule: .noAction) var lift: Lift?
     @Relationship(deleteRule: .cascade) var sets: [Set]
     
-    @Transient var currentLift: Lift? = nil
-    
-    init(completionTimeMinutes: Int? = nil, completionTimeSeconds: Int? = nil, date: Date? = nil, targetSets: Int? = nil, lift: Lift? = nil, sets: [Set] = [], currentLift: Lift? = nil) {
-        self.completionTimeSeconds = completionTimeSeconds
-        self.completionTimeMinutes = completionTimeMinutes
+    init(durationMinutes: Int, durationSeconds: Int, date: Date, targetSets: Int, sets: [Set] = []) {
+        self.durationMinutes = durationMinutes
+        self.durationSeconds = durationSeconds
         self.date = date
-//        self.increment = increment
-//        self.restTimeMinutes = restTimeMinutes
-//        self.restTimeSeconds = restTimeSeconds
         self.targetSets = targetSets
-        self.lift = lift
         self.sets = sets
-        self.currentLift = currentLift
     }
     
-    static func templateFrom(lift: Lift) -> Workout {
-        let restTimeSeconds = lift.restTimeSeconds + lift.restTimeMinutes * 60
-        let completionTimeEstimateSeconds =
-            (lift.targetSets - 1) * restTimeSeconds + // Rest time estimate
-            lift.targetSets * 120// Actual lift time estimate
-        
-        let workout = Workout(
-            completionTimeMinutes: completionTimeEstimateSeconds / 60,
-            completionTimeSeconds: completionTimeEstimateSeconds % 60,
-            date: Date(),
-            targetSets: lift.targetSets,
-            lift: nil,
-            sets: [],
-            currentLift: lift
-        )
-        
+//    static func templateFrom(lift: Lift) -> Workout {
+//        let restTimeSeconds = lift.restTimeSeconds + lift.restTimeMinutes * 60
+//        let completionTimeEstimateSeconds =
+//            (lift.targetSets - 1) * restTimeSeconds + // Rest time estimate
+//            lift.targetSets * 120// Actual lift time estimate
+//        
+//        let workout = Workout(
+//            completionTimeMinutes: completionTimeEstimateSeconds / 60,
+//            completionTimeSeconds: completionTimeEstimateSeconds % 60,
+//            date: Date(),
+//            targetSets: lift.targetSets,
+//            lift: nil,
+//            sets: [],
+//            currentLift: lift
+//        )
+//        
+//        let sets = Array(
+//            repeating: Set(
+//                repsCompleted: lift.targetReps,
+//                targetReps: lift.targetReps,
+//                weight: lift.currentWeight,
+//                workout: workout
+//            ),
+//            count: lift.targetSets
+//        )
+//        
+//        workout.sets.append(contentsOf: sets)
+//        
+//        return workout
+//    }
+    
+    
+}
+
+
+extension Workout {
+    
+    static func getLoggedWorkout(weight: Double, date: Date, lift: Lift) -> Workout {
         let sets = Array(
             repeating: Set(
                 repsCompleted: lift.targetReps,
                 targetReps: lift.targetReps,
-                weight: lift.currentWeight,
-                workout: workout
+                weight: weight
             ),
             count: lift.targetSets
         )
         
-        workout.sets.append(contentsOf: sets)
-        
-        return workout
+        return Workout(
+            durationMinutes: lift.restTimeMinutes,
+            durationSeconds: lift.restTimeSeconds,
+            date: date,
+            // FIXME: redo log workout to match complexity of regular workout, eg. allow target sets, adding individual sets, adding incomplete sets, etc.
+            targetSets: lift.targetSets,
+            sets: sets
+        )
     }
     
 }

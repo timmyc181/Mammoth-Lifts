@@ -4,10 +4,14 @@ import SwiftUI
 
 struct SheetDragIndicator: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        RoundedRectangle(cornerRadius: 3)
+            .fill(.white.opacity(0.2))
+            .frame(width: 36, height: 5)
     }
 }
 
 #Preview {
-    SheetDragIndicator()
+    DumbPreviewThing {
+        SheetDragIndicator()
+    }
 }

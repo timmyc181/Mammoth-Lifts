@@ -1,10 +1,3 @@
-//
-//  Navigation.swift
-//  Mammoth Lifts
-//
-//  Created by Timothy Cleveland on 7/11/23.
-//
-
 import Foundation
 import SwiftUI
 
@@ -17,31 +10,65 @@ import SwiftUI
             sheetGestureEnabled = true
         }
     }
-    var editLiftPresented: Bool = false
-    var workoutPresented: Bool = false
     
-    var workoutToLog: Workout? = nil
-    var logWorkoutPresented: Bool {
+    var liftForWorkout: Lift? = nil
+    var workoutPresented: Bool {
         get {
-            workoutToLog != nil
+            liftForWorkout != nil
         } set {
             if !newValue {
-                workoutToLog = nil
+                liftForWorkout = nil
             }
         }
     }
+    
+    var liftToLog: Lift? = nil
+    var logWorkoutPresented: Bool {
+        get {
+            liftToLog != nil
+        } set {
+            if !newValue {
+                liftToLog = nil
+            }
+        }
+    }
+    
+    var liftForDetails: Lift? = nil
+    var liftDetailsPresented: Bool {
+        get {
+            liftForDetails != nil
+        } set {
+            if !newValue {
+                liftForDetails = nil
+            }
+        }
+    }
+    
+    
+    var datePicker: DatePickerState? = nil
+    
     
     
     var sheetPresentationAmount: CGFloat = 1
     var sheetGestureEnabled: Bool = true
     
     var sheetPresented: Bool {
-        return addLiftPresented || logWorkoutPresented || editLiftPresented || workoutPresented
+        return addLiftPresented || liftDetailsPresented || workoutPresented
     }
     
     
     
     var liftToDelete: Lift? = nil
+}
+
+struct DatePickerState {
+    var position: CGPoint
+    var date: Binding<Date>
+    
+    init(frame: CGRect, date: Binding<Date>) {
+        self.position = .init(x: frame.midX, y: frame.midY)
+        self.date = date
+    }
 }
 
 

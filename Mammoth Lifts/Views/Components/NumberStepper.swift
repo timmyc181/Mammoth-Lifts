@@ -25,42 +25,49 @@ struct NumberStepper: View {
     }
     
     var body: some View {
-        HStack(spacing: 3) {
+        HStack(spacing: 0) {
             Button {
                 value -= 1
             } label: {
                 Text("-")
-                    .padding(20)
+                    .padding(5)
                     .offset(y: -1)
             }
-            .padding(-20)
+            .padding(-5)
+            .padding(.horizontal, 8)
             .disabled(isMin)
             .buttonStyle(NumberStepperButtonStyle())
-
+            .buttonRepeatBehavior(.enabled)
+            
+            Rectangle()
+                .fill(Color(.border))
+                .frame(width: 1, height: 16)
+            
             Text(String(value))
-                .foregroundColor(.accentColor)
-                .customFont(size: 20)
-                .frame(width: 35)
-//                .transition(.stepperText(goingUp: goingUp))
-//                .id("number\(animationValue)")
+                .customFont(.list)
+                .frame(width: 30)
+
+            Rectangle()
+                .fill(Color(.border))
+                .frame(width: 1, height: 16)
             
             Button {
                 value += 1
             } label: {
                 Text("+")
-                    .padding(20)
+                    .padding(5)
             }
-            .padding(-20)
+            .padding(-5)
+            .padding(.horizontal, 8)
             .disabled(isMax)
             .buttonStyle(NumberStepperButtonStyle())
+            .buttonRepeatBehavior(.enabled)
 
 
         }
         .sensoryFeedback(.selection, trigger: value)
-//        .animation(.snappy(duration: 0.15), value: animationValue)
-        .customFont(size: 24)
-        .padding(.horizontal, 10)
-        .padding(.vertical, 4)
+        .customFont(size: 22)
+        .padding(.vertical, 2)
 
         .background {
             RoundedRectangle(cornerRadius: 8)
@@ -83,7 +90,7 @@ struct NumberStepper: View {
         @Environment(\.isEnabled) var isEnabled
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
-                .foregroundColor(isEnabled ? .white : .white.opacity(0.2))
+                .foregroundColor(isEnabled ? .accentColor : .accentColor.opacity(0.2))
                 .animation(.spring(duration: 0.15), value: isEnabled)
                 .contentShape(Rectangle())
         }
@@ -119,7 +126,7 @@ struct StepperPushTransition: ViewModifier {
 #Preview {
     ZStack {
         Color.background.ignoresSafeArea()
-        NumberStepper(value: .constant(5), bounds: 0...10)
+        NumberStepper(value: .constant(5), bounds: Constants.repsRange)
 
     }
 }

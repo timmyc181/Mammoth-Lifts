@@ -25,8 +25,12 @@ struct ChooseLiftView: View {
                     }
                 }
             }
+            .sheetGestureOverride()
+
+            
             
         }
+
         .overlay(alignment: .top) {
             LinearGradient(colors: [.sheetBackground.opacity(0.9), .clear], startPoint: .top, endPoint: .bottom)
                                     .frame(height: 100)
@@ -43,3 +47,6 @@ struct ChooseLiftView: View {
 #Preview {
     AddLiftPreviewView()
 }
+
+
+

@@ -10,7 +10,7 @@ struct LiftItemWeight: View {
             Text(weight)
                 .customFont(size: 18, color: Color.accentColor)
                 .offset(y: 1)
-            Text("lbs")
+            Text(" lb")
                 .customFont(size: 14, color: .white.opacity(0.2))
                 .offset(y: -1)
         }

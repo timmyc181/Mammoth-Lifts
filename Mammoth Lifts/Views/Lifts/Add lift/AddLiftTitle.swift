@@ -16,7 +16,7 @@ struct AddLiftTitle: View {
             case .lift:
                 Text("New lift")
             case .weight:
-                Text("Starting weight")
+                Text("Current weight")
             case .setsReps:
                 Text("Sets and reps")
             case .rest:

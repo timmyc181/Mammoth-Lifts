@@ -3,8 +3,7 @@
 import SwiftUI
 
 struct LogWorkoutFooterView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Environment(\.navigation) private var navigation
+    var log: () -> ()
     
     var body: some View {
         Button {
@@ -12,22 +11,6 @@ struct LogWorkoutFooterView: View {
         } label: {
             Text("Log")
         }
-        .buttonStyle(FilledButtonStyle(stretch: true, foregroundColor: FilledButtonStyle.accentForegroundColor, backgroundColor: FilledButtonStyle.accentBackgroundColor))
+        .buttonStyle(.accentStretch)
     }
-    
-    func log() {
-        let workout = navigation.workoutToLog
-        
-        guard let workout = workout else {
-            fatalError("Workout was nil")
-        }
-        
-        workout.lift = workout.currentLift
-        
-        navigation.logWorkoutPresented = false
-    }
-}
-
-#Preview {
-    LogWorkoutFooterView()
 }

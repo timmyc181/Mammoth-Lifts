@@ -7,8 +7,6 @@ struct SetsRepsView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-//            SetsRepsPickerViewOld()
-//                .padding(.bottom)
             Spacer()
             
             SetsRepsPickerView(sets: $lift.targetSets, reps: $lift.targetReps)
@@ -20,7 +18,7 @@ struct SetsRepsView: View {
                     Text("Warmup sets")
                         .customFont(size: 20)
                     Spacer()
-                    NumberStepper(value: $lift.warmupSets, bounds: 1...8)
+                    NumberStepper(value: $lift.warmupSets, bounds: Constants.setsRange)
                 }
             }
         }

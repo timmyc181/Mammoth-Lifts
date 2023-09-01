@@ -21,9 +21,11 @@ struct LiftsHeaderView: View {
 //                            .frame(width: 60, height: 60)
 //                            .padding(50)
 
-                        Image("PlusIcon")
-                            .resizable()
-                            .frame(width: 20, height: 20)
+//                        Image("PlusIcon")
+                    Image(systemName: "plus")
+                        .font(.system(size: 20, weight: .heavy))
+//                            .resizable()
+//                            .frame(width: 20, height: 20)
                             .foregroundStyle(Color.accentColor)
                             .padding(10)
                             .contentShape(Rectangle())
@@ -70,7 +72,7 @@ extension LinearGradient {
 //    public static var g = Color.accentColor.
     
     public static var accentGradient = LinearGradient(
-        colors: [Color("AccentColor").shiftHue(by: 0.03), Color("AccentColor").shiftHue(by: -0.03)],
+        colors: [Color("AccentColor"), Color("AccentColor").shiftHue(by: -0.03)],
         startPoint: .leading,
         endPoint: .trailing
     )

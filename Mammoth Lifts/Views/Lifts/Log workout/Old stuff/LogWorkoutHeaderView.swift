@@ -9,7 +9,7 @@ struct LogWorkoutHeaderView: View {
     
     var body: some View {
         ZStack {
-            Text(name)
+            Text("Log " + name.lowercased())
                 .customFont()
             HStack {
                 Spacer()

@@ -21,7 +21,7 @@ struct LogView: View {
                         HStack {
                             Text(workout.lift!.name)
                             Spacer()
-                            Text(workout.date!.formatted())
+                            Text(workout.date.formatted())
                             
                         }
                     }

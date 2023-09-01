@@ -19,7 +19,7 @@ import SwiftData
         self.state = state
         if let lift = lift {
             do {
-                let container = try ModelContainer(for: [Lift.self, Set.self, Workout.self], ModelConfiguration(inMemory: true))
+//                let container = try ModelContainer(for: Lift.self, Set.self, Workout.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
 
                 self.lift = lift
             } catch {

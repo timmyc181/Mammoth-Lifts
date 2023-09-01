@@ -18,7 +18,7 @@ struct RestTimeView: View {
             }
             
             if pickerVisible {
-                DurationPickerView(minute: $minutes, second: $seconds, height: 200, fontSize: 26)
+                DurationPickerView(minute: $minutes, second: $seconds, height: 200, fontSize: 27)
                     .transition(.scale(0.9).combined(with: .opacity))
 //                    .transition(
 //                        .asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top))

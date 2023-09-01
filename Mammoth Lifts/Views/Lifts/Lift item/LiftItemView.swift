@@ -20,6 +20,8 @@ struct LiftItemView: View {
     
     @State private var offset: CGFloat = 0
     
+    @State private var pressed = false
+    
     var totalOffset: CGFloat {
         Common.rubberBandClamp(offset, coeff: 0.55, dim: size.width, range: 0...0)
     }
@@ -60,7 +62,6 @@ struct LiftItemView: View {
                 .opacity(amount)
                 .offset(x: min(totalOffset, logLiftDragThreshold) / 4 - 10)
                 .transaction { transaction in
-//                        transaction.
                     transaction.animation = nil
                 }
             }
@@ -75,7 +76,6 @@ struct LiftItemView: View {
                 
                 Spacer(minLength: 0)
                 
-                
                 LiftItemButtonView()
                     .frame(width: squareSize.width, height: squareSize.height)
                 
@@ -87,10 +87,6 @@ struct LiftItemView: View {
                 RoundedRectangle(cornerRadius: 24)
                     .fill(Color("CardBackground"))
                     .shadow(color: .black.opacity(0.2), radius: 12, x: 0, y: -2)
-//                    .overlay {
-//                        RoundedRectangle(cornerRadius: 24)
-//                            .strokeBorder(.white.opacity(0.02), style: StrokeStyle(lineWidth: 2))
-//                    }
             )
             
             .backgroundSizingPreference()
@@ -102,19 +98,26 @@ struct LiftItemView: View {
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { value in
+                        pressed = true
                         withAnimation(.snappy(duration: 0.1)) {
                             offset = value.translation.width
                         }
 
                     }
                     .onEnded{ value in
+                        pressed = false
+                        
+                        // Simulate press
+                        if totalOffset == 0 {
+                            navigation.liftForDetails = lift
+                        }
                         
                         if totalOffset >= logLiftDragThreshold {
                             withAnimation(.snappy) {
                                 
                                 offset = 0
                             }
-                            navigation.workoutToLog = .templateFrom(lift: lift)
+                            navigation.liftToLog = lift
                         } else {
                             withAnimation(.snappy) {
                                 offset = 0

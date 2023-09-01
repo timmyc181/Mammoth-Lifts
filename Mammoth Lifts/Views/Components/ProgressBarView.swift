@@ -19,7 +19,7 @@ struct ProgressBarView: View {
             .overlay {
                 GeometryReader { geo in
                     Rectangle()
-                        .fill(LinearGradient.accentGradient)
+                        .fill(Color("AccentColor").gradient)
 //                        .accentGradientForeground()
                         .mask(alignment: .leading) {
                             

@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 
 struct ChooseWeightMarkersView: View {
-    let maxWeight: Int = 1000
-    
     static let spacing: CGFloat = 15
     static let tickWidth: CGFloat = 4
     
@@ -18,30 +16,30 @@ struct ChooseWeightMarkersView: View {
     
     var body: some View {
         LazyHStack(alignment: .bottom, spacing: 0) {
-                ForEach(0..<maxWeight) { increment in
+            ForEach(Constants.weightRange) { increment in
                     
-                    let isWhole = increment % 5 == 0
-                    
-                    let isKeyMarker = increment % 10 == 0
-                    
-                    Rectangle()
-                        .fill(.white.opacity(isWhole ? 0.8 : 0.2))
-                        .frame(width: Self.tickWidth, height: isWhole ? 60 : 40)
-                        .id(increment)
-                        .padding(.horizontal, Self.spacing / 2)
-                        .overlay(alignment: .bottom) {
-                            if isKeyMarker {
-                                Text("\(increment)")
-                                    .customFont()
-                                    .frame(maxWidth: .infinity)
-                                    .fixedSize(horizontal: true, vertical: false)
-                                    .opacity(0.2)
+                let isWhole = increment % 5 == 0
+                
+                let isKeyMarker = increment % 10 == 0
+                
+                Rectangle()
+                    .fill(.white.opacity(isWhole ? 0.8 : 0.2))
+                    .frame(width: Self.tickWidth, height: isWhole ? 60 : 40)
+                    .id(increment)
+                    .padding(.horizontal, Self.spacing / 2)
+                    .overlay(alignment: .bottom) {
+                        if isKeyMarker {
+                            Text("\(increment)")
+                                .customFont()
+                                .frame(maxWidth: .infinity)
+                                .fixedSize(horizontal: true, vertical: false)
+                                .opacity(0.2)
 
-                                    .offset(y: 30)
+                                .offset(y: 30)
 
 
-                            }
                         }
+                    }
 
                 }
 

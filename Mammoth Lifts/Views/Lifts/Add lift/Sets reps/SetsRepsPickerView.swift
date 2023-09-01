@@ -83,72 +83,24 @@ struct SetsRepsPickerMarkersView: View {
         GeometryReader { geo in
             ScrollViewReader { proxy in
                 ScrollView(.vertical, showsIndicators: false) {
-//                    GeometryReader { contentGeo in
                         VStack(spacing: 30) {
                             
-                            ForEach((1..<10).map{"\($0)"}, id: \.self) { index in
+                            ForEach(Constants.setsRange.map{"\($0)"}, id: \.self) { index in
                                 Rectangle()
                                     .fill(.white.opacity(0.2))
                                     .frame(width: 20, height: markerHeight)
-                                //                                    .visualEffect { content, geometry in
-                                //                                        content
-                                //                                            .opacity(contentFadeOpacity(in: geometry, height: geo.size.height))
-                                //
-                                ////                                            .scaleEffect(y: contentScale(in: geometry, height: geo.size.height))
-                                //                                            .offset(y: contentOffset(in: geometry, height: geo.size.height))
-                                //
-                                //                                    }
                             }
-                            //                            ForEach(1..<10) { index in
-                            //                                Rectangle()
-                            //                                    .fill(.white.opacity(0.05))
-                            //                                    .frame(width: 20, height: markerHeight)
-                            ////                                    .visualEffect { content, geometry in
-                            ////                                        content
-                            ////                                            .opacity(contentFadeOpacity(in: geometry, height: geo.size.height))
-                            ////
-                            //////                                            .scaleEffect(y: contentScale(in: geometry, height: geo.size.height))
-                            ////                                            .offset(y: contentOffset(in: geometry, height: geo.size.height))
-                            ////
-                            ////                                    }
-                            //                            }
-                            
                         }
-//                        .overlay {
-//                            GeometryReader { geo in
-//                                VStack(spacing: 30) {
-//                                    ForEach(1..<10) { index in
-//                                        Rectangle()
-//                                            .fill(.white.opacity(0.1))
-//                                            .frame(width: 20, height: markerHeight)
-//                                    }
-//                                }
-//                                .offset(y: geo.size.height + 30)
-//                            }
-//                        }
-//                        .overlay {
-//                            GeometryReader { geo in
-//                                VStack(spacing: 30) {
-//                                    ForEach(1..<10) { index in
-//                                        Rectangle()
-//                                            .fill(.white.opacity(0.1))
-//                                            .frame(width: 20, height: markerHeight)
-//                                    }
-//                                }
-//                                .offset(y: -(geo.size.height + 30))
-//                            }
-//                        }
                         .scrollTargetLayout()
                         
                         .frame(maxWidth: .infinity, alignment: alignment)
                         .contentShape(Rectangle())
-//                    }
+                        .padding(.vertical, ((geo.size.height - markerHeight) / 2))
+                        .sheetGestureOverride()
+
 
                 }
-                .scrollPosition(id: $adapterValue)
-
-                .safeAreaPadding(.vertical, ((geo.size.height - markerHeight) / 2))
-//                .safeAreaPadding(.top, )
+                .scrollPosition(id: $adapterValue, anchor: .bottom)
 
                 .scrollTargetBehavior(.viewAligned)
                 .sensoryFeedback(.selection, trigger: value)

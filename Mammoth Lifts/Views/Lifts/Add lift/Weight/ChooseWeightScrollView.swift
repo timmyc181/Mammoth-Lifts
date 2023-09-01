@@ -36,6 +36,7 @@ struct ChooseWeightScrollView: View {
                             }
 
                     }
+                    .sheetGestureOverride()
 
                 }
 //                .coordinateSpace(.named("container"))

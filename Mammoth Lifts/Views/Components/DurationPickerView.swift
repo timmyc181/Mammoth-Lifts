@@ -6,13 +6,13 @@ struct DurationPickerView: View {
     
     var height: CGFloat? = 175
 
-    var fontSize: CGFloat = 20
+    var fontSize: CGFloat = 24
     
-    var minutes: Int = 10
-    var seconds: Int = 60
+    var minutesRange: ClosedRange<Int> = Constants.restTimeMinutesRange
     
-    
-    @State var textHeight: CGFloat = 29
+    var secondsRange: ClosedRange<Int> = Constants.secondsRange
+
+    @State private var textHeight: CGFloat = 29
     
     static var labelSpacing: CGFloat = 6
     static var sidePadding: CGFloat = 45
@@ -22,10 +22,10 @@ struct DurationPickerView: View {
             HStack(spacing: 0) {
                 Group {
                     ZStack(alignment: .leading) {
-                        DurationScrollView(scrollPosition: $minute, range: 0..<minutes, textHeight: textHeight, text: "min", alignment: .leading)
+                        DurationScrollView(scrollPosition: $minute, range: minutesRange, textHeight: textHeight, text: "min", alignment: .leading)
 
                         Text("min")
-                            .foregroundStyle(Color.accentColor)
+                            .foregroundStyle(Color.white.opacity(0.3))
                             .backgroundSizingPreference()
                             .onPreferenceChange(BackgroundPreferenceKey.self, perform: { size in
                                 textHeight = size.height
@@ -36,9 +36,9 @@ struct DurationPickerView: View {
                     }
                     
                     ZStack(alignment: .trailing) {
-                        DurationScrollView(scrollPosition: $second, range: 0..<seconds, textHeight: textHeight, text: "sec", alignment: .trailing)
+                        DurationScrollView(scrollPosition: $second, range: secondsRange, textHeight: textHeight, text: "sec", alignment: .trailing)
                         Text("sec")
-                            .foregroundStyle(Color.accentColor)
+                            .foregroundStyle(Color.white.opacity(0.3))
                             .allowsHitTesting(false)
                             .padding(.trailing, Self.sidePadding)
                     }
@@ -65,13 +65,13 @@ struct DurationPickerView: View {
 fileprivate struct DurationScrollView: View {
     @Binding var scrollPosition: Int
     
-    var range: Range<Int>
+    var range: ClosedRange<Int>
     var textHeight: CGFloat
     var text: String
     var alignment: Alignment
 
     
-    @State var adapterValue: String? = "-1"
+    @State var adapterValue: Int? = -1
     
     static var textWidth: CGFloat = 40
     
@@ -80,7 +80,7 @@ fileprivate struct DurationScrollView: View {
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { proxy in
                     VStack(alignment: .trailing, spacing: 6) {
-                        ForEach((range).map {"\($0)"}, id: \.self) { number in
+                        ForEach((range), id: \.self) { number in
                             Text("\(number)")
                                 .visualEffect { content, geometry in
                                     content
@@ -95,6 +95,11 @@ fileprivate struct DurationScrollView: View {
 
                                 }
                                 .frame(width: Self.textWidth, alignment: .trailing)
+//                                .overlay {
+//                                    Text("\(textHeight)")
+//                                        .customFont()
+//                                        .offset(x: 20)
+//                                }
 
                         }
                     }
@@ -105,54 +110,37 @@ fileprivate struct DurationScrollView: View {
                     }
                     .scrollTargetLayout()
                     .frame(maxWidth: .infinity, alignment: alignment)
-//                    .offset(y: (geo.size.height - textHeight) / 2)
-//                    .padding(.top, -100)
-
-//                    .padding(.bottom, (geo.size.height - textHeight) / 2)
-//                    .padding(.top, (geo.size.height - textHeight) / 2)
-
-//                    .padding(.bottom, 50)
-//                    .padding(.vertical, (geo.size.height - textHeight) / 2)
-//                    .safeAreaInset(edge: .top) {
-//                        Color.clear.frame(height: (geo.size.height - textHeight) / 2)
+                    .padding(.vertical, (geo.size.height - textHeight) / 2)
+//                    .onAppear {
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+//        //                    adapterValue = "\(scrollPosition)"
+//                            proxy.scrollTo(scrollPosition, anchor: .init(x: 0, y: 0.5 - (textHeight / geo.size.height)))
+//
+//        //
+//                        })
 //                    }
-//                    .safeAreaInset(edge: .bottom) {
-//                        Color.clear.frame(height: (geo.size.height - textHeight) / 2)
-//                    }
+
                 }
             }
-//            .contentMargins(.vertical, (geo.size.height - textHeight) / 2)
-//            .scrollPosition(id: $adapterValue, anchor: .center)
-//            .safeAreaPadding(.vertical, 51)
-//            .safeAreaPadding(.top, (geo.size.height) / 2)
-
-//            .padding(.top, 100)
-//            .safeAreaPadding(.vertical, (geo.size.height - textHeight) / 2)
             .scrollTargetBehavior(.viewAligned)
-            .safeAreaPadding(.vertical, (geo.size.height - textHeight) / 2)
-
-//            .frame(height: textHeight)
-
-
-//            .scrollClipDisabled()
-//            .frame(height: 200)
-
-//            .scrollPosition(id: Binding<String?>(get: {
-//                String(scrollPosition)
-//            }, set: { newValue in
-//                scrollPosition = Int(newValue ?? "-1") ?? -1
-//            }), anchor: .center)
-//            .scrollClipDisabled()
-//            .safeAreaPadding(.top, 52)
-//            .padding(.top, 50)
-
+//            .safeAreaPadding(.vertical, (geo.size.height - textHeight) / 2)
+            .scrollPosition(id: Binding<Int?>(
+                get: {
+                    scrollPosition
+                }, set: { newVal in
+                    scrollPosition = newVal ?? -1
+                }
+            ), anchor: .bottom)
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    adapterValue = "\(scrollPosition)"
-                })
+                adapterValue = scrollPosition
+
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+//                    adapterValue = "\(scrollPosition)"
+//
+//                })
             }
             .onChange(of: adapterValue) { oldValue, newValue in
-                scrollPosition = Int(adapterValue ?? "-1") ?? -1
+                scrollPosition = adapterValue ?? -1
 
             }
         }

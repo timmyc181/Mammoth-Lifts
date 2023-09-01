@@ -117,3 +117,26 @@ struct AddLiftPreviewView: View {
 //    ContentView()
 //        .populatedPreviewContainer()
 }
+
+
+
+
+
+
+struct NoButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
+}
+
+extension View {
+    func sheetGestureOverride() -> some View {
+        // To override the sheet gesture
+        background {
+            Button {} label: {
+                Color.clear.contentShape(Rectangle())
+            }
+            .buttonStyle(NoButtonStyle())
+        }
+    }
+}

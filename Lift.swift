@@ -21,7 +21,7 @@ public class Lift {
     var targetReps: Int
     var targetSets: Int
     var warmupSets: Int
-    @Relationship(deleteRule: .cascade) var workouts: [Workout]
+    @Relationship(deleteRule: .cascade, inverse: \Workout.lift) var workouts: [Workout]
     
     
     init(name: String, currentWeight: Double = 100, increment: Double = 5, restTimeMinutes: Int = 3, restTimeSeconds: Int = 0, targetReps: Int = 5, targetSets: Int = 5, warmupSets: Int = 3, workouts: [Workout] = []) {
@@ -123,3 +123,15 @@ public class Lift {
 //        }
 //    }
 //}
+
+
+extension Lift {
+    func estimatedCompletionTime() -> (Int, Int) {
+        let restTimeSeconds = restTimeSeconds + restTimeMinutes * 60
+        let estimatedCompletionTimeSeconds =
+            (targetSets - 1) * restTimeSeconds + // Rest time estimate
+            targetSets * 120// Actual lifting time estimate
+        
+        return (estimatedCompletionTimeSeconds / 60, estimatedCompletionTimeSeconds % 60)
+    }
+}

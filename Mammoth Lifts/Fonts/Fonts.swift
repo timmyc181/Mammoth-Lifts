@@ -23,6 +23,7 @@ public enum FontStyle {
     case subtitle1
     case subtitle2
     case button
+    case list
 }
 
 fileprivate struct CommonFontFuncs {
@@ -32,6 +33,7 @@ fileprivate struct CommonFontFuncs {
         case .subtitle1: return 24
         case .subtitle2: return 20
         case .button: return 20
+        case .list: return 18
         }
     }
 

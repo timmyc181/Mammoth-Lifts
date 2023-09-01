@@ -6,7 +6,7 @@ import SwiftUI
 extension ModelContainer {
     static var populatedPreviewContainer: ModelContainer? {
         do {
-            let container = try ModelContainer(for: Lift.self, ModelConfiguration(inMemory: true))
+            let container = try ModelContainer(for: Lift.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
             
             Task { @MainActor in
                 let context = container.mainContext

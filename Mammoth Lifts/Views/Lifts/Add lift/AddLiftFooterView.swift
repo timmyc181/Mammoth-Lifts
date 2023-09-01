@@ -11,8 +11,9 @@ struct AddLiftFooterView: View {
             Button {
                 addLiftState.previous()
             } label: {
-                Image("ChevronIcon")
+                Image(.chevronIcon)
                     .resizable()
+                    .scaledToFit()
                     .frame(width: 20, height: 20)
                     .scaleEffect(x: -1)
                     .offset(x: -2)

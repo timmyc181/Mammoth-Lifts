@@ -15,9 +15,7 @@ struct DeleteLiftConfirmationView: View {
                 Text("Delete")
             }
             .buttonStyle(
-                FilledButtonStyle(
-                    stretch: true,
-                    foregroundColor: FilledButtonStyle.accentForegroundColor,
+                AccentButtonStyle(
                     backgroundColor: Color(.trash)
                 )
             )
@@ -27,13 +25,7 @@ struct DeleteLiftConfirmationView: View {
             } label: {
                 Text("Cancel")
             }
-            .buttonStyle(
-                FilledButtonStyle(
-                    stretch: true,
-                    foregroundColor: FilledButtonStyle.secondaryForegroundColor,
-                    backgroundColor: FilledButtonStyle.secondaryBackgroundColor
-                )
-            )
+            .buttonStyle(.secondaryStretch)
 
         }
 

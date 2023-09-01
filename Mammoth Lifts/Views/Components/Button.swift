@@ -17,26 +17,16 @@ struct CommonButtonStyle: ButtonStyle {
 
 
 
-struct FilledButtonStyle: ButtonStyle {
-    var stretch: Bool = false
+struct ButtonStyleView: View {
+    var configuration: ButtonStyle.Configuration
     var foregroundColor: Color
     var backgroundColor: Color
+    var stretch: Bool = false
     
-    private let height: CGFloat = 55
-    
-    
-    static var accentBackgroundColor: Color = .accentColor
-    static var accentForegroundColor: Color = .background
-    
-    static var secondaryBackgroundColor: Color = Color(.secondaryButtonBackground)
-    static var secondaryForegroundColor: Color = .white.opacity(0.8)
+    static let height: CGFloat = 55
 
     
-    
-    
-    
-    
-    func makeBody(configuration: Configuration) -> some View {
+    var body: some View {
         HStack {
             if stretch {
                 Spacer()
@@ -51,19 +41,76 @@ struct FilledButtonStyle: ButtonStyle {
                 Spacer()
             }
         }
-        .frame(height: height)
-        .frame(minWidth: height)
+        .frame(height: Self.height)
+        .frame(minWidth: Self.height)
         .background {
-            RoundedRectangle(cornerRadius: height / 2)
+            RoundedRectangle(cornerRadius: Self.height / 2)
                 .fill(backgroundColor)
                 .buttonPressModifier(isPressed: configuration.isPressed)
-                .id("primarybutton")
+//                .id("primarybutton")
 
         }
     }
 }
 
 
+
+struct AccentButtonStyle: ButtonStyle {
+    var stretch: Bool = false
+    
+    var foregroundColor: Color = Self.foregroundColor
+    var backgroundColor: Color = Self.backgroundColor
+    
+    static var foregroundColor: Color = .background
+    static var backgroundColor: Color = .accentColor
+
+    func makeBody(configuration: Configuration) -> some View {
+        ButtonStyleView(
+            configuration: configuration,
+            foregroundColor: Self.foregroundColor,
+            backgroundColor: Self.backgroundColor,
+            stretch: stretch
+        )
+    }
+}
+
+struct SecondaryButtonStyle: ButtonStyle {
+    var stretch: Bool = false
+
+    var foregroundColor: Color = Self.foregroundColor
+    var backgroundColor: Color = Self.backgroundColor
+    
+    static var foregroundColor: Color = .white.opacity(0.8)
+    static var backgroundColor: Color = Color(.secondaryButtonBackground)
+
+    
+    func makeBody(configuration: Configuration) -> some View {
+        ButtonStyleView(
+            configuration: configuration,
+            foregroundColor: foregroundColor,
+            backgroundColor: backgroundColor,
+            stretch: stretch
+        )
+    }
+}
+
+struct SecondaryAccentButtonStyle: ButtonStyle {
+    var stretch: Bool = false
+    
+    var color: Color = Self.foregroundColor
+    
+    static var foregroundColor: Color = .accentColor
+    static var backgroundColor: Color = .accentColor.opacity(0.1)
+
+    func makeBody(configuration: Configuration) -> some View {
+        ButtonStyleView(
+            configuration: configuration,
+            foregroundColor: color,
+            backgroundColor: color.opacity(0.1),
+            stretch: stretch
+        )
+    }
+}
 
 struct GenericButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -75,24 +122,34 @@ struct GenericButtonStyle: ButtonStyle {
 
 
 
-extension ButtonStyle where Self == FilledButtonStyle {
+extension ButtonStyle where Self == AccentButtonStyle {
     
-    internal static var secondary: FilledButtonStyle {
-        return FilledButtonStyle(
-            foregroundColor: FilledButtonStyle.secondaryForegroundColor,
-            backgroundColor: FilledButtonStyle.secondaryBackgroundColor
-        )
+    internal static var accent: AccentButtonStyle {
+        return AccentButtonStyle(stretch: false)
+    }
+    internal static var accentStretch: AccentButtonStyle {
+        return AccentButtonStyle(stretch: true)
     }
 }
 
 
-extension ButtonStyle where Self == FilledButtonStyle {
+extension ButtonStyle where Self == SecondaryButtonStyle {
 
-    internal static var accent: FilledButtonStyle {
-        return FilledButtonStyle(
-            foregroundColor: FilledButtonStyle.accentForegroundColor,
-            backgroundColor: FilledButtonStyle.accentBackgroundColor
-        )
+    internal static var secondary: SecondaryButtonStyle {
+        return SecondaryButtonStyle(stretch: false)
+    }
+    internal static var secondaryStretch: SecondaryButtonStyle {
+        return SecondaryButtonStyle(stretch: true)
+    }
+}
+
+extension ButtonStyle where Self == SecondaryAccentButtonStyle {
+
+    internal static var secondaryAccent: SecondaryAccentButtonStyle {
+        return SecondaryAccentButtonStyle(stretch: false)
+    }
+    internal static var secondaryAccentStretch: SecondaryAccentButtonStyle {
+        return SecondaryAccentButtonStyle(stretch: true)
     }
 }
 

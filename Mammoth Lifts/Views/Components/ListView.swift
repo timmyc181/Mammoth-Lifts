@@ -11,7 +11,7 @@ struct ListView<Content: View>: View {
         }
         .background {
             RoundedRectangle(cornerRadius: 16)
-                .fill(.white.opacity(0.05))
+                .fill(Color(.listBackground))
         }
     }
 }
@@ -19,20 +19,22 @@ struct ListView<Content: View>: View {
 
 struct ListItemView<Content: View>: View {
     var divider: Bool = true
+    var sidePadding: Bool = true
     @ViewBuilder var content: Content
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
+            HStack(spacing: 0) {
                 content
+                    .customFont(.list)
             }
-            .padding(.vertical, 10)
-            .padding(.horizontal, 25)
+            .padding(.vertical, 12)
+            .safeAreaPadding(.horizontal, sidePadding ? 20 : 0)
             if divider {
                 Rectangle()
-                    .fill(.white.opacity(0.1))
+                    .fill(Color(.border))
                     .frame(height: 1)
-                    .padding(.leading, 25)
+//                    .padding(.leading, 25)
             }
         }
 
@@ -40,10 +42,10 @@ struct ListItemView<Content: View>: View {
 }
 
 
-#Preview {
-    ZStack {
-        Color.sheetBackground.ignoresSafeArea()
-        SetsRepsView(lift: .template(for: .bench))
-
-    }
-}
+//#Preview {
+//    ZStack {
+//        Color.sheetBackground.ignoresSafeArea()
+//        SetsRepsView(lift: .template(for: .bench))
+//
+//    }
+//}
