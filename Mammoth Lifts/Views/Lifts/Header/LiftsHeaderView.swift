@@ -88,7 +88,7 @@ extension LinearGradient {
 
 extension Color {
     func shiftHue(by hue: CGFloat) -> Color {
-        var color = UIColor(self)
+        let color = UIColor(self)
         var currentHue: CGFloat = 0
         var currentSaturation: CGFloat = 0
         var currentBrigthness: CGFloat = 0
