@@ -3,11 +3,16 @@
 import SwiftUI
 
 struct LiftDetailsBodyView: View {
-    @Bindable var liftDetailsState: LiftDetailsState
+    @Bindable var lift: Lift
+    
+    @Environment(\.navigation) private var navigation
+    
+    @State private var editWeightPresented: Bool = false
+    @State private var editIncrementPresented: Bool = false
     
     var restTimeText: String {
-        let minutes = liftDetailsState.lift.restTimeMinutes
-        let seconds = liftDetailsState.lift.restTimeSeconds
+        let minutes = lift.restTimeMinutes
+        let seconds = lift.restTimeSeconds
         
         if seconds == 0 {
             return String(minutes) + " min"
@@ -17,24 +22,29 @@ struct LiftDetailsBodyView: View {
     }
     
     var body: some View {
+        let _ = Self._printChanges()
         ListView {
             ListItemView(sidePadding: false) {
                 ItemView(title: "Weight", action: editWeight) {
-                    Text(liftDetailsState.lift.currentWeight.clean)
+                    Text(lift.currentWeight.text)
                     + Text(" lb")
                 }
+                .editWeight($lift.currentWeight, increment: lift.increment, isPresented: $editWeightPresented)
+                
                 ItemView(title: "Increment", action: editIncrement) {
-                    Text(liftDetailsState.lift.increment.clean)
+                    Text(lift.increment.text)
                     + Text(" lb")
                 }
+                .editWeight($lift.increment, increment: 0.25, isPresented: $editIncrementPresented)
             }
             .background(rectangleSpacer)
             ListItemView(divider: false, sidePadding: false) {
                 ItemView(title: "Sets") {
-                    NumberStepper(value: $liftDetailsState.lift.targetSets, bounds: Constants.setsRange)
+//                    Thing2(value: lift.targetSets)
+                    NumberStepper(value: $lift.targetSets, bounds: Constants.setsRange)
                 }
                 ItemView(title: "Reps") {
-                    NumberStepper(value: $liftDetailsState.lift.targetReps, bounds: Constants.repsRange)
+                    NumberStepper(value: $lift.targetReps, bounds: Constants.repsRange)
                 }
             }
             .background(rectangleSpacer)
@@ -45,11 +55,10 @@ struct LiftDetailsBodyView: View {
             ListItemView(divider: false) {
                 Text("Rest time")
                 Spacer()
-                Button {
-                } label: {
-                    Text(restTimeText)
-                }
-                .buttonStyle(DateTimeSelectorButtonStyle())
+                
+                DurationPickerView(minute: $lift.restTimeMinutes, second: $lift.restTimeSeconds)
+                    .durationPickerType(.compact)
+                
 //                DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
 //                    .colorScheme(.dark)
             }
@@ -58,19 +67,19 @@ struct LiftDetailsBodyView: View {
         Spacer()
         
         Button {
-            
+            navigation.liftToDelete = lift
         } label: {
             Text("Delete lift")
         }
-        .buttonStyle(SecondaryAccentButtonStyle(stretch: true, color: Color(.trash)))
+        .buttonStyle(SecondaryAccentButtonStyle(stretch: true, color: Color(.error)))
     }
     
     private func editWeight() {
-        liftDetailsState.focusState = .weight
+        editWeightPresented = true
     }
     
     private func editIncrement() {
-        liftDetailsState.focusState = .increment
+        editIncrementPresented = true
     }
     
     @ViewBuilder private var rectangleSpacer: some View {
@@ -119,6 +128,14 @@ struct LiftDetailsBodyView: View {
                 content
             }
         }
+    }
+}
+
+struct Thing2: View {
+    var value: Int
+    
+    var body: some View {
+        Text(String(value))
     }
 }
 

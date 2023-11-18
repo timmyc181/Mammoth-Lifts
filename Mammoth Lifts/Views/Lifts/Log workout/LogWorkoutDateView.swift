@@ -5,7 +5,8 @@ import SwiftUI
 struct LogWorkoutDateView: View {
     @Binding var date: Date
     
-    @Environment(\.navigation) private var navigation
+    @State private var datePickerPresented: Bool = false
+    @State private var timePickerPresented: Bool = false
     
     private var dateString: String {
         if Calendar.current.isDateInToday(date) {
@@ -34,25 +35,25 @@ struct LogWorkoutDateView: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            GeometryReader { geo in
-                Button {
-                    navigation.datePicker = .init(frame: geo.frame(in: .global), date: $date)
-                } label: {
-                    Text(dateString)
-                        .customFont(color: .accentColor)
-                }
-                .buttonStyle(EditLiftActionsButtonStyle(height: height))
+            Button {
+                datePickerPresented = true
+            } label: {
+                Text(dateString)
+                    .customFont(color: .accentColor)
             }
+            .buttonStyle(EditLiftActionsButtonStyle(height: height))
+            .datePicker(date: $date, isPresented: $datePickerPresented)
             
             
             GeometryReader { geo in
                 Button {
-                    navigation.datePicker = .init(frame: geo.frame(in: .global), date: $date)
+                    timePickerPresented = true
                 } label: {
                     Text(timeString)
                         .customFont(color: .accentColor)
                 }
             .buttonStyle(EditLiftActionsButtonStyle(height: height))
+            .timePicker(date: $date, isPresented: $timePickerPresented)
             }
 
 //            Rectangle()

@@ -3,7 +3,7 @@ import SwiftUI
 
 
 struct ChooseWeightScrollView: View {
-    @Binding var weight: Double
+    @Binding var weight: Weight
     
     @State var isSetup: Bool = false
 
@@ -29,8 +29,8 @@ struct ChooseWeightScrollView: View {
                             .onAppear {
 //                                if let initialWeight = weight {
                                     
-                                    proxy.scrollTo(Int(weight), anchor: .center)
-                                    isSetup = true
+                                proxy.scrollTo(weight.whole, anchor: .center)
+                                isSetup = true
 //                                }
                         
                             }
@@ -46,10 +46,7 @@ struct ChooseWeightScrollView: View {
                     if isSetup {
                         let tick = (value + padding - (ChooseWeightMarkersView.spacing / 2)) / (ChooseWeightMarkersView.totalTickWidth)
                         
-                        weight = max(
-                            Double((tick * 4).rounded() / 4),
-                            0
-                        )
+                        weight = Weight(max(Double((tick * 4).rounded() / 4), 0))
                     }
 
                 }

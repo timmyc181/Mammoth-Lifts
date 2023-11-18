@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 import SwiftData
 
 
@@ -18,45 +19,12 @@ public class Workout {
         self.targetSets = targetSets
         self.sets = sets
     }
-    
-//    static func templateFrom(lift: Lift) -> Workout {
-//        let restTimeSeconds = lift.restTimeSeconds + lift.restTimeMinutes * 60
-//        let completionTimeEstimateSeconds =
-//            (lift.targetSets - 1) * restTimeSeconds + // Rest time estimate
-//            lift.targetSets * 120// Actual lift time estimate
-//        
-//        let workout = Workout(
-//            completionTimeMinutes: completionTimeEstimateSeconds / 60,
-//            completionTimeSeconds: completionTimeEstimateSeconds % 60,
-//            date: Date(),
-//            targetSets: lift.targetSets,
-//            lift: nil,
-//            sets: [],
-//            currentLift: lift
-//        )
-//        
-//        let sets = Array(
-//            repeating: Set(
-//                repsCompleted: lift.targetReps,
-//                targetReps: lift.targetReps,
-//                weight: lift.currentWeight,
-//                workout: workout
-//            ),
-//            count: lift.targetSets
-//        )
-//        
-//        workout.sets.append(contentsOf: sets)
-//        
-//        return workout
-//    }
-    
-    
 }
 
 
 extension Workout {
     
-    static func getLoggedWorkout(weight: Double, date: Date, lift: Lift) -> Workout {
+    static func getLoggedWorkout(weight: Weight, date: Date, lift: Lift) -> Workout {
         let sets = Array(
             repeating: Set(
                 repsCompleted: lift.targetReps,
@@ -76,4 +44,65 @@ extension Workout {
         )
     }
     
+}
+
+struct Streak {
+    var count: Int = 0
+    var nextWorkoutDate: Date
+    var lastWorkout: Workout
+    
+    init?(workouts: [Workout], streakDays: Int) {
+        var date = Date().subtracting(days: streakDays).startOfDay
+
+        let workouts = workouts.sorted { workout1, workout2 in
+            workout1.date > workout2.date
+        }
+        
+//        print("calculating streak")
+        if workouts.count > 0 {
+            self.nextWorkoutDate = workouts[0].date.startOfDay.adding(days: streakDays)
+            self.lastWorkout = workouts[0]
+            
+            for workout in workouts {
+                if workout.date > date {
+                    date = workout.date.startOfDay.subtracting(days: streakDays)
+                    count += 1
+                } else {
+                    break
+                }
+            }
+        } else {
+            return nil
+        }
+        if count == 0 {
+            return nil
+        }
+    }
+}
+
+private struct StreakEnvironmentKey: EnvironmentKey {
+    static let defaultValue: Streak? = nil
+}
+
+extension EnvironmentValues {
+    var streak: Streak? {
+        get { self[StreakEnvironmentKey.self] }
+        set { self[StreakEnvironmentKey.self] = newValue}
+    }
+}
+
+
+
+extension Date {
+    func subtracting(days daysAgo: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: -daysAgo, to: self)!
+    }
+
+    func adding(days: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: days, to: self)!
+    }
+    
+    var startOfDay: Date {
+        return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: self)!
+    }
 }

@@ -67,8 +67,8 @@ struct AccentButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         ButtonStyleView(
             configuration: configuration,
-            foregroundColor: Self.foregroundColor,
-            backgroundColor: Self.backgroundColor,
+            foregroundColor: foregroundColor,
+            backgroundColor: backgroundColor,
             stretch: stretch
         )
     }

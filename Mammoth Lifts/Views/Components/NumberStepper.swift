@@ -5,7 +5,6 @@ struct NumberStepper: View {
     @Binding var value: Int
     var bounds: ClosedRange<Int>
     
-    @State var animationValue: Int = 0
     @State var goingUp: Bool = true
     
     var isMin: Bool {
@@ -15,26 +14,14 @@ struct NumberStepper: View {
         value >= bounds.upperBound
     }
     
-    
-    
-    init(value: Binding<Int>, bounds: ClosedRange<Int>) {
-        self._value = value
-        self.bounds = bounds
-        self.animationValue = value.wrappedValue
-        self.goingUp = goingUp
-    }
-    
     var body: some View {
         HStack(spacing: 0) {
             Button {
                 value -= 1
             } label: {
                 Text("-")
-                    .padding(5)
                     .offset(y: -1)
             }
-            .padding(-5)
-            .padding(.horizontal, 8)
             .disabled(isMin)
             .buttonStyle(NumberStepperButtonStyle())
             .buttonRepeatBehavior(.enabled)
@@ -44,8 +31,8 @@ struct NumberStepper: View {
                 .frame(width: 1, height: 16)
             
             Text(String(value))
-                .customFont(.list)
-                .frame(width: 30)
+                .customFont(size: 20)
+                .frame(width: 35)
 
             Rectangle()
                 .fill(Color(.border))
@@ -55,10 +42,7 @@ struct NumberStepper: View {
                 value += 1
             } label: {
                 Text("+")
-                    .padding(5)
             }
-            .padding(-5)
-            .padding(.horizontal, 8)
             .disabled(isMax)
             .buttonStyle(NumberStepperButtonStyle())
             .buttonRepeatBehavior(.enabled)
@@ -66,22 +50,12 @@ struct NumberStepper: View {
 
         }
         .sensoryFeedback(.selection, trigger: value)
-        .customFont(size: 22)
-        .padding(.vertical, 2)
 
         .background {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 12)
                 .fill(Color.white.opacity(0.1))
         }
-//        .onAppear {
-//            animationValue = value
-//        }
-//        .onChange(of: value) { oldValue, newValue in
-//            goingUp = oldValue < newValue
-//            
-//            animationValue = value
-//        }
-        
+        .fixedSize(horizontal: true, vertical: false)
     }
     
     
@@ -90,8 +64,12 @@ struct NumberStepper: View {
         @Environment(\.isEnabled) var isEnabled
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
-                .foregroundColor(isEnabled ? .accentColor : .accentColor.opacity(0.2))
+                .customFont(size: 30, color: .accentColor)
+                .opacity(isEnabled ? 1 : 0.2)
+                .offset(y: -1)
                 .animation(.spring(duration: 0.15), value: isEnabled)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 1)
                 .contentShape(Rectangle())
         }
     }
@@ -121,6 +99,7 @@ struct StepperPushTransition: ViewModifier {
             .opacity(value*2)
     }
 }
+
 
 
 #Preview {

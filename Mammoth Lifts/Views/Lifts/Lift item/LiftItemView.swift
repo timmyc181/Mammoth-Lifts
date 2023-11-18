@@ -30,7 +30,6 @@ struct LiftItemView: View {
 
     var body: some View {
         ZStack(alignment: .leading) {
-            
             if totalOffset != 0 {
                 let unclampedAmount = (totalOffset * 2) / logLiftDragThreshold - 1
                 let amount = max(min((unclampedAmount), 1), 0)
@@ -67,27 +66,25 @@ struct LiftItemView: View {
             }
 
 
-            
-            HStack(spacing: 8) {
-                LiftItemIconView(name: lift.name)
-                    .frame(width: squareSize.width, height: squareSize.height)
-
-                LiftItemDetailsView(name: lift.name, weight: lift.currentWeight, lastCompleted: "Last Friday")
-                
-                Spacer(minLength: 0)
-                
-                LiftItemButtonView()
-                    .frame(width: squareSize.width, height: squareSize.height)
-                
+            Button {
+                navigation.liftForDetails = lift
+            } label: {
+                HStack(spacing: 8) {
+                    LiftItemIconView(name: lift.name)
+                        .frame(width: squareSize.width, height: squareSize.height)
+                    
+                    LiftItemDetailsView(name: lift.name, weight: lift.currentWeight, lastCompleted: "Last Friday")
+                    
+                    Spacer(minLength: 0)
+                    
+                    LiftItemButtonView()
+                        .frame(width: squareSize.width, height: squareSize.height)
+                    
+                }
             }
-            .padding(.vertical, 16)
-            .padding(.horizontal, 16)
+            .buttonStyle(LiftItemButtonStyle())
             
-            .background(
-                RoundedRectangle(cornerRadius: 24)
-                    .fill(Color("CardBackground"))
-                    .shadow(color: .black.opacity(0.2), radius: 12, x: 0, y: -2)
-            )
+
             
             .backgroundSizingPreference()
             .onPreferenceChange(BackgroundPreferenceKey.self, perform: { size in
@@ -95,8 +92,8 @@ struct LiftItemView: View {
             })
             
             .offset(x: totalOffset)
-            .gesture(
-                DragGesture(minimumDistance: 0)
+            .highPriorityGesture(
+                DragGesture(minimumDistance: 1)
                     .onChanged { value in
                         pressed = true
                         withAnimation(.snappy(duration: 0.1)) {
@@ -108,9 +105,9 @@ struct LiftItemView: View {
                         pressed = false
                         
                         // Simulate press
-                        if totalOffset == 0 {
-                            navigation.liftForDetails = lift
-                        }
+//                        if totalOffset == 0 {
+//                            navigation.liftForDetails = lift
+//                        }
                         
                         if totalOffset >= logLiftDragThreshold {
                             withAnimation(.snappy) {
@@ -168,15 +165,22 @@ struct LiftItemPreviewView<Content: View>: View {
 }
 
 
-extension AnyTransition {
-    static func doNothing() -> AnyTransition {
-        AnyTransition
-            .asymmetric(
-                insertion: .opacity.animation(.easeIn(duration: 0)),
-                removal: .opacity.animation(.easeIn(duration: 0.01).delay(0.5))
+struct LiftItemButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.vertical, 16)
+            .padding(.horizontal, 16)
+            .background(
+                Color("CardBackground")
+                    .shadow(color: .black.opacity(0.2), radius: 12, x: 0, y: -2)
+                    .cornerRadius(24)
             )
-
-        
+            .overlay {
+                Color.white.opacity(configuration.isPressed ? 0.05 : 0)
+            }
+            .cornerRadius(24)
+            .scaleEffect(configuration.isPressed ? 1.04 : 1)
+            .animation(.smooth, value: configuration.isPressed)
     }
 }
 

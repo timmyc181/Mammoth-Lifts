@@ -5,8 +5,8 @@ import SwiftUI
 struct SheetDragIndicator: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 3)
-            .fill(.white.opacity(0.2))
-            .frame(width: 36, height: 5)
+            .fill(.white.opacity(0.15))
+            .frame(width: 36, height: 6)
     }
 }
 

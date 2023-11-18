@@ -9,22 +9,26 @@
 import Foundation
 import SwiftData
 
-
 @Model
 //@Observable
 public class Lift {
     @Attribute(.unique) var name: String
-    var currentWeight: Double
-    var increment: Double
+    var currentWeight: Weight
+    var increment: Weight
     var restTimeMinutes: Int
     var restTimeSeconds: Int
     var targetReps: Int
     var targetSets: Int
     var warmupSets: Int
-    @Relationship(deleteRule: .cascade, inverse: \Workout.lift) var workouts: [Workout]
+    @Relationship(deleteRule: .cascade, inverse: \Workout.lift) var workouts: [Workout] {
+        didSet {
+            print("did set")
+            updateWeight()
+        }
+    }
     
     
-    init(name: String, currentWeight: Double = 100, increment: Double = 5, restTimeMinutes: Int = 3, restTimeSeconds: Int = 0, targetReps: Int = 5, targetSets: Int = 5, warmupSets: Int = 3, workouts: [Workout] = []) {
+    init(name: String, currentWeight: Weight = 100, increment: Weight = 5, restTimeMinutes: Int = 3, restTimeSeconds: Int = 0, targetReps: Int = 5, targetSets: Int = 5, warmupSets: Int = 3, workouts: [Workout] = []) {
         self.name = name
         self.currentWeight = currentWeight
         self.increment = increment
@@ -42,6 +46,28 @@ public class Lift {
         case bench = "Bench"
         case overheadPress = "Overhead press"
     }
+    
+    func updateWeight() {
+        do {
+//            let container = try ModelContainer(for: Workout.self)
+//            let context = ModelContext(container)
+//            let fetchDescriptor = FetchDescriptor<Workout>(sortBy: [SortDescriptor(\Workout.date, order: .reverse)])
+//            let results = try context.fetch(fetchDescriptor)
+            let results = workouts.sorted { $0.date > $1.date }
+            
+            if results.count > 0 {
+                let mostRecent = results[0]
+                print("updated from ", currentWeight)
+
+                currentWeight = mostRecent.sets[0].weight + increment
+                
+                print("updated to ", currentWeight)
+            }
+        } catch {
+            
+        }
+    }
+    
     
     static func template(for lift: Option) -> Lift {
         switch lift {
@@ -80,10 +106,9 @@ public class Lift {
         }
     }
     
+
+    
 }
-
-
-
 
 
 //extension Exercise {

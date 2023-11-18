@@ -14,15 +14,22 @@ struct LiftItemButtonView: View {
 //                    .foregroundColor(Color("CardBackground"))
 //
 //            }
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.accentColor)
-            Image("PlayIcon")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 16)
-                .foregroundColor(Color(.cardBackground))
+        Button {
+            
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.accentColor)
+                Image("PlayIcon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 16)
+                    .foregroundColor(Color(.cardBackground))
+            }
+
         }
+        .buttonStyle(.generic)
+        
 
 
     }

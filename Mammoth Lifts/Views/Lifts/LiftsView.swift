@@ -9,22 +9,31 @@ import SwiftUI
 import SwiftData
 
 struct LiftsView: View {
+    @Environment(\.navigation) private var navigation
+    
     @Query(animation: .bouncy)
     var lifts: [Lift]
 
     var body: some View {
+        @Bindable var navigation = navigation
         VStack {
             LiftsHeaderView()
                 .padding(.top, 15)
             
-            VStack(spacing: 16) {
-                ForEach(lifts) { lift in
-                    LiftItemView(lift: lift)
-                        .transition(.scale(0.9).combined(with: .opacity))
+            if lifts.count > 0 {
+                VStack(spacing: 16) {
+                    ForEach(lifts) { lift in
+                        LiftItemView(lift: lift)
+                            .transition(.scale(0.9).combined(with: .opacity))
+                    }
+                    Spacer()
+                    
                 }
-                Spacer()
-
+            } else {
+                EmptyLiftsView()
+                
             }
+            
 
         }
         .padding(.horizontal, Constants.sidePadding)
@@ -33,7 +42,7 @@ struct LiftsView: View {
 
 #Preview {
     ContentView()
-        .populatedPreviewContainer()
+        .emptyPreviewContainer()
 }
 
 

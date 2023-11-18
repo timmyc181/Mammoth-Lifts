@@ -13,14 +13,14 @@ struct SetsRepsView: View {
                 .frame(height: 300)
             Spacer()
             
-            ListView {
-                ListItemView(divider: false) {
-                    Text("Warmup sets")
-                        .customFont(size: 20)
-                    Spacer()
-                    NumberStepper(value: $lift.warmupSets, bounds: Constants.setsRange)
-                }
-            }
+//            ListView {
+//                ListItemView(divider: false) {
+//                    Text("Warmup sets")
+//                        .customFont(size: 20)
+//                    Spacer()
+//                    NumberStepper(value: $lift.warmupSets, bounds: Constants.setsRange)
+//                }
+//            }
         }
         .padding(.bottom, 30)
     }

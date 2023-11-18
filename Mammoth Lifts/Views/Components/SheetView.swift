@@ -16,6 +16,8 @@ struct SheetView<Content: View>: View {
     
     @State private var offset: CGFloat = 0
     
+
+    
     var body: some View {
         GeometryReader { geo in
             
@@ -49,16 +51,16 @@ struct SheetView<Content: View>: View {
 //                    }
 //                }
             
-            let gesture = DragGesture.sheetDragGesture(
-                offset: $offset,
-                isPresented: $isPresented,
-                closeThreshold: geo.size.height / 3.0) { newOffset in
-                    navigation.sheetPresentationAmount = 1 - (newOffset / geo.size.height)
-                } reset: {
-                    navigation.sheetPresentationAmount = 1
-                } close: {
-                    navigation.sheetPresentationAmount = 1
-                }
+//            let gesture = DragGesture.sheetDragGesture(
+//                offset: $offset,
+//                isPresented: $isPresented,
+//                closeThreshold: geo.size.height / 3.0) { newOffset in
+//                    navigation.sheetPresentationAmount = 1 - (newOffset / geo.size.height)
+//                } reset: {
+//                    navigation.sheetPresentationAmount = 1
+//                } close: {
+//                    navigation.sheetPresentationAmount = 1
+//                }
             
             
             ZStack {
@@ -66,13 +68,16 @@ struct SheetView<Content: View>: View {
                     .overlay(alignment: .top) {
                         if dragIndicator {
                             SheetDragIndicator()
-                                .safeAreaPadding(.top, geo.safeAreaInsets.top + 5)
+                                .onTapGesture {
+                                    isPresented = false
+                                }
+                                .safeAreaPadding(.top, geo.safeAreaInsets.top + 8)
                         }
                         
                     }
                     .offset(y: offset)
                     .ignoresSafeArea(.all)
-                    .gesture(gesture, including: navigation.sheetGestureEnabled ? .all : .subviews)
+//                    .gesture(gesture, including: navigation.sheetGestureEnabled ? .all : .subviews)
 
                 VStack {
                     Spacer(minLength: 0)
@@ -90,6 +95,14 @@ struct SheetView<Content: View>: View {
                     offset = 0
                 }
             }
+            .sheetDragGesture(
+                offset: $offset,
+                isPresented: $isPresented,
+                sheetHeight: geo.size.height,
+                onChange: { newOffset in
+                    navigation.sheetPresentationAmount = 1 - (newOffset / geo.size.height)
+                }
+            )
 //            .gesture(gesture, including: navigation.sheetGestureEnabled ? .all : .all)
         }
         .transition(.moveIncludeSafeArea)

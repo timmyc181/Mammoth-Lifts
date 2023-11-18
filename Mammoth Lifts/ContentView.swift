@@ -1,20 +1,21 @@
-//
-//  ContentView.swift
-//  Mammoth Lifts
-//
-//  Created by Timothy Cleveland on 7/7/23.
-//
-
 import SwiftUI
-import CoreData
+import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     
-    @State var navigation = Navigation()
+    @State private var navigation = Navigation()
+    
+    @Query(sort: \Workout.date, order: .reverse) var workouts: [Workout]
+    @AppStorage(UserSettings.streakDaysKey) var days: Int = 3
+    var streak: Streak? {
+        print("updating")
+        return Streak(workouts: workouts, streakDays: days)
+    }
     
     var body: some View {
         GeometryReader { geo in
+            let _ = Self._printChanges()
             ZStack {
                 Group {
                     switch navigation.tab {
@@ -51,18 +52,13 @@ struct ContentView: View {
                         }
                     }
                     
-                    //                SmallSheetView(
-                    //                    isPresented: Binding<Bool> {
-                    //                        navigation.liftToDelete != nil
-                    //                    } set: { value in
-                    //                        if !value {
-                    //                            navigation.liftToDelete = nil
-                    //                        }
-                    //                    },
-                    //                    title: "Delete lift?"
-                    //                ) {
-                    //                    DeleteLiftConfirmationView()
-                    //                }
+                    if navigation.streakDetailsPresented {
+                        SheetView(isPresented: $navigation.streakDetailsPresented, dragIndicator: true) {
+                            StreakDetailsView()
+                        }
+                    }
+                    
+
                 }
                 .zIndex(2)
                 .sensoryFeedback(.warning, trigger: navigation.liftToDelete == nil) { oldValue, newValue in
@@ -70,57 +66,83 @@ struct ContentView: View {
                 }
                 
                 ZStack(alignment: .bottom) {
-                    Color.black.opacity(navigation.liftToLog == nil ? 0 : 0.5)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            navigation.liftToLog = nil
-                        }
-                        .allowsHitTesting(navigation.liftToLog != nil)
-                        .animation(.smooth(duration: 0.3), value: navigation.liftToLog == nil)
+                    SmallSheetView(item: $navigation.liftToLog, safeAreaBottom: geo.safeAreaInsets.bottom) { liftToLog in
+                        LogWorkoutView(lift: liftToLog)
+                            .sheetCloseMethod(.dragIndicator)
+                    }
                     
-                    if let lift = navigation.liftToLog {
-                        SmallSheetView(
-                            isPresented: $navigation.logWorkoutPresented,
-                            closeMethod: .dragIndicator,
-                            safeAreaBottom: geo.safeAreaInsets.bottom
-                        ) {
-                            LogWorkoutView(lift: lift)
+                    SmallSheetView(item: $navigation.liftToDelete, safeAreaBottom: geo.safeAreaInsets.bottom) { liftToDelete in
+                        DeleteLiftConfirmationView {
+                            navigation.liftToDelete = nil
+                            navigation.liftDetailsPresented = false
+                            modelContext.delete(liftToDelete)
+                            do {
+                                try modelContext.save()
+                            } catch {
+                                fatalError("Error deleting lift")
+                            }
+
+                        } close: {
+                            navigation.liftToDelete = nil
                         }
+                        .sheetCloseMethod(.button)
+                        .sheetTitle("Delete lift?")
+                        
+
+                        
                     }
                     
                 }
                 .zIndex(3)
                 .ignoresSafeArea()
                 
-                DatePickerContainerView()
-                    .zIndex(4)
-                //            .sensoryFeedback(.impact(weight: .medium, intensity: 1), trigger: navigation.logLiftPresented) { oldValue, newValue in
-                //                return newValue
-                //            }
-                
-                
-                
-                
                 if !navigation.sheetPresented {
                     TabBarView()
                         .zIndex(2)
                 }
             }
+            .overlayPreferenceValue(DatePickerPreferenceKey.self) { value in
+                DatePickerContainerView(value: value)
+            }
+            .overlayPreferenceValue(TimePickerPreferenceKey.self) { value in
+                TimePickerContainerView(value: value)
+            }
+            .overlayPreferenceValue(EditWeightPreferenceKey.self) { value in
+                SmallSheetView(preference: value,
+                               safeAreaBottom: geo.safeAreaInsets.bottom,
+                               close: { $0.isPresented.wrappedValue = false }
+                ) { (weight, increment, isPresented) in
+                    EditWeightView(
+                        weight: weight,
+                        increment: increment
+                    )
+                }
+                .animation(Constants.sheetPresentationAnimation, value: value == nil)
+
+            }
+            .overlayPreferenceValue(CompactDurationPickerPreferenceKey.self) { value in
+                CompactDurationPickerPopoverContainerView(value: value)
+            }
+            
+            
             .environment(\.navigation, navigation)
+            .environment(\.streak, streak)
+            
+            .onChange(of: streak?.nextWorkoutDate ?? nil) { _, nextWorkoutDate in
+                print("change of next workout date")
+                // onChange doesn't work with nil for some reason, so this is a hack
+                if let nextWorkoutDate {
+                    Notifications.setupNextWorkoutNotification(at: nextWorkoutDate)
+                } else {
+                    Notifications.removeNextWorkoutNotification()
+                }
+            }
             
             .animation(Constants.sheetPresentationAnimation, value: navigation.addLiftPresented)
             .animation(Constants.sheetPresentationAnimation, value: navigation.logWorkoutPresented)
             .animation(Constants.sheetPresentationAnimation, value: navigation.liftDetailsPresented)
-            
-            //        .onAppear {
-            //            if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
-            //                do {
-            //                    try modelContext.delete(model: Lift.self)
-            //                } catch {
-            //                    fatalError("couldn't remove items...")
-            //                }
-            //            }
-            //        }
+            .animation(Constants.sheetPresentationAnimation, value: navigation.streakDetailsPresented)
+            .animation(Constants.sheetPresentationAnimation, value: navigation.liftToDelete == nil)
         }
     }
     

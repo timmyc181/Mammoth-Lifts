@@ -28,6 +28,13 @@ struct AddLiftFooterView: View {
                     }
                     
                     modelContext.insert(lift)
+                    
+                    do {
+                        try modelContext.save()
+                    } catch {
+                        fatalError("Error deleting lift")
+                    }
+                    
                     navigation.addLiftPresented = false
                 } else {
                     addLiftState.next()

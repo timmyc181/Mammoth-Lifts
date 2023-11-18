@@ -8,6 +8,153 @@ struct DurationPickerView: View {
 
     var fontSize: CGFloat = 24
     
+    @Environment(\.durationPickerType) var pickerType
+
+    var body: some View {
+        switch pickerType {
+        case .graphical:
+            GraphicalDurationPickerView(minute: $minute, second: $second, height: height, fontSize: fontSize)
+        case .compact:
+            CompactDurationPickerView(minute: $minute, second: $second)
+        }
+    }
+}
+
+struct CompactDurationPickerPopoverContainerView: View {
+    var value: CompactDurationPickerPreferenceKey.Value
+
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .bottom) {
+                if let value {
+                    Color.black.opacity(0.2)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            value.isPresented.wrappedValue = false
+                        }
+                        .zIndex(0)
+                }
+                if let value {
+                    CompactDurationPickerPopoverView(minute: value.minute, second: value.second, position: value.position, geometry: geometry)
+                        .zIndex(1)
+                }
+            }
+            .animation(Constants.datePickerAnimation, value: value == nil)
+        }
+        .ignoresSafeArea()
+    }
+    
+
+}
+
+struct CompactDurationPickerPopoverView: View {
+    @Binding var minute: Int
+    @Binding var second: Int
+    var position: Anchor<CGPoint>
+    var geometry: GeometryProxy
+    
+    private let width: CGFloat = 260
+    private let height: CGFloat = 200
+    private let padding: CGFloat = 20
+    
+    private var anchorPoint: UnitPoint {
+        UnitPoint(x: geometry[position].x/geometry.size.width, y: (geometry[position].y - spacing) / geometry.size.height)
+        
+    }
+    
+    private let spacing: CGFloat = 10
+    
+    var body: some View {
+        VStack {
+            
+            GraphicalDurationPickerView(minute: $minute, second: $second, fontSize: 24)
+                .padding()
+            
+        }
+        .frame(width: width, height: height)
+        .background(.regularMaterial)
+        .clipShape(.rect(cornerRadius: 25))
+        .position(x: geometry.size.width / 2, y: geometry[position].y - height / 2 - spacing)
+        
+        .transition(.scale(0, anchor: anchorPoint).combined(with: .opacity))
+
+    }
+}
+
+
+
+
+fileprivate struct CompactDurationPickerView: View {
+    @Binding var minute: Int
+    @Binding var second: Int
+    
+    @State private var isPresented: Bool = false
+    
+    var text: String {
+        if second == 0 {
+            return "\(minute) min"
+        } else {
+            return "\(minute)m \(second)s"
+        }
+    }
+    
+    var body: some View {
+        Button {
+            isPresented = true
+        } label: {
+            Text(text)
+        }
+        .buttonStyle(DateTimeSelectorButtonStyle())
+        .anchorPreference(key: CompactDurationPickerPreferenceKey.self, value: .top) { position in
+            (minute: $minute, second: $second, isPresented: $isPresented, position: position)
+        }
+    }
+}
+
+struct CompactDurationPickerPreferenceKey: PreferenceKey {
+    typealias Value = (minute: Binding<Int>, second: Binding<Int>, isPresented: Binding<Bool>, position: Anchor<CGPoint>)?
+    
+    static var defaultValue: Value = nil
+    
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        if let nextValue = nextValue(),
+           nextValue.isPresented.wrappedValue == true {
+            value = nextValue
+        }
+    }
+}
+
+extension View {
+    func durationPickerType(_ pickerType: DurationPickerType) -> some View {
+        environment(\.durationPickerType, pickerType)
+    }
+}
+
+private struct DurationPickerTypeKey: EnvironmentKey {
+    static let defaultValue = DurationPickerType.graphical
+}
+
+enum DurationPickerType {
+    case graphical
+    case compact
+}
+
+extension EnvironmentValues {
+  var durationPickerType: DurationPickerType {
+    get { self[DurationPickerTypeKey.self] }
+    set { self[DurationPickerTypeKey.self] = newValue }
+  }
+}
+
+fileprivate struct GraphicalDurationPickerView: View {
+    @Binding var minute: Int
+    @Binding var second: Int
+    
+    var height: CGFloat?
+
+    var fontSize: CGFloat
+    
     var minutesRange: ClosedRange<Int> = Constants.restTimeMinutesRange
     
     var secondsRange: ClosedRange<Int> = Constants.secondsRange
@@ -31,7 +178,7 @@ struct DurationPickerView: View {
                                 textHeight = size.height
                             })
                             .allowsHitTesting(false)
-                            .padding(.leading, DurationScrollView.textWidth + Self.labelSpacing + DurationPickerView.sidePadding - 20)
+                            .padding(.leading, DurationScrollView.textWidth + Self.labelSpacing + Self.sidePadding - 20)
 
                     }
                     
@@ -103,8 +250,8 @@ fileprivate struct DurationScrollView: View {
 
                         }
                     }
-                    .padding(alignment == .leading ? .leading : .trailing, alignment == .leading ? DurationPickerView.sidePadding - 20 : DurationPickerView.sidePadding)
-                    .safeAreaInset(edge: .trailing, spacing: DurationPickerView.labelSpacing) {
+                    .padding(alignment == .leading ? .leading : .trailing, alignment == .leading ? GraphicalDurationPickerView.sidePadding - 20 : GraphicalDurationPickerView.sidePadding)
+                    .safeAreaInset(edge: .trailing, spacing: GraphicalDurationPickerView.labelSpacing) {
                         Text(text)
                             .opacity(0)
                     }

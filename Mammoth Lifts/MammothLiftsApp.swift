@@ -10,11 +10,15 @@ import SwiftData
 
 @main
 struct MammothLiftsApp: App {
+    init() {
+        UserSettings.prepare()
+    }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .background(Color("Background"))
+                .preferredColorScheme(.dark)
         }
         .modelContainer(
             for: [Lift.self, Workout.self, Set.self],

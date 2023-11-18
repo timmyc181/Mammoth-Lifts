@@ -11,23 +11,37 @@ import SwiftData
 struct LogView: View {
     @Environment(\.modelContext) private var modelContext
     
-    @Query(animation: .snappy) private var workouts: [Workout]
+    @Query(sort: \Workout.date, order: .reverse, animation: .snappy) private var workouts: [Workout]
     
     var body: some View {
         VStack {
-            ScrollView {
-                VStack {
-                    ForEach(workouts) { workout in
-                        HStack {
-                            Text(workout.lift!.name)
-                            Spacer()
-                            Text(workout.date.formatted())
-                            
-                        }
+            List {
+                ForEach(workouts) { workout in
+                    HStack {
+                        Text(workout.lift!.name)
+                        Spacer()
+                        Text(workout.date.formatted())
+                        
                     }
                     .customFont()
                 }
+                .onDelete(perform: { indexSet in
+                    indexSet.forEach { i in
+                        modelContext.delete(workouts[i])
+                    }
+                })
+                
+                
+                
             }
+//            ScrollView {
+//                VStack {
+//                    ForEach(workouts) { workout in
+//                        
+//                    }
+//                    .customFont()
+//                }
+//            }
             .safeAreaPadding(.horizontal, Constants.sidePadding)
             
             Button {

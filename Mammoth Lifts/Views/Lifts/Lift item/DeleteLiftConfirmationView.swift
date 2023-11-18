@@ -3,25 +3,22 @@
 import SwiftUI
 
 struct DeleteLiftConfirmationView: View {
-    @Environment(\.navigation) private var navigation
-    @Environment(\.modelContext) private var modelContext
+    var delete: () -> ()
+    var close: () -> ()
     
     var body: some View {
         VStack(spacing: 10) {
             Button {
-                modelContext.delete(navigation.liftToDelete!)
-                navigation.liftToDelete = nil
+                delete()
             } label: {
                 Text("Delete")
             }
             .buttonStyle(
-                AccentButtonStyle(
-                    backgroundColor: Color(.trash)
-                )
+                AccentButtonStyle(stretch: true, backgroundColor: Color(.error))
             )
             
             Button {
-                navigation.liftToDelete = nil
+                close()
             } label: {
                 Text("Cancel")
             }
@@ -32,6 +29,6 @@ struct DeleteLiftConfirmationView: View {
     }
 }
 
-#Preview {
-    DeleteLiftConfirmationView()
-}
+//#Preview {
+//    DeleteLiftConfirmationView()
+//}

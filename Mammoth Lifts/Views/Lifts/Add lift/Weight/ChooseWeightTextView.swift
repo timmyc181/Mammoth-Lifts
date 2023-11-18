@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ChooseWeightTextView: View {
-    var weight: Double
+    var weight: Weight
     
     @State var goingUp: Bool = true
 
     var weightDigits: [String] {
         
-        let weight = weight.clean
+        let weight = weight.text
         return weight.components(separatedBy: ".")
     }
     
