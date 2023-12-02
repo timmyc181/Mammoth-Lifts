@@ -11,9 +11,17 @@ extension ModelContainer {
             Task { @MainActor in
                 let context = container.mainContext
                 
-                context.insert(Lift.template(for: .deadlift))
+                let deadlift = Lift.template(for: .deadlift)
+                
+                context.insert(deadlift)
                 context.insert(Lift.template(for: .bench))
                 context.insert(Lift.template(for: .overheadPress))
+                
+                let workout1 = Workout.getLoggedWorkout(weight: 140, date: Date().subtracting(days: 2), lift: deadlift)
+                let workout2 = Workout.getLoggedWorkout(weight: 150, date: Date(), lift: deadlift)
+                
+                context.insert(workout1)
+                context.insert(workout2)
                 
                 return container
             }

@@ -237,7 +237,7 @@ struct SheetDragGestureModifier: ViewModifier {
             let newValue = newValue - initialTranslation
             let newOffset = max(newValue, 0)
             
-            print("newVal: ", newValue, ", newOffset: ", newOffset, " initialTrans: ", initialTranslation)
+//            print("newVal: ", newValue, ", newOffset: ", newOffset, " initialTrans: ", initialTranslation)
             
             offset.wrappedValue = newOffset
             if let detents = detents {

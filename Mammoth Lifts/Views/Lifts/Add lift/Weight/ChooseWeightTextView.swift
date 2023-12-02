@@ -58,7 +58,7 @@ struct ChooseWeightTextView: View {
                         }
                         .transition(.weightText(goingUp: goingUp, small: true))
 
-                        .id("text\(index)\(firstDecimal)")
+                        .id("text\(String(describing: index))\(firstDecimal)")
 
                     Text("0")
                         .opacity(0)
@@ -67,7 +67,7 @@ struct ChooseWeightTextView: View {
                                 .foregroundColor(secondDecimal == "0" ? .white.opacity(0.2) : .white)
                         }
                         .transition(.weightText(goingUp: goingUp, small: true))
-                        .id("text\(index)\(secondDecimal)")
+                        .id("text\(String(describing: index))\(secondDecimal)")
                 }
                 .customFont(size: 25)
                 .padding(.top, 13)

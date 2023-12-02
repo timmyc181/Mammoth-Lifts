@@ -31,6 +31,10 @@ class Notifications {
     static func setupNextWorkoutNotification(at date: Date) {
         checkStatus {
             let content = UNMutableNotificationContent()
+            
+            // Remove current notification if it exists
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [Constants.streakNotificationIdentifier])
+            
             content.title = "You gotta lift today"
             content.body = "Lift today or you will lose your streak"
             content.sound = .default

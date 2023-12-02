@@ -8,14 +8,15 @@ struct ContentView: View {
     
     @Query(sort: \Workout.date, order: .reverse) var workouts: [Workout]
     @AppStorage(UserSettings.streakDaysKey) var days: Int = 3
-    var streak: Streak? {
-        print("updating")
-        return Streak(workouts: workouts, streakDays: days)
-    }
+//    var streak: Streak? {
+//        print("updating")
+//        return Streak(workouts: workouts, streakDays: days)
+//    }
     
     var body: some View {
+        let streak = Streak(workouts: workouts, streakDays: days)
+        
         GeometryReader { geo in
-            let _ = Self._printChanges()
             ZStack {
                 Group {
                     switch navigation.tab {

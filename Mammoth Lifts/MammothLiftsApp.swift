@@ -22,7 +22,7 @@ struct MammothLiftsApp: App {
         }
         .modelContainer(
             for: [Lift.self, Workout.self, Set.self],
-            inMemory: false
+            isAutosaveEnabled: true
         )
     }
 }

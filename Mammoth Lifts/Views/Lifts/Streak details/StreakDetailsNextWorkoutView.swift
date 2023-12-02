@@ -9,22 +9,19 @@ struct StreakDetailsNextWorkoutView: View {
         date.relativeDateString
     }
     
-    var descriptionText: String {
-        "Complete a workout \(dateString.first == "i" ? "" : "by ")\(dateString) to extend your streak"
-    }
-    
     var body: some View {
-        HStack(alignment: .top, spacing: 10) {
+        HStack(alignment: .center, spacing: 10) {
             Image(systemName: "clock")
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, Color(.accent))
-                .font(.system(size: 20, weight: .heavy))
+                .font(.system(size: 18, weight: .heavy))
                 .padding(.top, 2)
             VStack(alignment: .leading) {
+                Text("Next workout")
+                    .customFont(size: 14, color: .white.opacity(0.3))
                 Text(dateString.firstCapitalized)
                     .customFont(size: 18)
-                Text(descriptionText)
-                    .customFont(size: 16, color: .white.opacity(0.3))
+
 
             }
 
@@ -56,6 +53,9 @@ extension Date {
         
         if numberOfDays == 0 {
             return "today"
+        }
+        if numberOfDays == 1 {
+            return "tomorrow"
         }
         if numberOfDays >= 2 && numberOfDays <= 7 {
             

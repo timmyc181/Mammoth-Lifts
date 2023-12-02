@@ -22,7 +22,6 @@ struct LiftDetailsBodyView: View {
     }
     
     var body: some View {
-        let _ = Self._printChanges()
         ListView {
             ListItemView(sidePadding: false) {
                 ItemView(title: "Weight", action: editWeight) {

@@ -13,6 +13,9 @@
 		3A0C4CFD2A780CA4001AC7D4 /* SheetCloseIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0C4CFC2A780CA4001AC7D4 /* SheetCloseIcon.swift */; };
 		3A142EB52A8F123000177F9D /* LogWorkoutState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A142EB42A8F123000177F9D /* LogWorkoutState.swift */; };
 		3A142EB72A8F9D0A00177F9D /* DateTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A142EB62A8F9D0A00177F9D /* DateTimeSelector.swift */; };
+		3A16B27F2B13A7D400C8BCA5 /* StreakDetailsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16B27E2B13A7D400C8BCA5 /* StreakDetailsCalendarView.swift */; };
+		3A16B2822B1563B000C8BCA5 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16B2812B1563B000C8BCA5 /* CalendarView.swift */; };
+		3A16B2842B1685BC00C8BCA5 /* StreakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16B2832B1685BC00C8BCA5 /* StreakTests.swift */; };
 		3A1BF3D42A58C3C00051A3DD /* MammothLiftsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3D32A58C3C00051A3DD /* MammothLiftsApp.swift */; };
 		3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BF3DA2A58C3C00051A3DD /* ContentView.swift */; };
 		3A1BF3DD2A58C3C10051A3DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1BF3DC2A58C3C10051A3DD /* Assets.xcassets */; };
@@ -118,6 +121,9 @@
 		3A0C4CFC2A780CA4001AC7D4 /* SheetCloseIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCloseIcon.swift; sourceTree = "<group>"; };
 		3A142EB42A8F123000177F9D /* LogWorkoutState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutState.swift; sourceTree = "<group>"; };
 		3A142EB62A8F9D0A00177F9D /* DateTimeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeSelector.swift; sourceTree = "<group>"; };
+		3A16B27E2B13A7D400C8BCA5 /* StreakDetailsCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakDetailsCalendarView.swift; sourceTree = "<group>"; };
+		3A16B2812B1563B000C8BCA5 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		3A16B2832B1685BC00C8BCA5 /* StreakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakTests.swift; sourceTree = "<group>"; };
 		3A1BF3D02A58C3C00051A3DD /* Mammoth Lifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mammoth Lifts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1BF3D32A58C3C00051A3DD /* MammothLiftsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MammothLiftsApp.swift; sourceTree = "<group>"; };
 		3A1BF3DA2A58C3C00051A3DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 		3A0C4CF92A7809B9001AC7D4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3A16B2802B1563A400C8BCA5 /* Calendar */,
 				3A34FDB52A9038270036573D /* Weight keyboard */,
 				3AF321C12A62F59E008E4E14 /* SheetView.swift */,
 				3ACF06572A6431E700AA4E4A /* ProgressBarView.swift */,
@@ -247,6 +254,14 @@
 				3A2288442AE9E437003DC682 /* TimePickerView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3A16B2802B1563A400C8BCA5 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				3A16B2812B1563B000C8BCA5 /* CalendarView.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		3A1BF3C72A58C3C00051A3DD = {
@@ -301,6 +316,7 @@
 				3A1BF3EA2A58C3C10051A3DD /* Mammoth_LiftsTests.swift */,
 				3A3681C92AD45B54005D3809 /* WeightTests.swift */,
 				3A2288412AE97622003DC682 /* WorkoutTests.swift */,
+				3A16B2832B1685BC00C8BCA5 /* StreakTests.swift */,
 			);
 			path = "Mammoth LiftsTests";
 			sourceTree = "<group>";
@@ -519,6 +535,7 @@
 				3AF8D2552B02818E0065D515 /* StreakDetailsBodyView.swift */,
 				3AADF2E22B05704D00715864 /* StreakDetailsNextWorkoutView.swift */,
 				3AADF2E42B05706700715864 /* StreakDetailsLastWorkoutView.swift */,
+				3A16B27E2B13A7D400C8BCA5 /* StreakDetailsCalendarView.swift */,
 			);
 			path = "Streak details";
 			sourceTree = "<group>";
@@ -658,6 +675,7 @@
 				3AF321C72A630673008E4E14 /* ScreenCornerRadius.swift in Sources */,
 				3A49EC2A2A83E54100C3D381 /* LiftItemDetailsView.swift in Sources */,
 				3A9010092AC6383900C9223E /* Weight.swift in Sources */,
+				3A16B27F2B13A7D400C8BCA5 /* StreakDetailsCalendarView.swift in Sources */,
 				3A01F6812A6CDA40009C79FE /* RestTimeView.swift in Sources */,
 				3A4408452A718CCF00A5CC5A /* ChooseLiftItemView.swift in Sources */,
 				3ABEA5BE2A5F085F000D695F /* Common.swift in Sources */,
@@ -704,6 +722,7 @@
 				3AC2FFEA2A5DCAC00079FA62 /* Navigation.swift in Sources */,
 				3AD1E6E62A5F044000C0E4B0 /* LiftItemView.swift in Sources */,
 				3A0C4CFD2A780CA4001AC7D4 /* SheetCloseIcon.swift in Sources */,
+				3A16B2822B1563B000C8BCA5 /* CalendarView.swift in Sources */,
 				3AB7A48A2AA03BC100340425 /* DatePickerView.swift in Sources */,
 				3A1BF3DB2A58C3C00051A3DD /* ContentView.swift in Sources */,
 				3AF8D2522B027F5B0065D515 /* StreakDetailsView.swift in Sources */,
@@ -738,6 +757,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1BF3EB2A58C3C10051A3DD /* Mammoth_LiftsTests.swift in Sources */,
+				3A16B2842B1685BC00C8BCA5 /* StreakTests.swift in Sources */,
 				3A3681CA2AD45B54005D3809 /* WeightTests.swift in Sources */,
 				3A3681CD2AD463AD005D3809 /* Weight.swift in Sources */,
 				3A2288422AE97622003DC682 /* WorkoutTests.swift in Sources */,

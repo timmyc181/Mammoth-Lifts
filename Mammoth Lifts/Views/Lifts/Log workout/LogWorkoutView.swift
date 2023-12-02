@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 
 struct LogWorkoutView: View {
@@ -94,10 +95,29 @@ struct LogWorkoutView: View {
         
         let workout = Workout.getLoggedWorkout(weight: weight, date: date, lift: lift)
         
-        modelContext.insert(workout)
+//        modelContext.insert(workout)
+//        do {
+//            try modelContext.save()
+//        } catch {
+//            fatalError("couldn't save")
+//        }
         
         lift.workouts.append(workout)
+//        modelContext.in
+//        modelContext.insert(workout)
+        do {
+            try modelContext.transaction {
+                for set in workout.sets {
+                    modelContext.insert(set)
+                }
+                modelContext.insert(workout)
+                try modelContext.save()
+            }
+        } catch {
+            fatalError("Error logging workout")
+        }
         
+        print(workout.sets)
         lift.updateWeight()
 
 
@@ -111,6 +131,11 @@ struct LogWorkoutView: View {
 struct DumbPreviewThing<Content: View>: View {
     var previewMode: PreviewMode = .sheet
     @ViewBuilder var content: () -> Content
+    @Query(sort: \Workout.date, order: .reverse) var workouts: [Workout]
+    var streak: Streak? {
+        print("updating")
+        return Streak(workouts: workouts, streakDays: 3)
+    }
     
     @State private var appear = false
     
@@ -122,10 +147,9 @@ struct DumbPreviewThing<Content: View>: View {
                 }
             if appear {
                 content()
-                    .padding(previewMode == .normal ? Constants.sidePadding : Constants.sheetPadding)
             }
         }
-        .modelContainer(for: [Lift.self, Workout.self, Set.self], inMemory: true)
+        .environment(\.streak, streak)
 
     }
     

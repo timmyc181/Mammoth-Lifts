@@ -18,9 +18,24 @@ struct LogView: View {
             List {
                 ForEach(workouts) { workout in
                     HStack {
-                        Text(workout.lift!.name)
+                        VStack(alignment: .leading) {
+                            Text(workout.lift?.name ?? "Error")
+                            Group {
+                                if workout.sets.count > 0 {
+                                    Text("\(workout.sets[0].weight.text) lb")
+                                } else {
+                                    Text("Weight error")
+                                }
+
+                            }
+                            .customFont(size: 14, color: Color(.secondaryText))
+
+                            
+                        }
                         Spacer()
-                        Text(workout.date.formatted())
+                        Text(workout.date.relativeDateString.firstCapitalized)
+                            .customFont(size: 14, color: Color(.secondaryText))
+                        
                         
                     }
                     .customFont()
@@ -44,17 +59,17 @@ struct LogView: View {
 //            }
             .safeAreaPadding(.horizontal, Constants.sidePadding)
             
-            Button {
-                do {
-                    try modelContext.delete(model: Workout.self)
-                } catch {
-                    fatalError("Couldn't delete entities in Workout model")
-                }
-            } label: {
-                Text("Clear")
-                    .padding(.horizontal)
-            }
-            .buttonStyle(.accent)
+//            Button {
+//                do {
+//                    try modelContext.delete(model: Workout.self)
+//                } catch {
+//                    fatalError("Couldn't delete entities in Workout model")
+//                }
+//            } label: {
+//                Text("Clear")
+//                    .padding(.horizontal)
+//            }
+//            .buttonStyle(.accent)
         }
         .safeAreaPadding(.bottom, Constants.tabBarSafeArea)
         

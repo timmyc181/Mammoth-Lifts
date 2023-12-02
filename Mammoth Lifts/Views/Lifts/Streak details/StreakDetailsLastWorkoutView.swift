@@ -6,7 +6,12 @@ struct StreakDetailsLastWorkoutView: View {
     var workout: Workout
     
     var dateString: String {
-        workout.date.startOfDay.formatted(.relative(presentation: .named))
+        if Calendar.current.isDate(workout.date, inSameDayAs: Date()) {
+            return "today"
+        } else if Calendar.current.isDate(workout.date, inSameDayAs: Date().subtracting(days: 1)) {
+            return "yesterday"
+        }
+        return workout.date.formatted(.relative(presentation: .named))
     }
     
     var body: some View {
@@ -34,16 +39,16 @@ struct StreakDetailsLastWorkoutView: View {
 //                        Text("Friday")
 //                            .opacity(0.3)
         }
-        .padding(.horizontal, 25)
-        .padding(.vertical, 12)
-        .background {
-            Color.black
-                .opacity(0.25)
+//        .padding(.horizontal, 25)
+//        .padding(.vertical, 12)
+//        .background {
+//            Color.black
+//                .opacity(0.25)
                 
 //                        .cornerRadius(10)
 //                                .padding(.horizontal)
 //                                .padding(.vertical, 5)
-        }
+//        }
     }
 }
 
